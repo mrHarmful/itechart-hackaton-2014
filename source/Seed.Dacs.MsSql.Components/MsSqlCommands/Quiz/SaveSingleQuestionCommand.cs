@@ -36,8 +36,8 @@ namespace Seed.Dacs.MsSql.Components.MsSqlCommands.Quiz
             cmd.Parameters.Add("@PriorityId", SqlDbType.BigInt).Value = _question.PriorityId;
             cmd.Parameters.Add("@CategoryId", SqlDbType.BigInt).Value = _question.CategoryId;
 
-            /*cmd.Parameters.Add("@CreateCost", SqlDbType.Int).Value = DBNull.Value;
-            cmd.Parameters.Add("@ReturnPoints", SqlDbType.Int).Value = DBNull.Value;*/
+            cmd.Parameters.Add("@CreateCost", SqlDbType.Int).Value = 0;
+            cmd.Parameters.Add("@ReturnPoints", SqlDbType.Int).Value = 0;
 
             cmd.Parameters.Add("@Answers", SqlDbType.Structured).Value = _question.Answers.ToAnswerVariantsTable();
             cmd.Parameters.Add("@AllowedDepts", SqlDbType.Structured).Value = _question.Targets.Select(x => (int) x).ToIdsList();

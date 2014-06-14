@@ -9,11 +9,11 @@ using Seed.Entities;
 
 namespace Seed.Dacs.MsSql.Components.MsSqlCommands.Common
 {
-    internal class GetDepartmensCommand : BaseCommand<List<KeyValueItem>>
+    internal class GetDepartmentsCommand : BaseCommand<List<KeyValueItem>>
     {
         private List<KeyValueItem> _result;
 
-        public GetDepartmensCommand()
+        public GetDepartmentsCommand()
         {
             StoredProcedureName = SeedStoredProcedures.GetDepartments;
             _result = new List<KeyValueItem>();

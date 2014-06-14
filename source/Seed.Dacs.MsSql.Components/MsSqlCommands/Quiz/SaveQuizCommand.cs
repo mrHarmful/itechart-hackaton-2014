@@ -33,8 +33,8 @@ namespace Seed.Dacs.MsSql.Components.MsSqlCommands.Quiz
             cmd.Parameters.Add("@StartTime", SqlDbType.DateTime).Value = _quiz.StartDate;
             cmd.Parameters.Add("@EndTime", SqlDbType.DateTime).Value = _quiz.EndDate;
 
-            /*cmd.Parameters.Add("@CreateCost", SqlDbType.Int).Value = DBNull.Value;
-            cmd.Parameters.Add("@ReturnPoints", SqlDbType.Int).Value = DBNull.Value;*/
+            cmd.Parameters.Add("@CreateCost", SqlDbType.Int).Value = 0;
+            cmd.Parameters.Add("@ReturnPoints", SqlDbType.Int).Value = 0;
 
             cmd.Parameters.Add("@AllowedDepts", SqlDbType.Structured).Value = _quiz.Targets.Select(t => (int) t).ToIdsList();
 

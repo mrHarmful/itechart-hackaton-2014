@@ -27,7 +27,6 @@ namespace Seed.Dacs.MsSql.Components.MsSqlCommands.Quiz
             cmd.CommandType = CommandType.StoredProcedure;
 
             cmd.Parameters.Add("@Title", SqlDbType.VarChar, 300).Value = _question.Enquiry;
-            cmd.Parameters.Add("@Reason", SqlDbType.VarChar, 300).Value = DBNull.Value;
             cmd.Parameters.Add("@SessionId", SqlDbType.BigInt).Value = _question.QuizId;
             cmd.Parameters.Add("@SessionSequence", SqlDbType.Int).Value = _sequence;
             cmd.Parameters.Add("@CreatorId", SqlDbType.BigInt).Value = _question.OwnerId;
@@ -39,8 +38,8 @@ namespace Seed.Dacs.MsSql.Components.MsSqlCommands.Quiz
             cmd.Parameters.Add("@PriorityId", SqlDbType.BigInt).Value = DBNull.Value;
             cmd.Parameters.Add("@CategoryId", SqlDbType.BigInt).Value = DBNull.Value;
 
-            /*cmd.Parameters.Add("@CreateCost", SqlDbType.Int).Value = DBNull.Value;
-            cmd.Parameters.Add("@ReturnPoints", SqlDbType.Int).Value = DBNull.Value;*/
+            cmd.Parameters.Add("@CreateCost", SqlDbType.Int).Value = 0;
+            cmd.Parameters.Add("@ReturnPoints", SqlDbType.Int).Value = 0;
 
             cmd.Parameters.Add("@Answers", SqlDbType.Structured).Value = _question.Answers.ToAnswerVariantsTable();
             cmd.Parameters.Add("@AllowedDepts", SqlDbType.Structured).Value = (new List<int>()).ToIdsList();
