@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Seed.Dacs.Interfaces;
 using Seed.Entities;
 using Seed.Entities.AccountItems;
@@ -27,7 +28,18 @@ namespace Seed.Dacs.MsSql.Components.MsSqlComponents
 
             UserQuizList list = new UserQuizList();
             list.Quizzes = command.CommandResult.Quizzes;
-
+            list.Questions = new List<SingleQuestion>();
+            for (int i = 0; i < 11; i++)
+            {
+                var q = new SingleQuestion();
+                q.Enquiry = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer.";
+                q.Id = i;
+                q.CategoryId = 1;
+                q.Targets = new List<long>();
+                q.Targets.Add(1);
+                q.PriorityId = 1;
+                list.Questions.Add(q);
+            }
             return list;
         }
 
