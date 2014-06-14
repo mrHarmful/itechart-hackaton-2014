@@ -1,3 +1,22 @@
 ﻿<div class="row">
-    Meta
+    <dl>
+        <dt>Title</dt>
+        <dd>{{survey.title}}</dd>
+        <dt>Reason</dt>
+        <dd>{{survey.reason}}</dd>
+        <dt>Questions</dt>
+        <dd>{{survey.questionsCount}}</dd>
+    </dl>
+</div>
+<div class="row slider" ng-show="!completed">
+    <div ng-if="question.$resolved" seed-question="question"></div>
+</div>
+<div class="row" ng-show="!completed">
+    <a class="btn btn-bordered-brand" ng-click="submitAnswer()">
+        <i class="icon-page-next"></i>
+        Submit
+    </a>
+</div>
+<div class="row" ng-show="completed">
+    Congratulations, you`ve finished!
 </div>

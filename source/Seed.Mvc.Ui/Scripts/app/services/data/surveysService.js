@@ -25,6 +25,12 @@ angular.module('seedApp.services.clients')
             return result;
         };
         
+        this.getAttendSurvey = function (id) {
+            var result = Surveys.getAttend({ id: id });
+
+            return result;
+        };
+        
         this.saveSurvey = function (survey) {
             Surveys.save(survey);
         };

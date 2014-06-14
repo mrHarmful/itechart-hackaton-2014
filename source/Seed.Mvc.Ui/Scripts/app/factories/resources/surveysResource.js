@@ -10,6 +10,7 @@ angular.module('seedApp.factories.resources')
                 'all': { method: 'GET' },
                 'available': { method: 'GET', url: '/api/surveys/available', isArray: true},
                 'get': { method: 'GET' },
+                'getAttend': { method: 'GET', url: '/api/surveys/:id/attend'},
                 'save': {method: 'PUT'}
             });
     }]);

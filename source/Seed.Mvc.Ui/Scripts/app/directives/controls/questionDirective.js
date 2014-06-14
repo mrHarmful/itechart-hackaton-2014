@@ -6,7 +6,6 @@
 angular.module('seedApp.directives.controls').directive('seedQuestion', function() {
     return {
         restrict: 'A',
-        replace: true,
         templateUrl: '/Templates/partials/question.html',
         scope: {
             question: '=seedQuestion'

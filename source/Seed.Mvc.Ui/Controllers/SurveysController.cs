@@ -36,5 +36,13 @@ namespace Seed.Web.Api.Controllers
 
             return result;
         }
+
+        [Route("api/surveys/{id:long}/attend")]
+        public AttendQuizVm GetAttendQuiz(long id)
+        {
+            var result = ViewModelsProvider.GetAttendQuizVm(id);
+
+            return result;
+        }
     }
 }

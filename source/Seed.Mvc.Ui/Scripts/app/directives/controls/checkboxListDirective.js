@@ -9,10 +9,10 @@ angular.module('seedApp.directives.controls').directive('seedCheckboxList', func
         replace: true,
         templateUrl: '/Templates/partials/checkboxList.html',
         scope: {
-            list: '=seedCheckboxList'
+            model: '=seedCheckboxList'
         },
         link: function($scope) {
-            
+            $scope.list = $scope.model.items;
         }
     };
 });
