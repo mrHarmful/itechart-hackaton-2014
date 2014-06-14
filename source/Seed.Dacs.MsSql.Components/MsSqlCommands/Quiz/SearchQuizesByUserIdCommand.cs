@@ -9,7 +9,7 @@ using Seed.Entities;
 
 namespace Seed.Dacs.MsSql.Components.MsSqlCommands.Quiz
 {
-    internal class SearchQuizesByUserIdCommand
+    internal class SearchQuizesByUserIdCommand : BaseCommand<List<Entities.Quiz>>
     {
     }
 }

@@ -40,7 +40,7 @@ namespace Seed.Dacs.MsSql.Components.MsSqlComponents
             {
                 q.QuizId = quiz.Id;
                 var questionCommand = new SaveQuestionCommand(q, counter);
-                command.Execute();
+                questionCommand.Execute();
                 counter++;
             }
 
