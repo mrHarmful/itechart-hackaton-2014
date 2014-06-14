@@ -10,7 +10,7 @@ namespace Seed.Dacs.MsSql.Components.MsSqlComponents
     {
         #region IQuizDac Members
 
-        public UserQuizList GetQuizList(long userId)
+        public UserQuizList GetUserQuizList(long userId)
         {
             throw new NotImplementedException();
         }

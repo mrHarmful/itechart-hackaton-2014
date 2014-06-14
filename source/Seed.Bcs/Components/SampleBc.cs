@@ -55,25 +55,31 @@ namespace Seed.Bcs
 
         public List<KeyValueItem> GetTargets()
         {
-            throw new NotImplementedException();
+            var result = _sampleDac.GetTargets();
+
+            return result;
         }
 
         public List<KeyValueItem> GetPriorities()
         {
-            throw new NotImplementedException();
+            var result = _sampleDac.GetPriorities();
+
+            return result;
         }
 
         public List<KeyValueItem> GetCategories()
         {
-            throw new NotImplementedException();
+            var result = _sampleDac.GetCategories();
+
+            return result;
         }
 
         public List<KeyValueItem> GetAchievements()
         {
-            throw new NotImplementedException();
+            var result = _sampleDac.GetAchievements();
+
+            return result;
         }
-
-
 
         #endregion
     }

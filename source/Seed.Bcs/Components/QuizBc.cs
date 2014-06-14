@@ -74,6 +74,9 @@ namespace Seed.Bcs
                 }
                 result.Quizzes.Add(q);
             }
+
+            //var result = _quizDac.GetUserQuizList(userId);
+
             return result;
         }
 

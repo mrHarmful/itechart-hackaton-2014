@@ -5,7 +5,7 @@ namespace Seed.Dacs.Interfaces
 {
     public interface IQuizDac
     {
-        UserQuizList GetQuizList(long userId);
+        UserQuizList GetUserQuizList(long userId);
 
         Quiz GetQuiz(long quizId);
 
