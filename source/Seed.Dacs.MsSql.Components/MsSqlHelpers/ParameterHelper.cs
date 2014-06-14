@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using Seed.Entities;
 
 namespace Seed.Dacs.MsSql.Components.MsSqlHelpers
 {
@@ -20,30 +21,19 @@ namespace Seed.Dacs.MsSql.Components.MsSqlHelpers
             return obj == null || obj == DBNull.Value ? default(T) : (T)obj;
         }
 
-        public static DataTable ToBookNumberTable(this IEnumerable<string> list)
+        public static DataTable ToAnswerVariantsTable(this IEnumerable<Answer> list)
         {
-            DataTable dataTable = new DataTable("BookNumbers");
+            DataTable dataTable = new DataTable("AnswerVariants");
 
-            dataTable.Columns.Add(GetDataColumn<string>("BookNumber", false));
+            dataTable.Columns.Add(GetDataColumn<long>("QuestionId", true));
+            dataTable.Columns.Add(GetDataColumn<string>("Text", false, 300));
+            dataTable.Columns.Add(GetDataColumn<int>("Sequence", true));
 
-            foreach (var item in list ?? new List<string>())
+            int counter = 1;
+            foreach (var item in list ?? new List<Answer>())
             {
-                dataTable.Rows.Add(item);
-            }
-
-            return dataTable;
-        }
-
-        public static DataTable ToIdListTable(this IEnumerable<long> list)
-        {
-            DataTable dataTable = new DataTable("IdsList");
-
-            dataTable.Columns.Add(GetDataColumn<long>("ObjectId", false));
-
-
-            foreach (var item in list ?? new List<long>())
-            {
-                dataTable.Rows.Add(item);
+                dataTable.Rows.Add(item.QuestionId, item.Caption, counter);
+                counter++;
             }
 
             return dataTable;
@@ -53,6 +43,11 @@ namespace Seed.Dacs.MsSql.Components.MsSqlHelpers
         {
             DataColumn result = new DataColumn(columnName);
             result.DataType = typeof(T);
+
+            if (typeof(T).Equals(typeof(string)))
+            {
+                size = 300;
+            }
             if (size.HasValue)
             {
                 result.MaxLength = size.Value;
