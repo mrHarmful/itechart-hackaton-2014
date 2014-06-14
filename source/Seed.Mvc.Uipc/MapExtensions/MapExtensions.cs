@@ -12,18 +12,8 @@ namespace Seed.Web.Uipc
         public static SurveysVm MapToSurveysVm(this UserQuizList quizList)
         {
             var surveys = new SurveysVm();
-
-            surveys.User = GetUserVm();
-            surveys.Questions = quizList.Questions.Items.Select(q => q.MapToSingleQuestionLblVm()).ToList();
-            surveys.QuestionsPaging = new PagingVm();
-            surveys.QuestionsPaging.PageNumber = quizList.Questions.PageNumber;
-            surveys.QuestionsPaging.PageSize = quizList.Questions.PageSize;
-            surveys.QuestionsPaging.TotalCount = quizList.Questions.TotalCount;
-            surveys.Quizzes = quizList.Quizzes.Items.Select(q => q.MapToQuizLblVm()).ToList();
-            surveys.QuizzesPaging = new PagingVm();
-            surveys.QuizzesPaging.PageNumber = quizList.Quizzes.PageNumber;
-            surveys.QuizzesPaging.PageSize = quizList.Quizzes.PageSize;
-            surveys.QuizzesPaging.TotalCount = quizList.Quizzes.TotalCount;
+            surveys.Questions = quizList.Questions.Select(q => q.MapToSingleQuestionLblVm()).ToList();
+            surveys.Quizzes = quizList.Quizzes.Select(q => q.MapToQuizLblVm()).ToList();
 
             return surveys;
         }
@@ -37,8 +27,11 @@ namespace Seed.Web.Uipc
         private static SingleQuestionLblVm MapToSingleQuestionLblVm(this SingleQuestion question)
         {
             var result = new SingleQuestionLblVm();
-            result.Caption = string.Format("{0}...", question.Enquiry.Take(50));
+            result.Enquiry = string.Format("{0}...", question.Enquiry.Take(50));
             result.Id = question.Id;
+            result.Category = question.Category.Title;
+            result.Target = string.Join(";", question.Target.Select(t => t.Name));
+            result.Priority = question.Priority.ToString();
 
             return result;
         }
@@ -46,9 +39,12 @@ namespace Seed.Web.Uipc
         private static QuizLblVm MapToQuizLblVm(this Quiz quiz)
         {
             var result = new QuizLblVm();
-            result.Caption = string.Format("{0}...", quiz.Title.Take(50));
+            result.Enquiry = string.Format("{0}...", quiz.Title.Take(50));
             result.Id = quiz.Id;
+            result.Category = quiz.Category.Title;
+            result.Target = string.Join(";", quiz.Target.Select(t => t.Name));
             result.QuestionsCount = quiz.Questions.Count;
+            result.Priority = quiz.Priority.ToString();
 
             return result;
         }

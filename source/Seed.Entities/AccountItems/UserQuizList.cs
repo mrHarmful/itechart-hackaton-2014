@@ -1,9 +1,11 @@
-﻿namespace Seed.Entities.AccountItems
+﻿using System.Collections.Generic;
+
+namespace Seed.Entities.AccountItems
 {
     public class UserQuizList
     {
-        public ItemsList<Quiz> Quizzes { get; set; }
+        public List<Quiz> Quizzes { get; set; }
 
-        public ItemsList<SingleQuestion> Questions { get; set; }
+        public List<SingleQuestion> Questions { get; set; }
     }
 }

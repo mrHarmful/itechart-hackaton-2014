@@ -9,7 +9,7 @@ namespace Seed.Entities
 
         public long Id { get; set; }
 
-        public long QuizId { get; set; }
+        public long? QuizId { get; set; }
 
         public string Enquiry { get; set; }
 

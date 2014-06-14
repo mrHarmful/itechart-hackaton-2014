@@ -11,7 +11,7 @@ namespace Seed.Dacs.MsSql.Components.MsSqlCommands.Quiz
 {
     internal class SaveQuestionCommand
     {
-        internal class SaveQuestionCommand : BaseCommand<bool>
+        /*internal class SaveQuestionCommand : BaseCommand<bool>
         {
             private Question _question;
             private int _sequence;
@@ -58,6 +58,6 @@ namespace Seed.Dacs.MsSql.Components.MsSqlCommands.Quiz
 
                 return true;
             }
-        }
+        }*/
     }
 }

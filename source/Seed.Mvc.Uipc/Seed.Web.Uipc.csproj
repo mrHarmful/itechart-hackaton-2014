@@ -106,12 +106,10 @@
     <Compile Include="ViewModelsProviders\CommonViewModelsProvider.cs" />
     <Compile Include="ViewModels\Common\AddressVm.cs" />
     <Compile Include="ViewModels\Common\ImageVm.cs" />
-    <Compile Include="ViewModels\Common\PagingVm.cs" />
     <Compile Include="ViewModels\Common\QuizLblVm.cs" />
     <Compile Include="ViewModels\Common\SingleQuestionLblVm.cs" />
     <Compile Include="ViewModels\Common\UserActionResultVm.cs" />
     <Compile Include="ViewModels\Account\UserVm.cs" />
-    <Compile Include="ViewModels\Dashboard\DashboardVm.cs" />
     <Compile Include="ViewModels\Dashboard\SurveysVm.cs" />
   </ItemGroup>
   <ItemGroup>

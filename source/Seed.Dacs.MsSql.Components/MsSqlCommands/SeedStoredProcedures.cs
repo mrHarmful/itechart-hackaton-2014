@@ -8,7 +8,7 @@
 
         #region Put stored procedures
 
-        public static const string SaveQuestion = "sp_InsertQuestion";
+        public const string SaveQuestion = "sp_InsertQuestion";
 
         #endregion
     }
