@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Seed.Bcs;
+using System.Web.Mvc;
 using Seed.Entities;
 using Seed.Entities.AccountItems;
 using Seed.Web.Uipc.ViewModels;
@@ -18,6 +18,55 @@ namespace Seed.Web.Uipc
             surveys.Quizzes = quizList.Quizzes.Select(q => q.MapToQuizLblVm()).ToList();
 
             return surveys;
+        }
+
+        public static CaptionSelectList MapToCaptionSelectList(this List<KeyValueItem> items, string caption)
+        {
+            var result = new CaptionSelectList();
+
+            result.Caption = caption;
+            result.Items = new List<SelectListItem>();
+
+            foreach (var item in items)
+            {
+                var slItem = new SelectListItem();
+                slItem.Selected = false;
+                slItem.Text = item.Caption;
+                slItem.Value = item.Id.ToString();
+            }
+
+            return result;
+        }
+
+        public static SingleQuestionVm MapSingleQuestionVm(this SingleQuestion question)
+        {
+            var result = new SingleQuestionVm();
+
+            result.Id = question.Id;
+            result.Meta = new QuizMetaVm();
+            result.Meta.EndDate = question.EndDate;
+            result.Meta.SelectedCategoryId = question.CategoryId;
+            result.Meta.SelectedPriorityId = question.PriorityId;
+            result.Meta.SelectedTargetIds = question.Targets;
+            result.Meta.StartDate = question.StartDate;
+            result.Question = new QuestionVm();
+            result.Question.Enquiry = question.Enquiry;
+            result.Question.CanSkip = question.CanSkip;
+            result.Question.Id = question.Id;
+            result.Question.IsUserMeta = question.IsUserMeta;
+            result.Question.QuizId = null;
+            result.Question.IsSingleSelect = question.IsSingleSelect;
+            result.Question.Answers = new List<AnswerVm>();
+
+            foreach (var answer in question.Answers)
+            {
+                var aVm = new AnswerVm();
+                aVm.Id = answer.Id;
+                aVm.Caption = answer.Caption;
+                aVm.QuestionId = question.Id.Value;
+            }
+
+            return result;
         }
 
         public static QuizVm MapToQuizVm(this Quiz quiz)

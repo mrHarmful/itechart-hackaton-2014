@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Web.Mvc;
 using Seed.Bcs;
+using Seed.Entities;
 using Seed.Entities.AccountItems;
 using Seed.Web.Uipc.ViewModels;
 
@@ -17,11 +18,27 @@ namespace Seed.Web.Uipc
             return result;
         }
 
+        public static void SaveSingleQuestion(SingleQuestionVm vm)
+        {
+            var result = vm.ToEntity();
+
+            QuizBc.Instance.SaveSingleQuestion(result);
+        }
+
         public static void SaveQuiz(QuizVm vm)
         {
             var result = vm.ToEntity();
 
             QuizBc.Instance.SaveQuiz(result);
+        }
+
+        public static SingleQuestionVm GetSingleQuestionVm(long questionId)
+        {
+            SingleQuestion question = QuizBc.Instance.GetSingleQuestion(questionId);
+
+            var result = question.MapSingleQuestionVm();
+
+            return result;
         }
 
         public static QuizVm GetQuizVm(long quizId)
@@ -54,6 +71,8 @@ namespace Seed.Web.Uipc
             list.Add(item2);
             result.Items = list;
 
+            //var result = SampleBc.Instance.GetTargets().MapToCaptionSelectList("Departments");
+
             return result;
         }
 
@@ -79,6 +98,8 @@ namespace Seed.Web.Uipc
 
             result.Items = list;
 
+            //var result = SampleBc.Instance.GetPriorities().MapToCaptionSelectList("Priority");
+
             return result;
         }
 
@@ -103,6 +124,8 @@ namespace Seed.Web.Uipc
             list.Add(item2);
 
             result.Items = list;
+
+            //var result = SampleBc.Instance.GetCategories().MapToCaptionSelectList("Category");
 
             return result;
         }

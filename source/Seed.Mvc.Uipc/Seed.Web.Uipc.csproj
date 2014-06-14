@@ -115,6 +115,7 @@
     <Compile Include="ViewModels\Common\UserActionResultVm.cs" />
     <Compile Include="ViewModels\Account\UserVm.cs" />
     <Compile Include="ViewModels\Dashboard\QuizVm.cs" />
+    <Compile Include="ViewModels\Dashboard\SingleQuestionVm.cs" />
     <Compile Include="ViewModels\Dashboard\SurveysVm.cs" />
   </ItemGroup>
   <ItemGroup>

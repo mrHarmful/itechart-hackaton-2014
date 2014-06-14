@@ -5,8 +5,6 @@ namespace Seed.Entities
 {
     public class SingleQuestion : Question
     {
-        public string Reason { get; set; }
-
         public long CategoryId { get; set; }
 
         public List<long> Targets { get; set; }
