@@ -240,7 +240,7 @@
     <Content Include="Content\Less\select.less" />
     <Content Include="Content\Less\pagination.less" />
     <Content Include="Content\Less\address.less" />
-    <Content Include="Content\Less\listing-properties.less" />
+    <Content Include="Content\Less\surveys.less" />
     <Content Include="Content\Less\lead-details.less" />
     <Content Include="Content\Less\images.less" />
     <Content Include="Content\Less\date-picker.less" />

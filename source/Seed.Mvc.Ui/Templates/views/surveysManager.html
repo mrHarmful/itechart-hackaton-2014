@@ -1,8 +1,12 @@
-﻿<div ng-show="surveys.questions">
-    <h3 ng-click="toggle(surveys.questions)">
+﻿<div class="surveys" ng-show="surveys.questions">
+    <span class="title txt-upper" ng-click="toggle(surveys.questions)">
         <i ng-class="{'icon-folder': !surveys.questions.visible, 'icon-folder-open': surveys.questions.visible}"></i>
         Single question
-    </h3>
+    </span>
+    <button class="btn btn-bordered-brand">
+        <i class="icon-pencil"></i>
+        Create
+    </button>
     <ul class="grid" ng-show="surveys.questions.visible">
         <li class="head">
             <div class="col-lg-3 text">
@@ -34,11 +38,16 @@
         </li>
     </ul>
 </div>
-<div ng-show="surveys.quizzes">
-    <h3 ng-click="toggle(surveys.quizzes)">
+<div class="splitter"></div>
+<div class="surveys" ng-show="surveys.quizzes">
+    <span class="title txt-upper" ng-click="toggle(surveys.quizzes)">
         <i ng-class="{'icon-folder': !surveys.quizzes.visible, 'icon-folder-open': surveys.quizzes.visible}"></i>
         Quizzes
-    </h3>
+    </span>
+    <button class="btn btn-bordered-brand">
+        <i class="icon-pencil"></i>
+        Create
+    </button>
     <ul class="grid" ng-show="surveys.quizzes.visible">
         <li class="head">
             <div class="col-lg-3 text">
