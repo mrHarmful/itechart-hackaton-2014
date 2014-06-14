@@ -135,6 +135,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ApplicationController.cs" />
     <Compile Include="Controllers\ConfigurationController.cs" />
+    <Compile Include="Controllers\SurveysController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -159,11 +160,12 @@
     <Content Include="Scripts\app\directives\controls\selectListDirective.js" />
     <Content Include="Scripts\app\directives\events\documentClickDirective.js" />
     <Content Include="Scripts\app\factories\interceptors.js" />
+    <Content Include="Scripts\app\factories\resources\surveysResource.js" />
     <Content Include="Scripts\app\filters\enumFilter.js" />
     <Content Include="Scripts\app\services\utils\errorCodesService.js" />
     <Content Include="Scripts\app\factories\resources\localizationResource.js" />
     <Content Include="Scripts\app\routes.js" />
-    <Content Include="Scripts\app\services\data\sampleService.js" />
+    <Content Include="Scripts\app\services\data\surveysService.js" />
     <Content Include="Scripts\app\services\utils\arrayService.js" />
     <Content Include="Scripts\app\services\utils\localizationService.js" />
     <Content Include="Scripts\app\services\utils\mathService.js" />

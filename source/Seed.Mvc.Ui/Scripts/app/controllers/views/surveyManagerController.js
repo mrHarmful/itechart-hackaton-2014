@@ -7,6 +7,11 @@ angular.module('seedApp.controllers.views')
     .controller('surveysManagerController', [
         '$scope',
         '$state',
-        function($scope, $state) {
+        'surveysService',
+        function($scope, $state, surveysService) {
+            $scope.surveys = surveysService.getUserSurveys();
 
+            $scope.toggle = function(collection) {
+                collection.visible = !collection.visible;
+            };
         }]);

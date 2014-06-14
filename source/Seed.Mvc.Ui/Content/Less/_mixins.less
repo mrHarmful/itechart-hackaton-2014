@@ -44,7 +44,6 @@
           transition: transform @transition;
 }
 
-
 .box-shadow(@shadow) {
   -webkit-box-shadow: @shadow; // iOS <4.3 & Android <4.1
           box-shadow: @shadow;
@@ -193,6 +192,27 @@
         content: " ";
         position: absolute;
         right: -@width;
+        width: @width;
         top: 0;
     }
+}
+
+.container-fixed() {
+  margin-right: auto;
+  margin-left: auto;
+  padding-left:  (@grid-gutter-width / 2);
+  padding-right: (@grid-gutter-width / 2);
+}
+
+.container() {
+    .clearfix();
+    .container-fixed();
+    max-width: @container-max-width;
+}
+
+.row() {
+      margin-left:  (@grid-gutter-width / -2);
+      margin-right: (@grid-gutter-width / -2);
+      position: relative;
+      .clearfix();
 }

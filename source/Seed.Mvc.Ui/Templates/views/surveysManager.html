@@ -1,1 +1,72 @@
-﻿Surveys
+﻿<div ng-show="surveys.questions">
+    <h3 ng-click="toggle(surveys.questions)">Single question</h3>
+    <ul class="grid" ng-show="surveys.questions.visible">
+        <li class="head">
+            <div class="col-lg-3">
+                Enquiry
+            </div>
+            <div class="col-lg-3">
+                Category
+            </div>
+            <div class="col-lg-3">
+                Priority
+            </div>
+            <div class="col-lg-3">
+                Target
+            </div>
+        </li>
+        <li class="value" ng-repeat="question in surveys.questions">
+            <div class="col-lg-3">
+                {{question.enquiry}}
+            </div>
+            <div class="col-lg-3">
+                {{question.category}}
+            </div>
+            <div class="col-lg-3">
+                {{question.priority}}
+            </div>
+            <div class="col-lg-3">
+                {{question.target}}
+            </div>
+        </li>
+    </ul>
+</div>
+<div ng-show="surveys.quizzes">
+    <h3 ng-click="toggle(surveys.quizzes)">Quizzes</h3>
+    <ul class="grid" ng-show="surveys.quizzes.visible">
+        <li class="head">
+            <div class="col-lg-3">
+                Enquiry
+            </div>
+            <div class="col-lg-3">
+                Category
+            </div>
+            <div class="col-lg-3">
+                Priority
+            </div>
+            <div class="col-lg-2">
+                Target
+            </div>
+            <div class="col-lg-1">
+                Questions
+            </div>
+        </li>
+        <li class="value" ng-repeat="quiz in surveys.quizzes">
+            <div class="col-lg-3">
+                {{quiz.enquiry}}
+            </div>
+            <div class="col-lg-3">
+                {{quiz.category}}
+            </div>
+            <div class="col-lg-3">
+                {{quiz.priority}}
+            </div>
+            <div class="col-lg-2">
+                {{quiz.target}}
+            </div>
+            <div class="col-lg-1">
+                {{quiz.questionsCount}}
+            </div>
+        </li>
+    </ul>
+</div>

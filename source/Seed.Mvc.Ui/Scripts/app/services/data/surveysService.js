@@ -4,7 +4,13 @@
 'use strict';
 
 angular.module('seedApp.services.clients')
-    .service('sampleService', [function() {
+    .service('surveysService', ['Surveys', function(Surveys) {
         var self = this;
+
+        this.getUserSurveys = function () {
+            var result = Surveys.get();
+
+            return result;
+        };
 
     }]);

@@ -4,93 +4,58 @@
 @import '_variables.less';
 @import '_mixins.less';
 
-@grid-head-bg-color: #8f9094;
-@grid-head-color: @white;
+@grid-head-bg-color: @white;
+@grid-head-color: #bdbec0;
+
+@grid-row-padding-v: 10px;
 
 @grid-body-bg-color: #fefefe;
-@grid-body-color: #4a4a4a;
-@grid-body-bg-active-color: #619e91;
 @grid-body-active-color: @white;
 
-@grid-body-border-color: @grid-head-bg-color;
+@grid-body-border-color: #c0c0c2;
+
+@grid-single-color:@black;
+@grid-price-color: @grid-single-color;
+
 
 .grid {
-    width: 100%;
-    border-collapse: collapse;
+    .container();
+    .list-unstyled();
 
-    > thead {
-        background-color: @grid-head-bg-color;
-        color: @grid-head-color;
-        text-transform: uppercase;
+    > li {
+        .row();
+        padding: @grid-row-padding-v 0;
+        font-size: 0;
 
-        > tr {
+        &:not(.stub) {
+            border-bottom: 1px solid @grid-body-border-color;
+        }
 
-            >th {
-                font-weight: normal;
-                text-transform: uppercase;
-                padding: 5px;
-                border-right: 1px solid @grid-head-color;
-                text-align: center;
+        &.details {
+            padding: 0;
+        }
 
-                &:last-of-type {
-                    border: none;
-                }
-            }
+        &.head{
+            cursor: pointer;
+        }
+
+        > [class*="col-"] {
+            font-size: @font-size-base;
+            float: none;
+            display: inline-block;
+            vertical-align: middle;
+            text-align: center;
         }
     }
 
-    > tbody {
-        background-color: @grid-body-bg-color;
-        color: @grid-body-color;
+    .head {
+        background-color: @grid-head-bg-color;
+        color: @grid-head-color;
+        text-transform: uppercase;
+    }
 
-        > tr {
-            border-bottom: 1px dashed @grid-body-border-color;
-            cursor: pointer;
-
-            &.details > td{
-                padding: 0;
-            }
-
-            &.active {
-                background-color: @grid-body-bg-active-color;
-                border-bottom: none;
-                color: @grid-body-active-color;
-
-                + tr {
-                    background: none;
-
-                    &:hover {
-                        background: none;
-                        cursor: inherit;
-                    }
-                }
-
-                .no-touch &:hover {
-                    background-color: @grid-body-bg-active-color;
-                    cursor: inherit;
-                }
-
-                > td {
-                    border-color: @grid-body-bg-color;
-                }
-            }
-
-            &:last-of-type {
-                border-bottom-style: solid;
-            }
-
-            .no-touch &:hover {
-                background-color: darken(@grid-body-bg-color, 10%);
-            }
-
-            > td {
-                padding: 5px 5px 5px 10px;
-                border-right: 1px solid @grid-body-border-color;
-
-                &:last-of-type {
-                    border: none;
-                }
-            }
-        }
+    .price {
+        font-weight: bold;
+        color: @grid-price-color;
     }
 }

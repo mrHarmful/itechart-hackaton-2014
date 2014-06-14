@@ -35,12 +35,13 @@ angular.module('seedApp').config(['$stateProvider', '$urlRouterProvider', '$loca
                 });
         
 
-        $stateProvider.state('error', {
-            url: '^/error/{errorCode}',
+        $stateProvider.state('dashboard.error', {
+            url: '/error/{errorCode}',
             templateUrl: '/Templates/views/error.html',
             controller: 'errorController',
             data: {
-                title: 'Error'
+                title: 'Error',
+                description: 'sorry, an error occurred while processing your request.'
             }
         });
 
