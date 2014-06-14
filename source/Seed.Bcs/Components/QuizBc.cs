@@ -1,4 +1,4 @@
-﻿using System;
+﻿using Seed.Dacs.Interfaces.Components;
 using Seed.Entities;
 using Seed.Entities.AccountItems;
 
@@ -8,7 +8,7 @@ namespace Seed.Bcs
     {
         #region Private fields
 
-        //private readonly IQuizDac _quizDac;
+        private readonly IQuizDac _quizDac;
 
         #endregion
 
@@ -25,7 +25,7 @@ namespace Seed.Bcs
 
         private QuizBc()
         {
-            //_quizDac = DacFactoryClient.GetConcreteFactory().GetSampleDac();
+            _quizDac = DacFactoryClient.GetConcreteFactory().GetQuizDac();
         }
 
         public static QuizBc Instance
@@ -53,37 +53,45 @@ namespace Seed.Bcs
 
         public UserQuizList GetQuizListForEdit(long userId)
         {
-            throw new NotImplementedException();
+            UserQuizList result = _quizDac.GetQuizListForEdit(userId);
+
+            return result;
         }
 
         public Quiz GetQuiz(long quizId)
         {
-            throw new NotImplementedException();
+            Quiz result = _quizDac.GetQuiz(quizId);
+
+            return result;
         }
 
         public Question GetQuestion(long questionId)
         {
-            throw new NotImplementedException();
+            Question result = _quizDac.GetQuestion(questionId);
+
+            return result;
         }
 
         public SingleQuestion GetSingleQuestion(long questionId)
         {
-            throw new NotImplementedException();
+            SingleQuestion result = _quizDac.GetSingleQuestion(questionId);
+
+            return result;
         }
 
         public void SaveQuiz(Quiz quiz)
         {
-            throw new NotImplementedException();
+            _quizDac.SaveQuiz(quiz);
         }
 
         public void SaveQuestion(Question question)
         {
-            throw new NotImplementedException();
+            _quizDac.SaveQuestion(question);
         }
 
         public void SaveSingleQuestion(SingleQuestion question)
         {
-            throw new NotImplementedException();
+            _quizDac.SaveSingleQuestion(question);
         }
 
         #endregion

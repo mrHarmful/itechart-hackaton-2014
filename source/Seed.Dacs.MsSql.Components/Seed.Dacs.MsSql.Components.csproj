@@ -63,6 +63,7 @@
     <Compile Include="Formatters\FormatterResolver.cs" />
     <Compile Include="MsSqlCommands\Base\BaseCommand.cs" />
     <Compile Include="MsSqlCommands\Sample\GetSampleCommand.cs" />
+    <Compile Include="MsSqlComponents\MsSqlQuizDac.cs" />
     <Compile Include="MsSqlComponents\MsSqlSampleDacImpl.cs" />
     <Compile Include="MsSqlHelpers\DataReaderHelperCore.cs" />
     <Compile Include="MsSqlHelpers\ParameterHelper.cs" />

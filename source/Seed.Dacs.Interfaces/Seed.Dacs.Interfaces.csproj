@@ -52,6 +52,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Components\IQuizDac.cs" />
     <Compile Include="Components\ISampleDac.cs" />
     <Compile Include="IDacFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
