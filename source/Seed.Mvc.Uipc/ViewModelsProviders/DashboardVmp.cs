@@ -9,6 +9,42 @@ namespace Seed.Web.Uipc
 {
     public static partial class ViewModelsProvider
     {
+        public static SurveysVm GetavAilableSurveysVm(long userId)
+        {
+            UserQuizList quizList = QuizBc.Instance.GetQuizListForAttend(userId);
+
+            var result = quizList.MapToSurveysVm();
+
+            return result;
+        }
+
+        public static AttendQuizVm GetAttendQuizVm(long quizId)
+        {
+            var quiz = QuizBc.Instance.GetQuiz(quizId);
+
+            var result = quiz.MapToAttendQuizVm();
+
+            return result;
+        }
+
+        public static AttendQuestionVm GetAttendQuizQuestionVm(long questionId)
+        {
+            Question question = QuizBc.Instance.GetQuestion(questionId);
+
+            var result = question.MapToAttendQuizQuestionVm();
+
+            return result;
+        }
+
+        public static AttendQuestionVm GetAttendSingleQuestionVm(long userId)
+        {
+            Question question = QuizBc.Instance.GetRamdomSingleQuestionForUser(userId);
+
+            var result = question.MapToAttendQuizQuestionVm();
+
+            return result;
+        }
+
         public static SurveysVm GetSurveysVm(long userId)
         {
             UserQuizList quizList = QuizBc.Instance.GetQuizList(userId);

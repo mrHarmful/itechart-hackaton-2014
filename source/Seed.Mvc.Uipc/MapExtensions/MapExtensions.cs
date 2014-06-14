@@ -12,6 +12,40 @@ namespace Seed.Web.Uipc
     {
         #region ToVm
 
+        public static AttendQuestionVm MapToAttendQuizQuestionVm(this Question question)
+        {
+            var result = new AttendQuestionVm();
+
+            result.Id = question.Id.Value;
+            result.IsSingleSelect = question.IsSingleSelect;
+            result.Answers = new CaptionSelectList();
+            result.Answers.Caption = question.Enquiry;
+            result.Answers.Items = new List<SelectListItem>();
+            foreach (var answer in question.Answers)
+            {
+                var item = new SelectListItem();
+                item.Selected = false;
+                item.Text = answer.Caption;
+                item.Value = answer.Id.ToString();
+                result.Answers.Items.Add(item);
+            }
+
+            return result;
+        }
+
+        public static AttendQuizVm MapToAttendQuizVm(this Quiz quiz)
+        {
+            var result = new AttendQuizVm();
+
+            result.Id = quiz.Id.Value;
+            result.QuestionsCount = quiz.Questions.Count;
+            result.QuestionsIds = quiz.Questions.Select(q => q.Id.Value).ToList();
+            result.Reason = quiz.Reason;
+            result.Title = quiz.Title;
+
+            return result;
+        }
+
         public static SurveysVm MapToSurveysVm(this UserQuizList quizList)
         {
             var surveys = new SurveysVm();

@@ -93,6 +93,8 @@
     <Compile Include="ViewModelsProviders\DashboardVmp.cs" />
     <Compile Include="ViewModels\Account\LogInVm.cs" />
     <Compile Include="ViewModels\Common\AnswerVm.cs" />
+    <Compile Include="ViewModels\Common\AttendQuestionVm.cs" />
+    <Compile Include="ViewModels\Common\AttendQuizVm.cs" />
     <Compile Include="ViewModels\Common\AuthorizedVm.cs" />
     <Compile Include="ViewModels\Common\CaptionSelectList.cs" />
     <Compile Include="ViewModels\Common\LocalizationVm.cs" />
