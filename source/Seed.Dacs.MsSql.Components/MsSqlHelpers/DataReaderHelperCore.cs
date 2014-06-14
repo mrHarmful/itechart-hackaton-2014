@@ -18,6 +18,23 @@ namespace Seed.Dacs.MsSql.Components.MsSqlHelpers
             return new KeyValueItem{Id = key, Caption = value};
         }
 
+        public static SingleQuestion GetSearchSingleQuestion(this SqlDataReader reader)
+        {
+            SingleQuestion result = new SingleQuestion();
+            //Id, Title, IsSingleSelect, IsSkippable, CreatorId, StartTime, EndTime, PriorityId, CategoryId, CreateCost
+
+            result.Id = reader.GetValue<long>("Id");
+            result.Enquiry = reader.GetValue<string>("Title");
+            result.CategoryId = reader.GetValue<long>("CategoryId");
+            result.PriorityId = reader.GetValue<long>("PriorityId");
+            result.StartDate = reader.GetValue<DateTime>("StartTime");
+            result.EndDate = reader.GetValue<DateTime>("EndTime");
+            result.CanSkip = reader.GetValue<bool>("IsSkippable");
+            result.IsSingleSelect = reader.GetValue<bool>("IsSingleSelect");
+
+            return result;
+        }
+
         public static Quiz GetSearchQuiz(this SqlDataReader reader)
         {
             Quiz result = new Quiz();
