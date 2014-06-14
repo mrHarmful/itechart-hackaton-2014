@@ -1,0 +1,24 @@
+﻿html {}
+
+@import '_mixins.less';
+@import '_variables.less';
+
+@checkbox-padding-right: 10px;
+
+label input[type*="checkbox"] {
+    position: absolute;
+    .opacity(0);
+
+    ~ span:before {
+        font-family: @font-family-icon;
+        content: "\e61b";
+        padding-right: @checkbox-padding-right;
+    }
+
+    &:checked,
+    &.checked {
+        ~ span:before {
+            content: "\e61c";
+        }
+    }
+}

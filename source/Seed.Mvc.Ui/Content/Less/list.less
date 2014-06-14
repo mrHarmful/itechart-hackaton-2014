@@ -1,0 +1,37 @@
+﻿html{}
+
+@import '_variables.less';
+@import '_mixins.less';
+
+ul[class*="list-inline-"] .list-inline-break {
+    width: 100%;
+    padding: @padding-vertical * 3;
+}
+
+.make-inline-list-grid-columns();
+
+.make-inline-list-grid(any);
+
+@media (max-width: @screen-sm-max){
+    .make-inline-list-grid(xs);
+}
+
+@media (min-width: @screen-sm-min) and (max-width: @screen-sm-max) {
+  .make-inline-list-grid(sm);
+}
+
+@media (min-width: @screen-md-min) {
+  .make-inline-list-grid(md);
+}
+
+@media (min-width: @screen-lg-min) {
+  .make-inline-list-grid(lg);
+}
+
+.list-unstyled {
+    .list-unstyled();
+}
+
+.list-inline {
+    .list-inline(0 @padding-horizontal);
+}

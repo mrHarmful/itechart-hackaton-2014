@@ -1,0 +1,26 @@
+﻿html {}
+
+@import '_variables.less';
+@import '_mixins.less';
+
+@header-padding: 10px;
+@header-color: @white;
+
+header {
+    padding: @header-padding;
+    background-color: @brand-color;
+
+    a {
+        color: @header-color;
+
+        &:hover {
+            color: @header-color;
+        }
+    }
+
+    span {
+        color: @header-color;
+        text-transform: uppercase;
+    }
+
+}

@@ -1,0 +1,76 @@
+﻿@using System.Web.Optimization
+@using Seed.Utilities
+@model Seed.Mvc.Uipc.ViewModels.LogInVm
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="shortcut icon" type="image/x-icon" href="~/Content/Images/favicon.ico" />
+    <title>LogIn</title>
+    @Styles.Render("~/Content/Less/less-bundle")
+</head>
+<body>
+    <div class="log-in-container">
+        <div class="log-in-header txt-c">
+            <a href="/">
+                <img src="~/Content/Images/Logo/logo_blue.png"/>
+            </a>
+        </div>
+        <div class="log-in-title row row-centred margin-l">
+            <div class="col-lg-5 log-in-name">
+                Log in
+            </div>
+            <div class="col-lg-7 txt-c">
+                Please enter your credentials
+            </div>
+        </div>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+
+            if (!Model.ErrorMessage.IsNullOrEmpty())
+            {
+            <div class="row margin txt-error">
+                @Model.ErrorMessage
+            </div>
+            }
+            <div class="row margin">
+                @Html.TextBoxFor(m => m.UserName, new {@class= "form-control", placeholder="Email"})
+            </div>
+            <div class="row margin">
+                @Html.PasswordFor(m => m.Password, new {@class= "form-control", placeholder="Password"})
+            </div>
+            <div class="row margin">
+                <ul class="list-inline list-divider-v reset-li-padding-left log-in-list">
+                    <li>
+                        <label>
+                            @Html.CheckBoxFor(m => m.RememberMe)
+                            <span>Remember me</span>
+                        </label>
+                    </li>
+                    <li>
+                        <a href="/forgot">Forgot password?
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/info">Get Info
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            @Html.HiddenFor(m => m.ReturnUrl)
+            <div class="row margin-l txt-c">
+                <input type="submit" value="Log In and enjoy" class="btn-log-in  txt-upper"/>
+            </div>
+        }
+    </div>
+</body>
+</html>

@@ -1,0 +1,337 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{CF0E4A8E-6B56-45E2-AFC8-2F7DF5AD14BF}</ProjectGuid>
+    <ProjectTypeGuids>{E3E379DF-F4C6-4180-9B81-6769533ABE47};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Seed.Web.Api</RootNamespace>
+    <AssemblyName>Seed.Web.Api</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>false</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <TargetFrameworkProfile />
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Antlr3.Runtime, Version=3.5.0.2, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="dotless.Core, Version=1.4.0.0, Culture=neutral, PublicKeyToken=96b446c9e63eae34, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\dotless.1.4.0.0\lib\dotless.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.6.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.1.2\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest" />
+    <Reference Include="System.Web">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Abstractions">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Http, Version=5.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.1.2\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.1.2\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization.Less, Version=1.3.0.0, Culture=neutral, PublicKeyToken=9b7581e0240fe480, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\System.Web.Optimization.Less.1.3.2\lib\net40\System.Web.Optimization.Less.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Routing">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Configuration">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.4.0.20710.0\lib\net40\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="WebGrease, Version=1.6.5135.21930, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AppStart\BundleConfig.cs" />
+    <Compile Include="AppStart\ModelBinderConfig.cs" />
+    <Compile Include="AppStart\WebApiConfig.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ApplicationController.cs" />
+    <Compile Include="Controllers\ConfigurationController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AppStart\FilterConfig.cs" />
+    <Compile Include="AppStart\RouteConfig.cs" />
+    <Content Include="Content\class-list-util.css" />
+    <Content Include="Content\Fonts\icomoon.svg" />
+    <Content Include="Content\Fonts\OpenSans-Regular-webfont.svg" />
+    <Content Include="Content\Images\Landing\man.png" />
+    <Content Include="Content\Images\Landing\message.png" />
+    <Content Include="Content\Images\Landing\stend.png" />
+    <Content Include="Content\Images\Loader\ajax-loader.gif" />
+    <Content Include="Global.asax" />
+    <Content Include="Scripts\app\controllers\app\dashboardController.js" />
+    <Content Include="Scripts\app\controllers\app\errorController.js" />
+    <Content Include="Scripts\app\controllers\views\sampleController.js" />
+    <Content Include="Scripts\app\directives\controls\paginationDirective.js" />
+    <Content Include="Scripts\app\directives\controls\selectListDirective.js" />
+    <Content Include="Scripts\app\directives\events\documentClickDirective.js" />
+    <Content Include="Scripts\app\factories\interceptors.js" />
+    <Content Include="Scripts\app\filters\enumFilter.js" />
+    <Content Include="Scripts\app\services\utils\errorCodesService.js" />
+    <Content Include="Scripts\app\factories\resources\localizationResource.js" />
+    <Content Include="Scripts\app\routes.js" />
+    <Content Include="Scripts\app\services\data\sampleService.js" />
+    <Content Include="Scripts\app\services\utils\arrayService.js" />
+    <Content Include="Scripts\app\services\utils\localizationService.js" />
+    <Content Include="Scripts\app\services\utils\mathService.js" />
+    <Content Include="Scripts\app\services\utils\paginationService.js" />
+    <Content Include="Scripts\app\services\utils\textService.js" />
+    <Content Include="Scripts\lib\angular-animate.js" />
+    <Content Include="Scripts\lib\angular-cookies.js" />
+    <Content Include="Scripts\lib\angular-loader.js" />
+    <Content Include="Scripts\lib\angular-mocks.js" />
+    <Content Include="Scripts\lib\angular-resource.js" />
+    <Content Include="Scripts\lib\angular-route.js" />
+    <Content Include="Scripts\lib\angular-sanitize.js" />
+    <Content Include="Scripts\lib\angular-touch.js" />
+    <Content Include="Scripts\lib\angular-ui-bootstrap-date-picker.js" />
+    <Content Include="Scripts\lib\angular-ui-router.js" />
+    <Content Include="Scripts\lib\angular.js" />
+    <Content Include="Scripts\app\factories\controls\selectListFactory.js" />
+    <Content Include="Scripts\app\application.js" />
+    <Content Include="Scripts\lib\angular-locale_en-us.js" />
+    <Content Include="Scripts\lib\d3-3.4.5.js" />
+    <Content Include="Scripts\lib\jquery-2.1.0.js" />
+    <Content Include="Scripts\lib\jquery.mobile.custom.js" />
+    <Content Include="Scripts\lib\jquery.validate.js" />
+    <Content Include="Scripts\lib\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\lib\modernizr.js" />
+    <Content Include="Scripts\lib\moment-2.6.0.js" />
+    <Content Include="Templates\partials\pagination.html" />
+    <Content Include="Templates\partials\selectList.html" />
+    <Content Include="Templates\views\dashboard.html" />
+    <Content Include="Templates\views\error.html" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Views\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Application\Application.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+    <Content Include="Content\Less\_mixins.less" />
+    <Content Include="Content\Less\_variables.less" />
+    <Content Include="Content\Less\fonts.less" />
+    <Content Include="Content\Less\float.less" />
+    <Content Include="Content\Less\forms.less" />
+    <Content Include="Content\Less\layout.less" />
+    <Content Include="Content\Less\links.less" />
+    <Content Include="Content\Less\list.less" />
+    <Content Include="Content\Less\margined.less" />
+    <Content Include="Content\Less\notification.less" />
+    <Content Include="Content\Less\padding.less" />
+    <Content Include="Content\Less\popover.less" />
+    <Content Include="Content\Less\scafollding.less" />
+    <Content Include="Content\Less\text.less" />
+    <Content Include="Content\Less\visibility.less" />
+    <Content Include="Content\Less\tiles.less" />
+    <Content Include="Content\Less\header.less" />
+    <Content Include="Content\Less\landing-page.less" />
+    <Content Include="Content\Less\graphs.less" />
+    <Content Include="Content\Less\buttons.less" />
+    <Content Include="Content\Fonts\icomoon.eot" />
+    <Content Include="Content\Fonts\icomoon.ttf" />
+    <Content Include="Content\Fonts\icomoon.woff" />
+    <Content Include="Content\Less\icons.less" />
+    <Content Include="Content\Less\heading.less" />
+    <Content Include="Content\Less\footer.less" />
+    <Content Include="Content\Less\log-on.less" />
+    <Content Include="Content\Less\checkbox.less" />
+    <Content Include="Content\Less\grid.less" />
+    <Content Include="Content\Less\centered.less" />
+    <Content Include="Content\Less\breadcrumbs.less" />
+    <Content Include="Content\Less\select.less" />
+    <Content Include="Content\Less\pagination.less" />
+    <Content Include="Content\Less\address.less" />
+    <Content Include="Content\Less\listing-properties.less" />
+    <Content Include="Content\Less\lead-details.less" />
+    <Content Include="Content\Less\images.less" />
+    <Content Include="Content\Less\activity.less" />
+    <Content Include="Content\Less\date-picker.less" />
+    <Content Include="Content\Less\dimensions.less" />
+    <None Include="Properties\PublishProfiles\dev_server.pubxml">
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="Content\Fonts\OpenSans-Regular-webfont.eot" />
+    <Content Include="Content\Fonts\OpenSans-Regular-webfont.ttf" />
+    <Content Include="Content\Fonts\OpenSans-Regular-webfont.woff" />
+    <Content Include="Views\Account\LogIn.cshtml" />
+    <Content Include="Views\Application\Partial\Footer.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Content\Images\Logo\" />
+    <Folder Include="Content\Images\Stub\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Seed.Configuration\Seed.Configuration.csproj">
+      <Project>{2FD80A43-0956-4304-B289-0E7C57AD0377}</Project>
+      <Name>Seed.Configuration</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Seed.Entities\Seed.Entities.csproj">
+      <Project>{E6348168-DD97-4421-B58A-FCD817BB2511}</Project>
+      <Name>Seed.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Seed.Localization\Seed.Localization.csproj">
+      <Project>{1D9CD09F-9860-4C16-9D1A-64880F2D861E}</Project>
+      <Name>Seed.Localization</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Seed.Logging\Seed.Logging.csproj">
+      <Project>{96758A78-AB8D-43B8-8EE5-BD6D9772C02D}</Project>
+      <Name>Seed.Logging</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Seed.Mvc.Uipc\Seed.Web.Uipc.csproj">
+      <Project>{82720FB8-72CF-486B-A372-A3D1032FA56C}</Project>
+      <Name>Seed.Web.Uipc</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Seed.Utilities\Seed.Utilities.csproj">
+      <Project>{d4aedb03-c3da-4cc9-9800-0b78d659620e}</Project>
+      <Name>Seed.Utilities</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release_dev|AnyCPU'">
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release_test|AnyCPU'">
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <SaveServerSettingsInUserFile>True</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

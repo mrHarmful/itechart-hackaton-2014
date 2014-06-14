@@ -1,0 +1,32 @@
+﻿html {
+}
+
+@import '_variables.less';
+@import '_mixins.less';
+
+@bg-footer-color: #303135;
+@txt-footer-color: #dde0e5;
+@padding-footer: 15px;
+
+footer {
+    padding: @padding-footer;
+    background-color: @bg-footer-color;
+
+    a {
+        color: @txt-footer-color;
+
+        &:hover, &:active, &:visited {
+            color: lighten(@txt-footer-color, 10%);
+        }
+    }
+
+    ul {
+        margin: 0 auto;
+        text-align: center;
+    }
+
+    .copyright {
+        text-align: center;
+        color: darken(@txt-footer-color, 30%);
+    }
+}

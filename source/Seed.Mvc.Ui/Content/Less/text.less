@@ -1,0 +1,85 @@
+﻿html {}
+
+@import '_mixins.less';
+@import '_variables.less';
+
+.txt-just {
+    text-align: justify;
+    word-wrap: break-word;
+}
+
+.txt-b {
+    font-weight: bold;
+}
+
+.txt-cap {
+    text-transform: capitalize;
+}
+
+.txt-sub {
+    vertical-align: sub;
+    font-size: @font-size-base - 2;
+}
+
+.txt-norm {
+    text-decoration: none;
+    text-transform: none;
+    text-align: left;
+}
+
+.txt-upper {
+    text-transform: uppercase;
+}
+
+.txt-lower {
+    text-transform: lowercase;
+}
+
+.txt-black {
+    color:@black;
+}
+
+.txt-red {
+    color: @red;
+}
+
+.txt-error {
+    color: red;
+}
+
+.txt-c {
+    text-align: center;
+}
+
+.txt-l {
+    text-align: left;
+}
+
+.txt-r {
+    text-align: right;
+}
+
+.txt-link {
+    color: @link-color;
+}
+
+.txt-space {
+    letter-spacing: 3px;
+}
+
+
+@media (max-width:@screen-xs-max) {
+    .response-text-align(xs);
+}
+
+@media (min-width:@screen-sm-min) and (max-width:@screen-sm-max) {
+    .response-text-align(sm);
+}
+
+@media (min-width: @screen-md-min) and (max-width:@screen-md-max)  {
+    .response-text-align(md);
+}
+
+@media (min-width:@screen-lg-min) {
+    .response-text-align(lg);
+}

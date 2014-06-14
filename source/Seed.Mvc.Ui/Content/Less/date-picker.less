@@ -1,0 +1,131 @@
+﻿html {
+}
+
+@import '_mixins.less';
+@import '_variables.less';
+
+@dp-toggler-color: @brand-color;
+@dp-toggler-font-size: 20px;
+
+@dp-caption-padding: 5px;
+@dp-caption-color: @red;
+@dp-border-color: #989898;
+@dp-caption-border-width: 1px;
+
+@dp-panel-padding: 10px;
+@dp-panel-border-width: 2px;
+@dp-panel-bg-color: #e7e7e7;
+
+@dp-active-arrow-width: 9px;
+@dp-active-arrow-color: @red;
+
+.date-picker {
+    display: inline-block;
+    position: relative;
+
+    .toggler {
+        color: @dp-toggler-color;
+        vertical-align: bottom;
+        font-size: @dp-toggler-font-size;
+        padding-left: @padding-horizontal;
+    }
+
+    .caption {
+        display: inline-block;
+        border-bottom: @dp-caption-border-width solid @dp-border-color;
+        padding-bottom: @dp-caption-padding;
+    }
+
+    .panels {
+        position: absolute;
+        width: 100%;
+        margin-top: -@dp-caption-border-width;
+        z-index: 1010;
+    }
+
+    button {
+        position: relative;
+
+        &.active {
+            &:after {
+                border-style: solid;
+                border-width: 0 @dp-active-arrow-width @dp-active-arrow-width 0;
+                border-color: @transparent @dp-active-arrow-color @transparent @transparent;
+                content: " ";
+                position: absolute;
+                top: -@dp-active-arrow-width/3;
+                right: -@dp-active-arrow-width/3;
+            }
+        }
+    }
+
+    .panel {
+        position: absolute;
+        border: @dp-panel-border-width solid @dp-border-color;
+        background-color: @white;
+
+        .panel-caption {
+            text-transform: none;
+            color: @dp-caption-color;
+        }
+
+        table {
+            border-collapse: collapse;
+        }
+
+        &.from {
+            right: 50%;
+            border-right-width: @dp-panel-border-width/2;
+
+            .panel-caption:before {
+                content: "From";
+            }
+        }
+
+        &.to {
+            left: 50%;
+            border-left-width: @dp-panel-border-width/2;
+
+            .panel-caption:before {
+                content: "Through";
+            }
+        }
+
+        th {
+            padding: 10px 0;
+
+            button {
+                vertical-align: bottom;
+            }
+
+            i {
+                font-size: 20px;
+
+                &:hover{
+                    color: @red;
+                }
+            }
+        }
+
+        tbody, thead tr:last-of-type {
+            background-color: @dp-panel-bg-color;
+        }
+
+        th, th span {
+            font-weight: normal;
+            text-transform: uppercase;
+        }
+
+        td {
+            padding: 3px 7px;
+            
+            &:hover {
+                background-color: darken(@dp-panel-bg-color,15%);
+            }
+
+            span {
+                letter-spacing: 3px;
+            }
+        }
+    }
+}

@@ -1,0 +1,71 @@
+﻿html {
+}
+
+@import '_variables.less';
+@import '_mixins.less';
+
+
+@log-container-max-width: 400px;
+@log-header-img-max-width: 120px;
+@log-title-font-size: @font-size-h3;
+@log-arrow-height: floor(@log-title-font-size * @line-height-base);
+@log-arrow-width: @log-arrow-height/2;
+@log-link-color: #006fbf;
+@log-btn-bg-color: #e62815;
+
+.log-in-container {
+    margin: 10% auto;
+    max-width: @log-container-max-width;
+
+    .log-in-header img {
+        max-width: @log-header-img-max-width;
+    }
+
+    .log-in-title {
+        border-bottom: 1px solid @brand-color;
+    }
+
+    .log-in-name {
+        font-size: @log-title-font-size;
+        color: @white;
+        background-color: @brand-color;
+        text-align: center;
+
+        .triangle-end(@log-arrow-height, @log-arrow-width, @brand-color);
+    }
+}
+
+.list-divider-v {
+    .list-unstyled();
+
+    > li + li:before {
+        content: " ";
+        padding-right: 10px;
+        border-left: 1px solid @log-link-color;
+    }
+}
+
+.log-in-list {
+
+    a {
+        color: @log-link-color;
+
+        &:hover {
+            color: darken(@log-link-color, 5%);
+        }
+    }
+}
+
+.btn-log-in {
+    background: none;
+    border: none;
+    padding: 10px 40px;
+    background-color:@log-btn-bg-color;
+    color: @white;
+    letter-spacing: 2px;
+    cursor: pointer;
+
+    &:hover {
+        background-color: darken(@log-btn-bg-color, 5%);
+    }
+}

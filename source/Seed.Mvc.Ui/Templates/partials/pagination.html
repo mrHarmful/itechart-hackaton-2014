@@ -1,0 +1,7 @@
+﻿<ul class="pagination">
+    <li ng-repeat="pageLink in pagination" ui-sref-active="active" ng-class="pageLink.css">
+        <a ui-sref="{{stateName}}({bookNumber: bookNumber, orgId: orgId, pageNumber: pageLink.pageNumber})" >
+            {{pageLink.text}}
+        </a>
+    </li>
+</ul>

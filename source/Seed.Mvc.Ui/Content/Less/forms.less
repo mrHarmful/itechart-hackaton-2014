@@ -1,0 +1,61 @@
+﻿html {
+}
+
+@import '_mixins.less';
+@import '_variables.less';
+
+input, textarea {
+    padding: @padding-vertical @padding-horizontal;
+}
+
+input,
+select,
+textarea {
+    font-family: inherit;
+}
+
+.form-control {
+    display: block;
+    width: 100%;
+    height: @input-height-base  ;
+    border: @border-width solid @input-border-color;
+    border-radius: 0;
+    background-image: none;
+    color: darken(@text-color, 5%);
+    font-size: @font-size-base;
+    line-height: @line-height-base;
+    background-color: @bg-color;
+    .transition(~"border-color ease-in-out .15s, box-shadow ease-in-out .15s");
+}
+
+    .form-control:focus,
+    .form-control:active,
+    .ui-select > select:focus + .ui-select-value,
+    .ui-select-active,
+    .ui-select-multiple-active {
+        border-color: darken(@input-border-color, 40%);
+    }
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.input-validation-error {
+    border-color: #ff4848;
+}
+
+    .input-validation-error:focus {
+        border-color: #d00505;
+    }
+
+@media (min-width: @screen-md-min) {
+    .form-horizontal .control-label {
+        text-align: right;
+    }
+}
+
+.input-group {
+    position: relative;
+    display: table;
+    border-collapse: separate;
+}

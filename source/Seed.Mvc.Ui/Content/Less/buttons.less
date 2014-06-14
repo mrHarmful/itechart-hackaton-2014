@@ -1,0 +1,68 @@
+﻿html {
+}
+
+@import '_mixins.less';
+@import '_variables.less';
+
+.btn {
+    display: inline-block;
+    white-space: normal;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    color: @text-color;
+
+    &.disabled {
+        .opacity(@disabled-opacity);
+        pointer-events: none;
+    }
+
+    &[class*='btn-bordered-'] {
+        background-color: inherit;
+        border-style: solid;
+        border-width: @btn-bordered-border-width;
+        padding: @btn-bordered-padding;
+        letter-spacing: @btn-leter-spacing;
+        font-size: @font-size-btn;
+            font-weight: bold;
+    }
+
+    &.btn-block {
+        display: block;
+        width: 100%;
+    }
+
+    &.close {
+        .opacity(@disabled-opacity);
+
+        &:hover {
+            .opacity(1)
+        }
+    }
+}
+.btn-link {
+    color: @link-color;
+    font-weight: normal;
+    cursor: pointer;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+.btn-txt {
+    color: @text-color;
+    text-transform: uppercase;
+    padding: 5px 15px;
+
+    &.active, .no-touch &:hover {
+        color: @white;
+        background-color: @brand-color;
+    }
+}
+
+.bordered-btn(-red, @red);
+.bordered-btn(-blue, @link-color);
+.bordered-btn(-gray, @dark-gray);

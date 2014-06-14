@@ -1,0 +1,70 @@
+﻿html{}
+
+@import '_mixins.less';
+@import '_variables.less';
+
+//#region mixins
+.reset-paddings(@class){
+        .reset-padding-@{class} {
+        padding: 0 !important;
+    }
+
+    .reset-padding-left-@{class} {
+        padding-left: 0 !important;
+    }
+
+    .reset-padding-right-@{class} {
+        padding-right: 0 !important;
+    }
+
+    .reset-padding-top-@{class} {
+        padding-top: 0 !important;
+    }
+}
+//#endregion
+
+.padding {
+    padding-bottom: @padding-vertical * 3;
+    padding-top: @padding-vertical * 3;
+}
+
+.reset-padding {
+    padding: 0;
+}
+
+.reset-padding-left {
+    padding-left: 0;
+}
+
+.reset-padding-right {
+    padding-right: 0;
+}
+
+.reset-padding-top {
+    padding-top: 0;
+}
+
+
+.list-inline.reset-li-padding-left > li {
+    padding-left: 0;
+}
+
+
+@media (max-width: @screen-xs-max) {
+    .reset-paddings(xs);
+}
+
+@media (min-width: @screen-sm-min) and (max-width: @screen-sm-max) {
+    .reset-paddings(sm);
+}
+
+@media (min-width: @screen-md-min) and (max-width: @screen-md-max) {
+    .reset-paddings(md);
+}
+
+@media (min-width: @screen-lg-min){
+    .reset-paddings(lg);
+}
+
+
+

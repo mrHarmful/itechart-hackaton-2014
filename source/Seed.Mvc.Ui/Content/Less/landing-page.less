@@ -1,0 +1,124 @@
+﻿html {
+}
+
+@import '_variables.less';
+@import '_mixins.less';
+
+@bg-intro-color: #acd9dc;
+@bg-outro-color: @brand-color;
+@bg-heading-color: #303135;
+
+@intro-padding: 10px;
+@outro-padding: 10px 0 40px;
+
+@head-color: @white;
+@head-margin: 24px;
+
+@get-info-padding: 10px;
+@get-info-margin: @head-margin + @get-info-padding / 2;
+
+@heading-arrow-weigth: 40px;
+@heading-arrow-heigth: 20px;
+
+.landing-head {
+    color: @head-color;
+    margin: @head-margin 0;
+}
+
+.intro {
+    background-color: @bg-intro-color;
+    padding: @intro-padding 0;
+
+    h1 {
+        .landing-head()
+    }
+}
+
+.btn-landing {
+    text-transform: uppercase;
+    font-size: @font-size-base;
+    padding: @get-info-padding @get-info-padding * 2;
+    background: none;
+    background-color: @white;
+    border: 2px solid @red;
+    color: @red;
+    display: block;
+    text-align: center;
+    cursor: pointer;
+
+    .no-touch &:hover {
+        color: @white;
+        background-color: @red;
+        text-decoration: none;
+    }
+}
+
+.heading {
+    background-color: @bg-heading-color;
+
+    .head {
+        .landing-head()
+    }
+
+    .btn-landing {
+        margin:@get-info-margin 0;
+    }
+
+    .arrow {
+        position: absolute;
+        left: 50%;
+        margin-left: -@heading-arrow-weigth/2;
+        bottom: -@heading-arrow-heigth;
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: @heading-arrow-heigth @heading-arrow-weigth/2 0 @heading-arrow-weigth/2;
+        border-color: @bg-heading-color @transparent @transparent @transparent;
+    }
+}
+
+
+.landing-list {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+
+    >li:before {
+        content: "■";
+        color: @red;
+        padding-right: 5px;
+    }
+}
+
+@list-divider-color: @red;
+@list-divider-width: 30px;
+@list-divider-height: 2px;
+@list-divider-margin: 20px;
+
+.list-divider-h {
+    .list-unstyled();
+
+    > li + li:before {
+        content: " ";
+        border-top: 2px solid @list-divider-color;
+        width: @list-divider-width;
+        position: relative;
+        left: 50%;
+        margin-left: -@list-divider-width/2;
+        margin-top: @list-divider-margin;
+    }
+}
+
+.outro {
+    background-color: @bg-outro-color;
+    padding: @outro-padding;
+
+    .h1 {
+        color: @white;
+    }
+
+    ul {
+        margin: 0 auto;
+        max-width: 140px;
+    }
+}

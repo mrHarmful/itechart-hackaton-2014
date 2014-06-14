@@ -1,0 +1,20 @@
+﻿html{}
+
+@import '_mixins.less';
+@import '_variables.less';
+
+@address-color: @link-color;
+
+address, .address {
+    margin-bottom: 0;
+    text-transform: uppercase;
+    font-weight: bold;
+    display: block;
+    font-style: normal;
+    color: @address-color;
+
+    .address-line {
+        display: block;
+    }
+}
+

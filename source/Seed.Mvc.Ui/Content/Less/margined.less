@@ -1,0 +1,33 @@
+﻿html {
+}
+
+@import '_mixins.less';
+@import '_variables.less';
+
+.margin {
+    margin-top: 20px;
+}
+
+.margin-s {
+    margin-top: 10px;
+}
+
+.margin-l {
+    margin-top: 40px;
+}
+
+@media (max-width: @screen-xs-max) {
+    .margined(xs);
+}
+
+@media (min-width: @screen-sm-min) and (max-width: @screen-sm-max) {
+    .margined(sm);
+}
+
+@media (min-width: @screen-md-min) and (max-width: @screen-md-max) {
+    .margined(md);
+}
+
+@media (min-width: @screen-lg-min) {
+    .margined(lg);
+}

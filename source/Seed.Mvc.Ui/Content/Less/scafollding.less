@@ -1,0 +1,54 @@
+﻿html{}
+
+@import '_mixins.less';
+@import '_variables.less';
+
+@textarea-rows: 4;
+
+* {
+    outline-color: #fff;
+    outline-color: rgba(255, 255, 255, 0) !important;
+   .box-sizing(border-box);
+}
+
+*:before,
+*:after {
+  .box-sizing(border-box);
+}
+
+body {
+    margin: 0;
+    color: @text-color;
+    font-family: @font-family-text;
+    font-size: @font-size-base;
+    line-height: @line-height-base;
+}
+
+.clearfix {
+    .clearfix();
+}
+
+.pull-right {
+  float: right !important;
+}
+.pull-left {
+  float: left !important;
+}
+
+
+label {
+    margin: 0;
+    font-weight: normal;
+    display: inline-block;
+}
+
+p, ul {
+    margin: 0;
+}
+
+textarea {
+    -moz-resize: vertical;
+    -ms-resize: vertical;
+    resize: vertical;
+    min-height: @textarea-rows*@line-height-computed;
+}

@@ -1,0 +1,22 @@
+﻿html {
+}
+
+@import '_mixins.less';
+@import '_variables.less';
+
+a {
+    color: @link-color;
+    text-decoration: none;
+
+    &:hover,
+    &:focus,
+    &:active {
+        color: darken(@link-color, 5%);
+        text-decoration: underline;
+    }
+
+    &.txt-c {
+        display: block;
+        text-align: center;
+    }
+}

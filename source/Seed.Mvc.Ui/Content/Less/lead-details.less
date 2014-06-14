@@ -1,0 +1,33 @@
+﻿html {
+}
+
+@import '_variables.less';
+@import '_mixins.less';
+
+@lead-description-bg-color: #dfdfdf;
+ @lead-notes-bg-color: #ececec;
+
+.lead-details {
+    
+    .description {
+        background-color: @lead-description-bg-color;
+    }
+
+    .notes {
+        background-color: @lead-notes-bg-color;
+    }
+
+    .note-list {
+        > li {
+            padding-top: 15px;
+            padding-bottom: 15px;
+
+            + li {
+            border-top: 1px solid #a6a7a9;
+            }
+        }
+        
+    }
+    
+}
+

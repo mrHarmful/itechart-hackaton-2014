@@ -1,0 +1,198 @@
+﻿html{}
+
+@import "_variables.less";
+
+.clearfix() {
+  &:before,
+  &:after {
+    content: " ";
+    display: table;
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+.transition(@transition) {
+  -webkit-transition: @transition;
+          transition: @transition;
+}
+
+.box-sizing(@boxmodel) {
+  -webkit-box-sizing: @boxmodel;
+     -moz-box-sizing: @boxmodel;
+          box-sizing: @boxmodel;
+}
+
+.opacity(@opacity) {
+  opacity: @opacity;
+  // IE8 filter
+  @opacity-ie: (@opacity * 100);
+  filter: ~"alpha(opacity=@{opacity-ie})";
+}
+
+.translate(@x, @y) {
+    -webkit-transform: translate(@x, @y);
+    -ms-transform: translate(@x, @y); // IE9 only
+    transform: translate(@x, @y);
+}
+
+.transition-transform(@transition) {
+  -webkit-transition: -webkit-transform @transition;
+     -moz-transition: -moz-transform @transition;
+       -o-transition: -o-transform @transition;
+          transition: transform @transition;
+}
+
+
+.box-shadow(@shadow) {
+  -webkit-box-shadow: @shadow; // iOS <4.3 & Android <4.1
+          box-shadow: @shadow;
+}
+
+.bordered-btn(@class, @color) {
+    .btn-bordered@{class},
+    .no-touch .btn-bordered@{class}:active,
+    .no-touch .btn-bordered@{class}:focus {
+        border-color: @color;
+        color: @color;
+    }
+
+    .no-touch .btn-bordered@{class}:hover {
+        background-color: @color;
+        color: #fff;
+    }
+}
+
+.response-text-align(@class){
+    .txt-c-@{class} {
+        text-align: center;
+    }
+
+    .text-l-@{class} {
+        text-align: left;
+    }
+
+    .txt-r-@{class} {
+        text-align: right;
+    }
+}
+
+
+.color-refine-header(@color) {
+    .tiles-name,
+    .angle-substrate {
+        background-color: @color;
+    }
+
+    .angle {
+        border-left-color: @color;
+    }
+}
+
+.float-set(@class) {
+    .right-@{class} {
+        float: right !important;
+    }
+    .left-@{class} {
+        float: left !important;
+    }
+    .no-float-@{class} {
+        float: none !important;
+    }
+}
+
+//#region @Inline column list
+
+.make-inline-list-grid-columns() {
+  .col(@index) when (@index = 2) {
+        @item-ul: ~".list-inline-col-xs-@{index}, .list-inline-col-sm-@{index}, .list-inline-col-md-@{index}, .list-inline-col-lg-@{index}, .list-inline-col-@{index}";
+        @item-li: ~".list-inline-col-xs-@{index} > li, .list-inline-col-sm-@{index} > li, .list-inline-col-md-@{index} > li, .list-inline-col-lg-@{index} > li, .list-inline-col-@{index} > li";
+    .col((@index + 1), @item-ul, @item-li);
+  }
+  .col(@index, @list-ul, @list-li) when (@index =< @list-inline-columns) {
+    @item-ul: ~".list-inline-col-xs-@{index}, .list-inline-col-sm-@{index}, .list-inline-col-md-@{index}, .list-inline-col-lg-@{index}, .list-inline-col-@{index}";
+        @item-li: ~".list-inline-col-xs-@{index} > li, .list-inline-col-sm-@{index} > li, .list-inline-col-md-@{index} > li, .list-inline-col-lg-@{index} > li, .list-inline-col-@{index} > li";
+    .col((@index + 1), ~"@{list-ul}, @{item-ul}", ~"@{list-li}, @{item-li}");
+  }
+  .col(@index, @list-ul, @list-li) when (@index > @list-inline-columns) {
+    @{list-ul} {
+        font-size: 0;
+        list-style: none;
+        padding: 0;
+    }
+    @{list-li} {
+        display: inline-block;
+        font-size: 14px;
+        padding-right: @padding-horizontal;
+        padding-left: @padding-horizontal;
+        vertical-align: top;
+    }
+  }
+  .col(2); // kickstart it
+}
+
+.calc-grid-column(@index, @class) when (@index > 0) and not (@class = any) {
+    .list-inline-col-@{class}-@{index} > li {
+        width: percentage(1/@index);
+    }
+}
+
+.calc-grid-column(@index, @class) when (@class = any){
+    .list-inline-col-@{index} > li {
+        width: percentage(1/@index);
+    }
+}
+
+.loop-inline-list-columns(@index, @class) when (@index > 0) {
+  .calc-grid-column(@index, @class);
+  .loop-inline-list-columns((@index - 1), @class);
+}
+
+.make-inline-list-grid(@class) {
+  .loop-inline-list-columns(@list-inline-columns, @class);
+}
+
+//#endregion
+
+.margined(@class) {
+    .margin-@{class} {
+        margin-top: 20px;
+    }
+
+    .margin-s-@{class} {
+        margin-top: 10px;
+    }
+
+    .margin-l-@{class} {
+        margin-top: 40px;
+    }
+}
+
+.list-unstyled() {
+    padding-left: 0;
+    list-style: none;
+}
+
+.list-inline(@padding) {
+    .list-unstyled();
+
+    > li {
+        display: inline-block;
+        padding: @padding;
+    }
+}
+
+.triangle-end(@height, @width, @color) {
+    position: relative;
+
+    &:after {
+        border-style: solid;
+        border-width: @height 0 0 @width;
+        border-color: @transparent @transparent @transparent @color;
+        content: " ";
+        position: absolute;
+        right: -@width;
+        top: 0;
+    }
+}

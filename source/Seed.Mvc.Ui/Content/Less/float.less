@@ -1,0 +1,28 @@
+﻿html {}
+
+@import '_variables.less';
+@import '_mixins.less';
+
+.left-all {
+    float: left;
+}
+
+.right-all {
+    float: right;
+}
+
+@media (max-width: @screen-xs-max) {
+    .float-set(xs);
+}
+
+@media (min-width: @screen-sm-min) and (max-width: @screen-sm-max) {
+    .float-set(sm);
+}
+
+@media (min-width: @screen-md-min) and (max-width: @screen-md-max) {
+    .float-set(md);
+}
+
+@media (min-width: @screen-lg-min) {
+    .float-set(lg);
+}
