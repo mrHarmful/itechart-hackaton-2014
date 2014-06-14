@@ -157,9 +157,30 @@ namespace Seed.Bcs
 
         public Question GetQuestion(long questionId)
         {
-            Question result = _quizDac.GetQuestion(questionId);
+            /*Question result = _quizDac.GetQuestion(questionId);
 
-            return result;
+            return result;*/
+
+            var qq = new Question();
+            qq.Id = 1;
+            qq.CanSkip = false;
+            qq.IsUserMeta = false;
+            qq.QuizId = 2;
+            qq.Enquiry = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer.";
+
+            var a1 = new Answer();
+            a1.Caption = "Yes";
+            a1.Id = 13;
+            a1.QuestionId = 2;
+
+            var a2 = new Answer();
+            a2.Caption = "No";
+            a2.Id = 14;
+            a2.QuestionId = 2;
+            qq.Answers.Add(a1);
+            qq.Answers.Add(a2);
+
+            return qq;
         }
 
         public SingleQuestion GetRamdomSingleQuestionForUser(long userId)
