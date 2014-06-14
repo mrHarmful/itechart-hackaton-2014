@@ -14,6 +14,7 @@ namespace Seed.Dacs.MsSql.Components.MsSqlCommands
         public GetSampleCommand()
         {
             StoredProcedureName = string.Empty;
+            _result = new Sample();
         }
 
         public override void CommandBody(SqlCommand cmd)
