@@ -30,31 +30,31 @@
                 i {
                     font-size: 23px;
                 }
-            }
 
-                > a:hover {
+                &:hover {
                     text-decoration: none;
                 }
-        }
+            }
 
-        li:hover {
-            background-color: rgba(255,255,255,0.2);
-        }
+            &:hover, &.active {
+                background-color: rgba(255,255,255,0.2);
+            }
 
-        li:last-child{
-            border-bottom: 1px solid rgba(255,255,255,0.5);
+            &:last-child {
+                border-bottom: 1px solid rgba(255,255,255,0.5);
+            }
         }
     }
 
-    .alerts{
+    .alerts {
         margin-top: 20px;
 
-        li{
+        li {
             background-color: #FB6B5B;
             padding: 15px 10px;
             margin-bottom: 5px;
 
-            .icon-remove{
+            .icon-remove {
                 position: relative;
                 top: -7px;
                 font-size: 12px;
