@@ -18,6 +18,11 @@ namespace Seed.Web.Uipc
             return result;
         }
 
+        public static void SaveAnswer(long questionId, long answerId)
+        {
+            QuizBc.Instance.SaveAnswer(questionId, answerId, UserBc.Instance.GetCurrntUser().Id);
+        }
+
         public static AttendQuizVm GetAttendQuizVm(long quizId)
         {
             var quiz = QuizBc.Instance.GetQuiz(quizId);

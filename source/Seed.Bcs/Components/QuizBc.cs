@@ -171,6 +171,11 @@ namespace Seed.Bcs
             return result;
         }
 
+        public void SaveAnswer(long questionId, long answerId, int userId)
+        {
+            throw new NotImplementedException();
+        }
+
         public void SaveQuiz(Quiz quiz)
         {
             _quizDac.SaveQuiz(quiz);
