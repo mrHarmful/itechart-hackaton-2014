@@ -16,7 +16,7 @@ namespace Seed.Entities
 
         public Category Category { get; set; }
 
-        private List<Question> Questions { get; set; }
+        public List<Question> Questions { get; set; }
 
         public List<Department> Target { get; set; }
 

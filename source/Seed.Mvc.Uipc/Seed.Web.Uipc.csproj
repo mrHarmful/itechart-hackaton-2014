@@ -90,7 +90,9 @@
     <Compile Include="Custom\UserControl\SeedMembershipProvider.cs" />
     <Compile Include="Custom\UserControl\SeedRoleProvider.cs" />
     <Compile Include="ViewModelsProviders\AccountViewModelsProvider.cs" />
+    <Compile Include="ViewModelsProviders\DashboardVmp.cs" />
     <Compile Include="ViewModels\Account\LogInVm.cs" />
+    <Compile Include="ViewModels\Common\AuthorizedVm.cs" />
     <Compile Include="ViewModels\Common\CaptionSelectList.cs" />
     <Compile Include="ViewModels\Common\LocalizationVm.cs" />
     <Compile Include="ViewModels\Common\AddEntityResultVm.cs" />
@@ -99,12 +101,18 @@
     <Compile Include="Custom\Helpers\EnumsHelper.cs" />
     <Compile Include="Custom\HttpModules\TraceLogHttpModule.cs" />
     <Compile Include="Custom\ModelBinders\AddressVmBinder.cs" />
-    <Compile Include="MapExtensions\SampleExtensions.cs" />
+    <Compile Include="MapExtensions\MapExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModelsProviders\CommonViewModelsProvider.cs" />
     <Compile Include="ViewModels\Common\AddressVm.cs" />
     <Compile Include="ViewModels\Common\ImageVm.cs" />
+    <Compile Include="ViewModels\Common\PagingVm.cs" />
+    <Compile Include="ViewModels\Common\QuizLblVm.cs" />
+    <Compile Include="ViewModels\Common\SingleQuestionLblVm.cs" />
     <Compile Include="ViewModels\Common\UserActionResultVm.cs" />
+    <Compile Include="ViewModels\Account\UserVm.cs" />
+    <Compile Include="ViewModels\Dashboard\DashboardVm.cs" />
+    <Compile Include="ViewModels\Dashboard\SurveysVm.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Seed.Bcs\Seed.Bcs.csproj">

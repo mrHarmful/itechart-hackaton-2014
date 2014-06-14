@@ -1,5 +1,5 @@
 ﻿using System;
-using Seed.Dacs.Interfaces.Components;
+using Seed.Dacs.Interfaces;
 using Seed.Entities;
 using Seed.Entities.AccountItems;
 
@@ -9,7 +9,7 @@ namespace Seed.Dacs.MsSql.Components.MsSqlComponents
     {
         #region IQuizDac Members
 
-        public UserQuizList GetQuizListForEdit(long userId)
+        public UserQuizList GetQuizList(long userId)
         {
             throw new NotImplementedException();
         }
@@ -32,12 +32,6 @@ namespace Seed.Dacs.MsSql.Components.MsSqlComponents
         public void SaveQuiz(Quiz quiz)
         {
             //NOTE: save/update, seems only generic quiz items, questions will be saved separately
-            throw new NotImplementedException();
-        }
-
-        public void SaveQuestion(Question question)
-        {
-            //NOTE: save/update
             throw new NotImplementedException();
         }
 

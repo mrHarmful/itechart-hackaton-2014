@@ -1,4 +1,4 @@
-﻿using Seed.Dacs.Interfaces.Components;
+﻿using Seed.Dacs.Interfaces;
 
 namespace Seed.Dacs.Interfaces
 {

@@ -1,11 +1,11 @@
 ﻿using Seed.Entities;
 using Seed.Entities.AccountItems;
 
-namespace Seed.Dacs.Interfaces.Components
+namespace Seed.Dacs.Interfaces
 {
     public interface IQuizDac
     {
-        UserQuizList GetQuizListForEdit(long userId);
+        UserQuizList GetQuizList(long userId);
 
         Quiz GetQuiz(long quizId);
 
@@ -14,8 +14,6 @@ namespace Seed.Dacs.Interfaces.Components
         SingleQuestion GetSingleQuestion(long questionId);
 
         void SaveQuiz(Quiz quiz);
-
-        void SaveQuestion(Question question);
 
         void SaveSingleQuestion(SingleQuestion question);
     }

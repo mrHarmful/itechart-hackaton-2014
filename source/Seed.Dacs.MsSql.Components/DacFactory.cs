@@ -1,5 +1,4 @@
 ﻿using Seed.Dacs.Interfaces;
-using Seed.Dacs.Interfaces.Components;
 using Seed.Dacs.MsSql.Components.MsSqlComponents;
 
 namespace Seed.Dacs.MsSql.Components
