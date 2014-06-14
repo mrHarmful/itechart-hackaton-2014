@@ -8,6 +8,7 @@ angular.module('seedApp.factories.resources')
         return $resource('/api/surveys/:id', null,
             {
                 'all': { method: 'GET' },
+                'available': { method: 'GET', url: '/api/surveys/available', isArray: true},
                 'get': { method: 'GET' },
                 'save': {method: 'PUT'}
             });

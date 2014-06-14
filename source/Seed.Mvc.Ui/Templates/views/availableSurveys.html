@@ -1,0 +1,46 @@
+﻿<div class="surveys">
+    <span class="title txt-upper" ng-click="toggle(surveys.questions)">
+        Quizzes
+    </span>
+    <ul class="grid">
+        <li class="head">
+            <div class="col-lg-3 text">
+                Enquiry
+            </div>
+            <div class="col-lg-2">
+                Category
+            </div>
+            <div class="col-lg-3">
+                Priority
+            </div>
+            <div class="col-lg-2">
+                Target
+            </div>
+            <div class="col-lg-1">
+                Questions
+            </div>
+        </li>
+        <li class="value" ng-repeat="quiz in surveys">
+            <div class="col-lg-3 text">
+                {{quiz.enquiry}}
+            </div>
+            <div class="col-lg-2">
+                {{quiz.category}}
+            </div>
+            <div class="col-lg-3">
+                {{quiz.priority}}
+            </div>
+            <div class="col-lg-2">
+                {{quiz.target}}
+            </div>
+            <div class="col-lg-1">
+                {{quiz.questionsCount}}
+            </div>
+            <div class="col-lg-1">
+                <a class="btn btn-bordered-brand" ui-sref="dashboard.answerSurvey({surveyId: quiz.id})">
+                    Respond
+                </a>
+            </div>
+        </li>
+    </ul>
+</div>

@@ -156,6 +156,8 @@
     <Content Include="Scripts\app\controllers\app\dashboardController.js" />
     <Content Include="Scripts\app\controllers\app\errorController.js" />
     <Content Include="Scripts\app\controllers\views\surveyEditController.js" />
+    <Content Include="Scripts\app\controllers\views\surveyAnswerController .js" />
+    <Content Include="Scripts\app\controllers\views\surveysViewController.js" />
     <Content Include="Scripts\app\controllers\views\surveyManagerController.js" />
     <Content Include="Scripts\app\controllers\views\profileController.js" />
     <Content Include="Scripts\app\directives\controls\checkboxListDirective.js" />
@@ -205,7 +207,9 @@
     <Content Include="Templates\partials\editQuestion.html" />
     <Content Include="Templates\partials\question.html" />
     <Content Include="Templates\partials\selectList.html" />
+    <Content Include="Templates\views\answerSurvey.html" />
     <Content Include="Templates\views\surveyEdit.html" />
+    <Content Include="Templates\views\availableSurveys.html" />
     <Content Include="Templates\views\surveysManager.html" />
     <Content Include="Templates\views\profile.html" />
     <Content Include="Templates\views\dashboard.html" />

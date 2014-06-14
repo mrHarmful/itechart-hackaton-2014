@@ -48,8 +48,33 @@ angular.module('seedApp').config(['$stateProvider', '$urlRouterProvider', '$loca
                         title: 'Survey edit',
                         description: 'reveal your deepest hidden phantasies and create a survey, but remember conciseness and clearness are keys to goal.'
                     }
+                })
+            .state('dashboard.surveyView',
+                {
+                    url: '/surveys/view',
+                    templateUrl: '/Templates/views/availableSurveys.html',
+                    controller: 'surveysViewController',
+                    data: {
+                        title: 'Available surveys',
+                        description: 'answer questions, earn points ... profit!.'
+                    }
+                })
+            .state('dashboard.answerSurvey',
+                {
+                    url: $urlMatcherFactory.compile('/surveys/answer/{surveyId}', {
+                        params: {
+                            surveyId: {
+                                value: null,
+                            }
+                        }
+                    }),
+                    templateUrl: '/Templates/views/answerSurvey.html',
+                    controller: 'surveyAnswerController',
+                    data: {
+                        title: 'Answer survey',
+                        description: 'answer questions, earn points ... profit!.'
+                    }
                 });
-        
 
         $stateProvider.state('dashboard.error', {
             url: '/error/{errorCode}',

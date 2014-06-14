@@ -8,7 +8,13 @@ angular.module('seedApp.services.clients')
         var self = this;
 
         this.getUserSurveys = function () {
-            var result = Surveys.get();
+            var result = Surveys.all();
+
+            return result;
+        };
+        
+        this.getAvailableSurveys = function () {
+            var result = Surveys.available();
 
             return result;
         };
