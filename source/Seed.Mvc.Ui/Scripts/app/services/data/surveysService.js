@@ -12,5 +12,11 @@ angular.module('seedApp.services.clients')
 
             return result;
         };
+        
+        this.getSurvey = function (id) {
+            var result = Surveys.get({id: id});
+
+            return result;
+        };
 
     }]);

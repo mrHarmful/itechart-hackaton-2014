@@ -1,5 +1,8 @@
 ﻿<div seed-document-click="selectList.hideList()" class="select">
-    <div class="caption" ng-click="selectList.toggleList()">{{selectList.getSelectedText()}}</div>
+    <div class="caption" ng-click="selectList.toggleList()">
+        {{selectList.getSelectedText()}}
+        <i class="icon-stack"></i>
+    </div>
     <ul class="items" ng-show="selectList.isVisibleList">
         <li ng-repeat="item in selectList.items" ng-click="onItemClick(item.value)">{{item.text}}</li>
     </ul>

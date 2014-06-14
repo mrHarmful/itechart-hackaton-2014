@@ -4,17 +4,16 @@
 
 'use strict';
 
-angular.module('seedApp.directives.controls').directive('lmsSelectList', ['selectListFactory', function(selectListFactory) {
+angular.module('seedApp.directives.controls').directive('seedSelectList', ['selectListFactory', function(selectListFactory) {
     return {
-        restrict: 'E',
-        require: ['ngModel'],
+        restrict: 'A',
         templateUrl: '/Templates/partials/selectList.html',
         scope: {
-            ngModel: '=',
-            lmsSelectedValue: '='
+            model: '=seedSelectList',
+            selectedValue: '='
         },
         link: function($scope) {
-            $scope.selectList = selectListFactory.get($scope.ngModel, $scope.lmsSelectedValue);
+            $scope.selectList = selectListFactory.get($scope.model, $scope.lmsSelectedValue);
 
             $scope.onItemClick = function(itemValue) {
                 $scope.selectList.hideList();

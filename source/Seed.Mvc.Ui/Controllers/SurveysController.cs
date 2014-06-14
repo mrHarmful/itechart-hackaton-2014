@@ -13,5 +13,13 @@ namespace Seed.Web.Api.Controllers
 
             return result;
         }
+
+        [Route("api/surveys/{id:long}")]
+        public QuizVm GetQuiz(long id)
+        {
+            var result = ViewModelsProvider.GetQuizVm(id);
+
+            return result;
+        }
     }
 }

@@ -30,7 +30,23 @@ angular.module('seedApp').config(['$stateProvider', '$urlRouterProvider', '$loca
                     controller: 'surveysManagerController',
                     data: {
                         title: 'Your surveys',
-                        description: 'be free to manage your surveys: create, edit, remove etc.'
+                        description: 'feel free to manage your surveys: create, edit, remove etc.'
+                    }
+                })
+            .state('dashboard.surveyEdit',
+                {
+                    url: $urlMatcherFactory.compile('/surveys/edit/:surveyId', {
+                        params: {
+                            surveyId: {
+                                value: null
+                            }
+                        }
+                    }),
+                    templateUrl: '/Templates/views/surveyEdit.html',
+                    controller: 'surveyEditController',
+                    data: {
+                        title: 'Survey edit',
+                        description: 'reveal your deepest hidden phantasies and create a survey, but remember conciseness and clearness are keys to goal.'
                     }
                 });
         

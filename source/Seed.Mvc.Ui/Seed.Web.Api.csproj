@@ -135,6 +135,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ApplicationController.cs" />
     <Compile Include="Controllers\ConfigurationController.cs" />
+    <Compile Include="Controllers\MiscController.cs" />
     <Compile Include="Controllers\SurveysController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -154,12 +155,18 @@
     <Content Include="Global.asax" />
     <Content Include="Scripts\app\controllers\app\dashboardController.js" />
     <Content Include="Scripts\app\controllers\app\errorController.js" />
+    <Content Include="Scripts\app\controllers\views\surveyEditController.js" />
     <Content Include="Scripts\app\controllers\views\surveyManagerController.js" />
     <Content Include="Scripts\app\controllers\views\profileController.js" />
+    <Content Include="Scripts\app\directives\controls\checkboxListDirective.js" />
+    <Content Include="Scripts\app\directives\controls\editQuestionDirective.js" />
+    <Content Include="Scripts\app\directives\controls\questionDirective.js" />
+    <Content Include="Scripts\app\directives\controls\checkboxDropdownDirective.js" />
     <Content Include="Scripts\app\directives\controls\paginationDirective.js" />
     <Content Include="Scripts\app\directives\controls\selectListDirective.js" />
     <Content Include="Scripts\app\directives\events\documentClickDirective.js" />
     <Content Include="Scripts\app\factories\interceptors.js" />
+    <Content Include="Scripts\app\factories\resources\selectListsResource.js" />
     <Content Include="Scripts\app\factories\resources\surveysResource.js" />
     <Content Include="Scripts\app\filters\enumFilter.js" />
     <Content Include="Scripts\app\services\utils\errorCodesService.js" />
@@ -192,8 +199,13 @@
     <Content Include="Scripts\lib\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\lib\modernizr.js" />
     <Content Include="Scripts\lib\moment-2.6.0.js" />
+    <Content Include="Templates\partials\checkboxDropdown.html" />
+    <Content Include="Templates\partials\checkboxList.html" />
     <Content Include="Templates\partials\pagination.html" />
+    <Content Include="Templates\partials\editQuestion.html" />
+    <Content Include="Templates\partials\question.html" />
     <Content Include="Templates\partials\selectList.html" />
+    <Content Include="Templates\views\surveyEdit.html" />
     <Content Include="Templates\views\surveysManager.html" />
     <Content Include="Templates\views\profile.html" />
     <Content Include="Templates\views\dashboard.html" />

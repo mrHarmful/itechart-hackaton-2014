@@ -5,11 +5,11 @@
 'use strict';
 
 angular.module('seedApp.directives.events')
-    .directive('lmsDocumentClick', ['$document', '$parse', 'mathService', function($document, $parse, mathService) {
+    .directive('seedDocumentClick', ['$document', '$parse', 'mathService', function($document, $parse, mathService) {
         return {
             restrict: 'A',
             link: function($scope, element, attr) {
-                var scopeExpression = attr.lmsDocumentClick;
+                var scopeExpression = attr.seedDocumentClick;
                 var invoker = $parse(scopeExpression);
                 var uniquePrivateFlag = '__' + mathService.newGuid() + '__lmsElementClicked';
 

@@ -3,10 +3,10 @@
         <i ng-class="{'icon-folder': !surveys.questions.visible, 'icon-folder-open': surveys.questions.visible}"></i>
         Single question
     </span>
-    <button class="btn btn-bordered-brand">
+    <a ui-sref="dashboard.surveyEdit" class="btn btn-bordered-brand">
         <i class="icon-pencil"></i>
         Create
-    </button>
+    </a>
     <ul class="grid" ng-show="surveys.questions.visible">
         <li class="head">
             <div class="col-lg-3 text">
@@ -44,10 +44,10 @@
         <i ng-class="{'icon-folder': !surveys.quizzes.visible, 'icon-folder-open': surveys.quizzes.visible}"></i>
         Quizzes
     </span>
-    <button class="btn btn-bordered-brand">
+    <a ui-sref="dashboard.surveyEdit" class="btn btn-bordered-brand">
         <i class="icon-pencil"></i>
         Create
-    </button>
+    </a>
     <ul class="grid" ng-show="surveys.quizzes.visible">
         <li class="head">
             <div class="col-lg-3 text">

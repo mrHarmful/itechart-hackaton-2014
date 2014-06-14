@@ -1,6 +1,6 @@
 /**
  * State-based routing for AngularJS
- * @version v0.2.10-dev-2014-05-16
+ * @version v0.2.10-NPMG-2014-06-12
  * @link http://angular-ui.github.com/
  * @license MIT License, http://www.opensource.org/licenses/MIT
  */
@@ -10,12 +10,13 @@ if (typeof module !== "undefined" && typeof exports !== "undefined" && module.ex
     module.exports = 'ui.router';
 }
 
-(function(window, angular, undefined) {
+(function (window, angular, undefined) {
     /*jshint globalstrict:true*/
     /*global angular:false*/
     'use strict';
 
     var isDefined = angular.isDefined,
+        isUndefined = angular.isUndefined,
         isFunction = angular.isFunction,
         isString = angular.isString,
         isObject = angular.isObject,
@@ -25,13 +26,13 @@ if (typeof module !== "undefined" && typeof exports !== "undefined" && module.ex
         copy = angular.copy;
 
     function inherit(parent, extra) {
-        return extend(new (extend(function() { }, { prototype: parent }))(), extra);
+        return extend(new (extend(function () { }, { prototype: parent }))(), extra);
     }
 
     function merge(dst) {
-        forEach(arguments, function(obj) {
+        forEach(arguments, function (obj) {
             if (obj !== dst) {
-                forEach(obj, function(value, key) {
+                forEach(obj, function (value, key) {
                     if (!dst.hasOwnProperty(key)) dst[key] = value;
                 });
             }
@@ -68,7 +69,7 @@ if (typeof module !== "undefined" && typeof exports !== "undefined" && module.ex
         }
         var result = [];
 
-        angular.forEach(object, function(val, key) {
+        angular.forEach(object, function (val, key) {
             result.push(key);
         });
         return result;
@@ -139,7 +140,12 @@ if (typeof module !== "undefined" && typeof exports !== "undefined" && module.ex
 
         for (var i = 0; i < keys.length; i++) {
             var k = keys[i];
-            if (a[k] != b[k]) return false; // Not '===', values aren't necessarily normalized
+            if (isArray(a[k]) && isArray(b[k])) {
+                if (JSON.stringify(a[k]) !== JSON.stringify(b[k])) return false; // NOTE: fix for array comparisons;
+            }
+            else {
+                if (a[k] != b[k]) return false; // Not '===', values aren't necessarily normalized
+            }
         }
         return true;
     }
@@ -154,7 +160,7 @@ if (typeof module !== "undefined" && typeof exports !== "undefined" && module.ex
     function filterByKeys(keys, values) {
         var filtered = {};
 
-        forEach(keys, function(name) {
+        forEach(keys, function (name) {
             filtered[name] = values[name];
         });
         return filtered;
@@ -283,7 +289,7 @@ if (typeof module !== "undefined" && typeof exports !== "undefined" && module.ex
          * @param {object} invocables Invocable objects
          * @return {function} a function to pass in locals, parent and self
          */
-        this.study = function(invocables) {
+        this.study = function (invocables) {
             if (!isObject(invocables)) throw new Error("'invocables' must be an object");
 
             // Perform a topological sort of invocables to build an ordered plan
@@ -299,10 +305,10 @@ if (typeof module !== "undefined" && typeof exports !== "undefined" && module.ex
                 visited[key] = VISIT_IN_PROGRESS;
 
                 if (isString(value)) {
-                    plan.push(key, [function() { return $injector.get(value); }], NO_DEPENDENCIES);
+                    plan.push(key, [function () { return $injector.get(value); }], NO_DEPENDENCIES);
                 } else {
                     var params = $injector.annotate(value);
-                    forEach(params, function(param) {
+                    forEach(params, function (param) {
                         if (param !== key && invocables.hasOwnProperty(param)) visit(invocables[param], param);
                     });
                     plan.push(key, value, params);
@@ -318,7 +324,7 @@ if (typeof module !== "undefined" && typeof exports !== "undefined" && module.ex
                 return isObject(value) && value.then && value.$$promises;
             }
 
-            return function(locals, parent, self) {
+            return function (locals, parent, self) {
                 if (isResolve(locals) && self === undefined) {
                     self = parent; parent = locals; locals = null;
                 }
@@ -386,10 +392,10 @@ if (typeof module !== "undefined" && typeof exports !== "undefined" && module.ex
                     }
                     // Wait for any parameter that we have a promise for (either from parent or from this
                     // resolve; in that case study() will have made sure it's ordered before us in the plan).
-                    forEach(params, function(dep) {
+                    forEach(params, function (dep) {
                         if (promises.hasOwnProperty(dep) && !locals.hasOwnProperty(dep)) {
                             waitParams++;
-                            promises[dep].then(function(result) {
+                            promises[dep].then(function (result) {
                                 values[dep] = result;
                                 if (!(--waitParams)) proceed();
                             }, onfailure);
@@ -400,7 +406,7 @@ if (typeof module !== "undefined" && typeof exports !== "undefined" && module.ex
                         if (isDefined(result.$$failure)) return;
                         try {
                             invocation.resolve($injector.invoke(invocable, self, values));
-                            invocation.promise.then(function(result) {
+                            invocation.promise.then(function (result) {
                                 values[key] = result;
                                 done();
                             }, onfailure);
@@ -477,7 +483,7 @@ if (typeof module !== "undefined" && typeof exports !== "undefined" && module.ex
          * @return {object} Promise for an object that contains the resolved return value
          * of all invocables, as well as any inherited and local values.
          */
-        this.resolve = function(invocables, locals, parent, self) {
+        this.resolve = function (invocables, locals, parent, self) {
             return this.study(invocables)(locals, parent, self);
         };
     }
@@ -524,7 +530,7 @@ if (typeof module !== "undefined" && typeof exports !== "undefined" && module.ex
          * @return {string|object}  The template html as a string, or a promise for 
          * that string,or `null` if no template is configured.
          */
-        this.fromConfig = function(config, params, locals) {
+        this.fromConfig = function (config, params, locals) {
             return (
               isDefined(config.template) ? this.fromString(config.template, params) :
               isDefined(config.templateUrl) ? this.fromUrl(config.templateUrl, params) :
@@ -548,7 +554,7 @@ if (typeof module !== "undefined" && typeof exports !== "undefined" && module.ex
          * @return {string|object} The template html as a string, or a promise for that 
          * string.
          */
-        this.fromString = function(template, params) {
+        this.fromString = function (template, params) {
             return isFunction(template) ? template(params) : template;
         };
 
@@ -566,12 +572,12 @@ if (typeof module !== "undefined" && typeof exports !== "undefined" && module.ex
          * @return {string|Promise.<string>} The template html as a string, or a promise 
          * for that string.
          */
-        this.fromUrl = function(url, params) {
+        this.fromUrl = function (url, params) {
             if (isFunction(url)) url = url(params);
             if (url == null) return null;
             else return $http
                 .get(url, { cache: $templateCache })
-                .then(function(response) { return response.data; });
+                .then(function (response) { return response.data; });
         };
 
         /**
@@ -589,7 +595,7 @@ if (typeof module !== "undefined" && typeof exports !== "undefined" && module.ex
          * @return {string|Promise.<string>} The template html as a string, or a promise 
          * for that string.
          */
-        this.fromProvider = function(provider, params, locals) {
+        this.fromProvider = function (provider, params, locals) {
             return $injector.invoke(provider, null, locals || { params: params });
         };
     }
@@ -676,7 +682,8 @@ if (typeof module !== "undefined" && typeof exports !== "undefined" && module.ex
         var placeholder = /([:*])(\w+)|\{(\w+)(?:\:((?:[^{}\\]+|\\.|\{(?:[^{}\\]+|\\.)*\})+))?\}/g,
             compiled = '^', last = 0, m,
             segments = this.segments = [],
-            params = this.params = {};
+            params = this.params = {},
+            self = this;
 
         /**
          * [Internal] Gets the decoded representation of a value if the value is defined, otherwise, returns the
@@ -690,6 +697,8 @@ if (typeof module !== "undefined" && typeof exports !== "undefined" && module.ex
         function addParameter(id, type, config) {
             if (!/^\w+(-+\w+)*$/.test(id)) throw new Error("Invalid parameter name '" + id + "' in pattern '" + pattern + "'");
             if (params[id]) throw new Error("Duplicate parameter name '" + id + "' in pattern '" + pattern + "'");
+            if (isObject(config.type)) config.type = new Type(config.type);
+            if (isString(config.type)) config.type = self.$types[config.type];
             params[id] = extend({ type: type || new Type(), $value: $value }, config);
         }
 
@@ -737,7 +746,7 @@ if (typeof module !== "undefined" && typeof exports !== "undefined" && module.ex
             this.sourcePath = pattern.substring(0, last + i);
 
             // Allow parameters to be separated by '?' as well as '&' to make concat() easier
-            forEach(search.substring(1).split(/[&?]/), function(key) {
+            forEach(search.substring(1).split(/[&?]/), function (key) {
                 addParameter(key, null, paramConfig(key));
             });
         } else {
@@ -774,14 +783,14 @@ if (typeof module !== "undefined" && typeof exports !== "undefined" && module.ex
      * @param {Object} config  An object hash of the configuration for the matcher.
      * @returns {UrlMatcher}  A matcher for the concatenated pattern.
      */
-    UrlMatcher.prototype.concat = function(pattern, config) {
+    UrlMatcher.prototype.concat = function (pattern, config) {
         // Because order of search parameters is irrelevant, we can add our own search
         // parameters to the end of the new pattern. Parse the new pattern by itself
         // and then join the bits together, but it's much easier to do this on a string level.
         return new UrlMatcher(this.sourcePath + pattern + this.sourceSearch, config);
     };
 
-    UrlMatcher.prototype.toString = function() {
+    UrlMatcher.prototype.toString = function () {
         return this.source;
     };
 
@@ -809,7 +818,7 @@ if (typeof module !== "undefined" && typeof exports !== "undefined" && module.ex
      * @param {Object} searchParams  URL search parameters, e.g. `$location.search()`.
      * @returns {Object}  The captured parameter values.
      */
-    UrlMatcher.prototype.exec = function(path, searchParams) {
+    UrlMatcher.prototype.exec = function (path, searchParams) {
         var m = this.regexp.exec(path);
         if (!m) return null;
         searchParams = searchParams || {};
@@ -845,7 +854,7 @@ if (typeof module !== "undefined" && typeof exports !== "undefined" && module.ex
      * @returns {Array.<string>}  An array of parameter names. Must be treated as read-only. If the
      *    pattern has no parameters, an empty array is returned.
      */
-    UrlMatcher.prototype.parameters = function(param) {
+    UrlMatcher.prototype.parameters = function (param) {
         if (!isDefined(param)) return objectKeys(this.params);
         return this.params[param] || null;
     };
@@ -862,10 +871,10 @@ if (typeof module !== "undefined" && typeof exports !== "undefined" && module.ex
      * @param {Object} params The object hash of parameters to validate.
      * @returns {boolean} Returns `true` if `params` validates, otherwise `false`.
      */
-    UrlMatcher.prototype.validates = function(params) {
+    UrlMatcher.prototype.validates = function (params) {
         var result = true, isOptional, cfg, self = this;
 
-        forEach(params, function(val, key) {
+        forEach(params, function (val, key) {
             if (!self.params[key]) return;
             cfg = self.params[key];
             isOptional = !val && isDefined(cfg.value);
@@ -893,7 +902,7 @@ if (typeof module !== "undefined" && typeof exports !== "undefined" && module.ex
      * @param {Object} values  the values to substitute for the parameters in this pattern.
      * @returns {string}  the formatted URL (path and optionally search part).
      */
-    UrlMatcher.prototype.format = function(values) {
+    UrlMatcher.prototype.format = function (values) {
         var segments = this.segments, params = this.parameters();
 
         if (!values) return segments.join('').replace('//', '/');
@@ -909,18 +918,24 @@ if (typeof module !== "undefined" && typeof exports !== "undefined" && module.ex
             cfg = this.params[param];
 
             if (!isDefined(value) && (segments[i] === '/' || segments[i + 1] === '/')) continue;
-            if (value != null) result += encodeURIComponent(cfg.type.encode(value));
+            result += encodeURIComponent(cfg.type.encode(value));
             result += segments[i + 1];
         }
 
         for (/**/; i < nTotal; i++) {
             param = params[i];
             value = values[param];
+            cfg = this.params[param];
             if (value == null) continue;
             array = isArray(value);
 
             if (array) {
-                value = value.map(encodeURIComponent).join('&' + param + '=');
+                if (isUndefined(cfg.encodeAsArray) || cfg.encodeAsArray) {
+                    value = value.map(encodeURIComponent).join('&' + param + '=');
+                }
+                else {
+                    value = cfg.type.encode(value);
+                }
             }
             result += (search ? '&' : '?') + param + '=' + (array ? value : encodeURIComponent(value));
             search = true;
@@ -970,7 +985,7 @@ if (typeof module !== "undefined" && typeof exports !== "undefined" && module.ex
      *        parameter in which `val` is stored. Can be used for meta-programming of `Type` objects.
      * @returns {Boolean}  Returns `true` if the value matches the type, otherwise `false`.
      */
-    Type.prototype.is = function(val, key) {
+    Type.prototype.is = function (val, key) {
         return true;
     };
 
@@ -989,7 +1004,7 @@ if (typeof module !== "undefined" && typeof exports !== "undefined" && module.ex
      *        meta-programming of `Type` objects.
      * @returns {string}  Returns a string representation of `val` that can be encoded in a URL.
      */
-    Type.prototype.encode = function(val, key) {
+    Type.prototype.encode = function (val, key) {
         return val;
     };
 
@@ -1006,7 +1021,7 @@ if (typeof module !== "undefined" && typeof exports !== "undefined" && module.ex
      *        meta-programming of `Type` objects.
      * @returns {*}  Returns a custom representation of the URL parameter value.
      */
-    Type.prototype.decode = function(val, key) {
+    Type.prototype.decode = function (val, key) {
         return val;
     };
 
@@ -1022,11 +1037,11 @@ if (typeof module !== "undefined" && typeof exports !== "undefined" && module.ex
      * @param {*} b  A value to compare against.
      * @returns {Boolean}  Returns `true` if the values are equivalent/equal, otherwise `false`.
      */
-    Type.prototype.equals = function(a, b) {
+    Type.prototype.equals = function (a, b) {
         return a == b;
     };
 
-    Type.prototype.$subPattern = function() {
+    Type.prototype.$subPattern = function () {
         var sub = this.pattern.toString();
         return sub.substr(1, sub.length - 2);
     };
@@ -1047,23 +1062,23 @@ if (typeof module !== "undefined" && typeof exports !== "undefined" && module.ex
 
         var enqueue = true, typeQueue = [], injector, defaultTypes = {
             int: {
-                decode: function(val) {
+                decode: function (val) {
                     return parseInt(val, 10);
                 },
-                is: function(val) {
+                is: function (val) {
                     if (!isDefined(val)) return false;
                     return this.decode(val.toString()) === val;
                 },
                 pattern: /\d+/
             },
             bool: {
-                encode: function(val) {
+                encode: function (val) {
                     return val ? 1 : 0;
                 },
-                decode: function(val) {
+                decode: function (val) {
                     return parseInt(val, 10) === 0 ? false : true;
                 },
-                is: function(val) {
+                is: function (val) {
                     return val === true || val === false;
                 },
                 pattern: /0|1/
@@ -1072,13 +1087,13 @@ if (typeof module !== "undefined" && typeof exports !== "undefined" && module.ex
                 pattern: /[^\/]*/
             },
             date: {
-                equals: function(a, b) {
+                equals: function (a, b) {
                     return a.toISOString() === b.toISOString();
                 },
-                decode: function(val) {
+                decode: function (val) {
                     return new Date(val);
                 },
-                encode: function(val) {
+                encode: function (val) {
                     return [
                       val.getFullYear(),
                       ('0' + (val.getMonth() + 1)).slice(-2),
@@ -1103,7 +1118,7 @@ if (typeof module !== "undefined" && typeof exports !== "undefined" && module.ex
         /**
          * [Internal] Get the default value of a parameter, which may be an injectable function.
          */
-        $UrlMatcherFactory.$$getDefaultValue = function(config) {
+        $UrlMatcherFactory.$$getDefaultValue = function (config) {
             if (!isInjectable(config.value)) return config.value;
             if (!injector) throw new Error("Injectable functions cannot be called at configuration time");
             return injector.invoke(config.value);
@@ -1119,7 +1134,7 @@ if (typeof module !== "undefined" && typeof exports !== "undefined" && module.ex
          *
          * @param {boolean} value `false` to match URL in a case sensitive manner; otherwise `true`;
          */
-        this.caseInsensitive = function(value) {
+        this.caseInsensitive = function (value) {
             isCaseInsensitive = value;
         };
 
@@ -1133,7 +1148,7 @@ if (typeof module !== "undefined" && typeof exports !== "undefined" && module.ex
          *
          * @param {boolean} value `false` to match trailing slashes in URLs, otherwise `true`.
          */
-        this.strictMode = function(value) {
+        this.strictMode = function (value) {
             isStrictMode = value;
         };
 
@@ -1149,7 +1164,7 @@ if (typeof module !== "undefined" && typeof exports !== "undefined" && module.ex
          * @param {Object} config  The config object hash.
          * @returns {UrlMatcher}  The UrlMatcher.
          */
-        this.compile = function(pattern, config) {
+        this.compile = function (pattern, config) {
             return new UrlMatcher(pattern, extend(getDefaultConfig(), config));
         };
 
@@ -1165,11 +1180,11 @@ if (typeof module !== "undefined" && typeof exports !== "undefined" && module.ex
          * @returns {Boolean}  Returns `true` if the object matches the `UrlMatcher` interface, by
          *          implementing all the same methods.
          */
-        this.isMatcher = function(o) {
+        this.isMatcher = function (o) {
             if (!isObject(o)) return false;
             var result = true;
 
-            forEach(UrlMatcher.prototype, function(val, name) {
+            forEach(UrlMatcher.prototype, function (val, name) {
                 if (isFunction(val)) {
                     result = result && (isDefined(o[name]) && isFunction(o[name]));
                 }
@@ -1281,7 +1296,7 @@ if (typeof module !== "undefined" && typeof exports !== "undefined" && module.ex
          * });
          * </pre>
          */
-        this.type = function(name, def) {
+        this.type = function (name, def) {
             if (!isDefined(def)) return UrlMatcher.prototype.$types[name];
             typeQueue.push({ name: name, def: def });
             if (!enqueue) flushTypeQueue();
@@ -1289,15 +1304,12 @@ if (typeof module !== "undefined" && typeof exports !== "undefined" && module.ex
         };
 
         /* No need to document $get, since it returns this */
-        this.$get = ['$injector', function($injector) {
+        this.$get = ['$injector', function ($injector) {
             injector = $injector;
             enqueue = false;
             UrlMatcher.prototype.$types = {};
             flushTypeQueue();
 
-            forEach(defaultTypes, function(type, name) {
-                if (!UrlMatcher.prototype.$types[name]) UrlMatcher.prototype.$types[name] = new Type(type);
-            });
             return this;
         }];
 
@@ -1305,7 +1317,7 @@ if (typeof module !== "undefined" && typeof exports !== "undefined" && module.ex
         // types to be overridden, `flushTypeQueue()` waits until `$urlMatcherFactory` is injected
         // before actually wiring up and assigning type definitions
         function flushTypeQueue() {
-            forEach(typeQueue, function(type) {
+            forEach(typeQueue, function (type) {
                 if (UrlMatcher.prototype.$types[type.name]) {
                     throw new Error("A type named '" + type.name + "' has already been defined.");
                 }
@@ -1313,6 +1325,11 @@ if (typeof module !== "undefined" && typeof exports !== "undefined" && module.ex
                 UrlMatcher.prototype.$types[type.name] = def;
             });
         }
+
+        UrlMatcher.prototype.$types = {};
+        forEach(defaultTypes, function (type, name) {
+            if (!UrlMatcher.prototype.$types[name]) UrlMatcher.prototype.$types[name] = new Type(type);
+        });
     }
 
     // Register as a provider so it's available to other providers
@@ -1346,7 +1363,7 @@ if (typeof module !== "undefined" && typeof exports !== "undefined" && module.ex
 
         // Interpolates matched values into a String.replace()-style pattern
         function interpolate(pattern, match) {
-            return pattern.replace(/\$(\$|\d{1,2})/, function(m, what) {
+            return pattern.replace(/\$(\$|\d{1,2})/, function (m, what) {
                 return match[what === '$' ? 0 : Number(what)];
             });
         }
@@ -1382,7 +1399,7 @@ if (typeof module !== "undefined" && typeof exports !== "undefined" && module.ex
          *
          * @return {object} `$urlRouterProvider` - `$urlRouterProvider` instance
          */
-        this.rule = function(rule) {
+        this.rule = function (rule) {
             if (!isFunction(rule)) throw new Error("'rule' must be a function");
             rules.push(rule);
             return this;
@@ -1419,10 +1436,10 @@ if (typeof module !== "undefined" && typeof exports !== "undefined" && module.ex
          *
          * @return {object} `$urlRouterProvider` - `$urlRouterProvider` instance
          */
-        this.otherwise = function(rule) {
+        this.otherwise = function (rule) {
             if (isString(rule)) {
                 var redirect = rule;
-                rule = function() { return redirect; };
+                rule = function () { return redirect; };
             }
             else if (!isFunction(rule)) throw new Error("'rule' must be a function");
             otherwise = rule;
@@ -1473,7 +1490,7 @@ if (typeof module !== "undefined" && typeof exports !== "undefined" && module.ex
          * @param {string|object} what The incoming path that you want to redirect.
          * @param {string|object} handler The path you want to redirect your user to.
          */
-        this.when = function(what, handler) {
+        this.when = function (what, handler) {
             var redirect, handlerIsString = isString(handler);
             if (isString(what)) what = $urlMatcherFactory.compile(what);
 
@@ -1481,25 +1498,25 @@ if (typeof module !== "undefined" && typeof exports !== "undefined" && module.ex
                 throw new Error("invalid 'handler' in when()");
 
             var strategies = {
-                matcher: function(what, handler) {
+                matcher: function (what, handler) {
                     if (handlerIsString) {
                         redirect = $urlMatcherFactory.compile(handler);
-                        handler = ['$match', function($match) { return redirect.format($match); }];
+                        handler = ['$match', function ($match) { return redirect.format($match); }];
                     }
-                    return extend(function($injector, $location) {
+                    return extend(function ($injector, $location) {
                         return handleIfMatch($injector, handler, what.exec($location.path(), $location.search()));
                     }, {
                         prefix: isString(what.prefix) ? what.prefix : ''
                     });
                 },
-                regex: function(what, handler) {
+                regex: function (what, handler) {
                     if (what.global || what.sticky) throw new Error("when() RegExp must not be global or sticky");
 
                     if (handlerIsString) {
                         redirect = handler;
-                        handler = ['$match', function($match) { return interpolate(redirect, $match); }];
+                        handler = ['$match', function ($match) { return interpolate(redirect, $match); }];
                     }
-                    return extend(function($injector, $location) {
+                    return extend(function ($injector, $location) {
                         return handleIfMatch($injector, handler, what.exec($location.path()));
                     }, {
                         prefix: regExpPrefix(what)
@@ -1564,7 +1581,7 @@ if (typeof module !== "undefined" && typeof exports !== "undefined" && module.ex
          * @param {boolean} defer Indicates whether to defer location change interception. Passing
                   no parameter is equivalent to `true`.
          */
-        this.deferIntercept = function(defer) {
+        this.deferIntercept = function (defer) {
             if (defer === undefined) defer = true;
             interceptDeferred = defer;
         };
@@ -1648,15 +1665,15 @@ if (typeof module !== "undefined" && typeof exports !== "undefined" && module.ex
                  * });
                  * </pre>
                  */
-                sync: function() {
+                sync: function () {
                     update();
                 },
 
-                listen: function() {
+                listen: function () {
                     return listen();
                 },
 
-                update: function(read) {
+                update: function (read) {
                     if (read) {
                         location = $location.url();
                         return;
@@ -1667,7 +1684,7 @@ if (typeof module !== "undefined" && typeof exports !== "undefined" && module.ex
                     $location.replace();
                 },
 
-                push: function(urlMatcher, params, options) {
+                push: function (urlMatcher, params, options) {
                     $location.url(urlMatcher.format(params || {}));
                     if (options && options.replace) $location.replace();
                 },
@@ -1697,7 +1714,7 @@ if (typeof module !== "undefined" && typeof exports !== "undefined" && module.ex
                  *
                  * @returns {string} Returns the fully compiled URL, or `null` if `params` fail validation against `urlMatcher`
                  */
-                href: function(urlMatcher, params, options) {
+                href: function (urlMatcher, params, options) {
                     if (!urlMatcher.validates(params)) return null;
 
                     var isHtml5 = $locationProvider.html5Mode();
@@ -1756,7 +1773,7 @@ if (typeof module !== "undefined" && typeof exports !== "undefined" && module.ex
             // Derive parent state from a hierarchical name only if 'parent' is not explicitly defined.
             // state.children = [];
             // if (parent) parent.children.push(state);
-            parent: function(state) {
+            parent: function (state) {
                 if (isDefined(state.parent) && state.parent) return findState(state.parent);
                 // regex matches any valid composite state name
                 // would match "contact.list" but not "contacts"
@@ -1765,7 +1782,7 @@ if (typeof module !== "undefined" && typeof exports !== "undefined" && module.ex
             },
 
             // inherit 'data' from parent and override by own values (if any)
-            data: function(state) {
+            data: function (state) {
                 if (state.parent && state.parent.data) {
                     state.data = state.self.data = extend({}, state.parent.data, state.data);
                 }
@@ -1773,7 +1790,7 @@ if (typeof module !== "undefined" && typeof exports !== "undefined" && module.ex
             },
 
             // Build a URLMatcher if necessary, either via a relative or absolute URL
-            url: function(state) {
+            url: function (state) {
                 var url = state.url, config = { params: state.params || {} };
 
                 if (isString(url)) {
@@ -1786,12 +1803,12 @@ if (typeof module !== "undefined" && typeof exports !== "undefined" && module.ex
             },
 
             // Keep track of the closest ancestor state that has a URL (i.e. is navigable)
-            navigable: function(state) {
+            navigable: function (state) {
                 return state.url ? state : (state.parent ? state.parent.navigable : null);
             },
 
             // Derive parameters for this state and ensure they're a super-set of parent's parameters
-            params: function(state) {
+            params: function (state) {
                 if (!state.params) {
                     return state.url ? state.url.params : state.parent.params;
                 }
@@ -1803,25 +1820,25 @@ if (typeof module !== "undefined" && typeof exports !== "undefined" && module.ex
             // 'views' property will mean the default unnamed view properties are ignored. This
             // is also a good time to resolve view names to absolute names, so everything is a
             // straight lookup at link time.
-            views: function(state) {
+            views: function (state) {
                 var views = {};
 
-                forEach(isDefined(state.views) ? state.views : { '': state }, function(view, name) {
+                forEach(isDefined(state.views) ? state.views : { '': state }, function (view, name) {
                     if (name.indexOf('@') < 0) name += '@' + state.parent.name;
                     views[name] = view;
                 });
                 return views;
             },
 
-            ownParams: function(state) {
+            ownParams: function (state) {
                 state.params = state.params || {};
 
                 if (!state.parent) {
                     return objectKeys(state.params);
                 }
-                var paramNames = {}; forEach(state.params, function(v, k) { paramNames[k] = true; });
+                var paramNames = {}; forEach(state.params, function (v, k) { paramNames[k] = true; });
 
-                forEach(state.parent.params, function(v, k) {
+                forEach(state.parent.params, function (v, k) {
                     if (!paramNames[k]) {
                         throw new Error("Missing required parameter '" + k + "' in state '" + state.name + "'");
                     }
@@ -1829,19 +1846,19 @@ if (typeof module !== "undefined" && typeof exports !== "undefined" && module.ex
                 });
                 var ownParams = [];
 
-                forEach(paramNames, function(own, p) {
+                forEach(paramNames, function (own, p) {
                     if (own) ownParams.push(p);
                 });
                 return ownParams;
             },
 
             // Keep a full path from the root down to this state as this is needed for state activation.
-            path: function(state) {
+            path: function (state) {
                 return state.parent ? state.parent.path.concat(state) : []; // exclude root from path
             },
 
             // Speed up $state.contains() as it's used a lot
-            includes: function(state) {
+            includes: function (state) {
                 var includes = state.parent ? extend({}, state.parent.includes) : {};
                 includes[state.name] = true;
                 return includes;
@@ -1900,7 +1917,7 @@ if (typeof module !== "undefined" && typeof exports !== "undefined" && module.ex
             state = inherit(state, {
                 self: state,
                 resolve: state.resolve || {},
-                toString: function() { return this.name; }
+                toString: function () { return this.name; }
             });
 
             var name = state.name;
@@ -1924,7 +1941,7 @@ if (typeof module !== "undefined" && typeof exports !== "undefined" && module.ex
 
             // Register the state in the global state list and with $urlRouter if necessary.
             if (!state[abstractKey] && state.url) {
-                $urlRouterProvider.when(state.url, ['$match', '$stateParams', function($match, $stateParams) {
+                $urlRouterProvider.when(state.url, ['$match', '$stateParams', function ($match, $stateParams) {
                     if ($state.$current.navigable != state || !equalForKeys($match, $stateParams)) {
                         $state.transitionTo(state, $match, { location: false });
                     }
@@ -2185,11 +2202,13 @@ if (typeof module !== "undefined" && typeof exports !== "undefined" && module.ex
          *
          * - **`onEnter`** - {object=} - Callback function for when a state is entered. Good way
          *   to trigger an action or dispatch an event, such as opening a dialog.
+         * If minifying your scripts, make sure to use the `['injection1', 'injection2', function(injection1, injection2){}]` syntax.
          *
          * <a id='onExit'></a>
          *
          * - **`onExit`** - {object=} - Callback function for when a state is exited. Good way to
          *   trigger an action or dispatch an event, such as opening a dialog.
+         * If minifying your scripts, make sure to use the `['injection1', 'injection2', function(injection1, injection2){}]` syntax.
          *
          * <a id='reloadOnSearch'></a>
          *
@@ -2321,11 +2340,11 @@ if (typeof module !== "undefined" && typeof exports !== "undefined" && module.ex
                 }
                 var retryTransition = $state.transition = $q.when(evt.retry);
 
-                retryTransition.then(function() {
+                retryTransition.then(function () {
                     if (retryTransition !== $state.transition) return TransitionSuperseded;
                     redirect.options.$retry = true;
                     return $state.transitionTo(redirect.to, redirect.toParams, redirect.options);
-                }, function() {
+                }, function () {
                     return TransitionAborted;
                 });
                 $urlRouter.update();
@@ -2594,7 +2613,7 @@ if (typeof module !== "undefined" && typeof exports !== "undefined" && module.ex
                 // and return a promise for the new state. We also keep track of what the
                 // current promise is, so that we can detect overlapping transitions and
                 // keep only the outcome of the last transition.
-                var transition = $state.transition = resolved.then(function() {
+                var transition = $state.transition = resolved.then(function () {
                     var l, entering, exiting;
 
                     if ($state.transition !== transition) return TransitionSuperseded;
@@ -2653,7 +2672,7 @@ if (typeof module !== "undefined" && typeof exports !== "undefined" && module.ex
                     $urlRouter.update(true);
 
                     return $state.current;
-                }, function(error) {
+                }, function (error) {
                     if ($state.transition !== transition) return TransitionSuperseded;
 
                     $state.transition = null;
@@ -2853,16 +2872,12 @@ if (typeof module !== "undefined" && typeof exports !== "undefined" && module.ex
              * @description
              * Returns the state configuration object for any specific state or all states.
              *
-             * @param {string|object=} stateOrName (absolute or relative) If provided, will only get the config for
+             * @param {string|Sbject=} stateOrName (absolute or relative) If provided, will only get the config for
              * the requested state. If not provided, returns an array of ALL state configs.
-             * @returns {object|array} State configuration object or array of all objects.
+             * @returns {Object|Array} State configuration object or array of all objects.
              */
-            $state.get = function(stateOrName, context) {
-                if (arguments.length === 0) {
-                    var list = [];
-                    forEach(states, function(state) { list.push(state.self); });
-                    return list;
-                }
+            $state.get = function (stateOrName, context) {
+                if (arguments.length === 0) return objectKeys(states).map(function (name) { return states[name].self; });
                 var state = findState(stateOrName, context);
                 return (state && state.self) ? state.self : null;
             };
@@ -2880,19 +2895,19 @@ if (typeof module !== "undefined" && typeof exports !== "undefined" && module.ex
                 // to the set that should be visible to the state, and are independent of when we update
                 // the global $state and $stateParams values.
                 dst.resolve = $resolve.resolve(state.resolve, locals, dst.resolve, state);
-                var promises = [dst.resolve.then(function(globals) {
+                var promises = [dst.resolve.then(function (globals) {
                     dst.globals = globals;
                 })];
                 if (inherited) promises.push(inherited);
 
                 // Resolve template and dependencies for all views.
-                forEach(state.views, function(view, name) {
+                forEach(state.views, function (view, name) {
                     var injectables = (view.resolve && view.resolve !== state.resolve ? view.resolve : {});
-                    injectables.$template = [function() {
+                    injectables.$template = [function () {
                         return $view.load(name, { view: view, locals: locals, params: $stateParams }) || '';
                     }];
 
-                    promises.push($resolve.resolve(injectables, locals, dst.resolve, state).then(function(result) {
+                    promises.push($resolve.resolve(injectables, locals, dst.resolve, state).then(function (result) {
                         // References to the controller (only instantiated at link time)
                         if (isFunction(view.controllerProvider) || isArray(view.controllerProvider)) {
                             var injectLocals = angular.extend({}, injectables, locals);
@@ -2908,7 +2923,7 @@ if (typeof module !== "undefined" && typeof exports !== "undefined" && module.ex
                 });
 
                 // Wait for all the promises and then return the activation object
-                return $q.all(promises).then(function(values) {
+                return $q.all(promises).then(function (values) {
                     return dst;
                 });
             }
@@ -3019,7 +3034,7 @@ if (typeof module !== "undefined" && typeof exports !== "undefined" && module.ex
          * Reverts back to using the core [`$anchorScroll`](http://docs.angularjs.org/api/ng.$anchorScroll) service for
          * scrolling based on the url anchor.
          */
-        this.useAnchorScroll = function() {
+        this.useAnchorScroll = function () {
             useAnchorScroll = true;
         };
 
@@ -3037,13 +3052,13 @@ if (typeof module !== "undefined" && typeof exports !== "undefined" && module.ex
          * If you prefer to rely on `$anchorScroll` to scroll the view to the anchor,
          * this can be enabled by calling {@link ui.router.state.$uiViewScrollProvider#methods_useAnchorScroll `$uiViewScrollProvider.useAnchorScroll()`}.
          */
-        this.$get = ['$anchorScroll', '$timeout', function($anchorScroll, $timeout) {
+        this.$get = ['$anchorScroll', '$timeout', function ($anchorScroll, $timeout) {
             if (useAnchorScroll) {
                 return $anchorScroll;
             }
 
-            return function($element) {
-                $timeout(function() {
+            return function ($element) {
+                $timeout(function () {
                     $element[0].scrollIntoView();
                 }, 0, false);
             };
@@ -3169,9 +3184,9 @@ if (typeof module !== "undefined" && typeof exports !== "undefined" && module.ex
     function $ViewDirective($state, $injector, $uiViewScroll) {
 
         function getService() {
-            return ($injector.has) ? function(service) {
+            return ($injector.has) ? function (service) {
                 return $injector.has(service) ? $injector.get(service) : null;
-            } : function(service) {
+            } : function (service) {
                 try {
                     return $injector.get(service);
                 } catch (e) {
@@ -3187,17 +3202,17 @@ if (typeof module !== "undefined" && typeof exports !== "undefined" && module.ex
         // Returns a set of DOM manipulation functions based on which Angular version
         // it should use
         function getRenderer(attrs, scope) {
-            var statics = function() {
+            var statics = function () {
                 return {
-                    enter: function(element, target, cb) { target.after(element); cb(); },
-                    leave: function(element, cb) { element.remove(); cb(); }
+                    enter: function (element, target, cb) { target.after(element); cb(); },
+                    leave: function (element, cb) { element.remove(); cb(); }
                 };
             };
 
             if ($animate) {
                 return {
-                    enter: function(element, target, cb) { $animate.enter(element, null, target, cb); },
-                    leave: function(element, cb) { $animate.leave(element, cb); }
+                    enter: function (element, target, cb) { $animate.enter(element, null, target, cb); },
+                    leave: function (element, cb) { $animate.leave(element, cb); }
                 };
             }
 
@@ -3205,8 +3220,8 @@ if (typeof module !== "undefined" && typeof exports !== "undefined" && module.ex
                 var animate = $animator && $animator(scope, attrs);
 
                 return {
-                    enter: function(element, target, cb) { animate.enter(element, null, target); cb(); },
-                    leave: function(element, cb) { animate.leave(element); cb(); }
+                    enter: function (element, target, cb) { animate.enter(element, null, target); cb(); },
+                    leave: function (element, cb) { animate.leave(element); cb(); }
                 };
             }
 
@@ -3218,17 +3233,17 @@ if (typeof module !== "undefined" && typeof exports !== "undefined" && module.ex
             terminal: true,
             priority: 400,
             transclude: 'element',
-            compile: function(tElement, tAttrs, $transclude) {
-                return function(scope, $element, attrs) {
+            compile: function (tElement, tAttrs, $transclude) {
+                return function (scope, $element, attrs) {
                     var previousEl, currentEl, currentScope, latestLocals,
                         onloadExp = attrs.onload || '',
                         autoScrollExp = attrs.autoscroll,
                         renderer = getRenderer(attrs, scope);
 
-                    scope.$on('$stateChangeSuccess', function() {
+                    scope.$on('$stateChangeSuccess', function () {
                         updateView(false);
                     });
-                    scope.$on('$viewContentLoading', function() {
+                    scope.$on('$viewContentLoading', function () {
                         updateView(false);
                     });
 
@@ -3246,7 +3261,7 @@ if (typeof module !== "undefined" && typeof exports !== "undefined" && module.ex
                         }
 
                         if (currentEl) {
-                            renderer.leave(currentEl, function() {
+                            renderer.leave(currentEl, function () {
                                 previousEl = null;
                             });
 
@@ -3262,7 +3277,7 @@ if (typeof module !== "undefined" && typeof exports !== "undefined" && module.ex
 
                         if (!firstTime && previousLocals === latestLocals) return; // nothing to do
 
-                        var clone = $transclude(newScope, function(clone) {
+                        var clone = $transclude(newScope, function (clone) {
                             renderer.enter(clone, $element, function onUiViewEnter() {
                                 if (angular.isDefined(autoScrollExp) && !autoScrollExp || scope.$eval(autoScrollExp)) {
                                     $uiViewScroll(clone);
@@ -3300,9 +3315,9 @@ if (typeof module !== "undefined" && typeof exports !== "undefined" && module.ex
         return {
             restrict: 'ECA',
             priority: -400,
-            compile: function(tElement) {
+            compile: function (tElement) {
                 var initial = tElement.html();
-                return function(scope, $element, attrs) {
+                return function (scope, $element, attrs) {
                     var name = attrs.uiView || attrs.name || '',
                         inherited = $element.inheritedData('$uiView');
 
@@ -3428,7 +3443,7 @@ if (typeof module !== "undefined" && typeof exports !== "undefined" && module.ex
         return {
             restrict: 'A',
             require: ['?^uiSrefActive', '?^uiSrefActiveEq'],
-            link: function(scope, element, attrs, uiSrefActive) {
+            link: function (scope, element, attrs, uiSrefActive) {
                 var ref = parseStateRef(attrs.uiSref, $state.current.name);
                 var params = null, url = null, base = stateContext(element) || $state.$current;
                 var isForm = element[0].nodeName === "FORM";
@@ -3437,13 +3452,13 @@ if (typeof module !== "undefined" && typeof exports !== "undefined" && module.ex
                 var options = { relative: base, inherit: true };
                 var optionsOverride = scope.$eval(attrs.uiSrefOpts) || {};
 
-                angular.forEach(allowedOptions, function(option) {
+                angular.forEach(allowedOptions, function (option) {
                     if (option in optionsOverride) {
                         options[option] = optionsOverride[option];
                     }
                 });
 
-                var update = function(newVal) {
+                var update = function (newVal) {
                     if (newVal) params = newVal;
                     if (!nav) return;
 
@@ -3461,7 +3476,7 @@ if (typeof module !== "undefined" && typeof exports !== "undefined" && module.ex
                 };
 
                 if (ref.paramExpr) {
-                    scope.$watch(ref.paramExpr, function(newVal, oldVal) {
+                    scope.$watch(ref.paramExpr, function (newVal, oldVal) {
                         if (newVal !== params) update(newVal);
                     }, true);
                     params = scope.$eval(ref.paramExpr);
@@ -3470,16 +3485,16 @@ if (typeof module !== "undefined" && typeof exports !== "undefined" && module.ex
 
                 if (isForm) return;
 
-                element.bind("click", function(e) {
+                element.bind("click", function (e) {
                     var button = e.which || e.button;
                     if (!(button > 1 || e.ctrlKey || e.metaKey || e.shiftKey || element.attr('target'))) {
                         // HACK: This is to allow ng-clicks to be processed before the transition is initiated:
-                        var transition = $timeout(function() {
+                        var transition = $timeout(function () {
                             $state.go(ref.state, params, options);
                         });
                         e.preventDefault();
 
-                        e.preventDefault = function() {
+                        e.preventDefault = function () {
                             $timeout.cancel(transition);
                         };
                     }
@@ -3566,7 +3581,7 @@ if (typeof module !== "undefined" && typeof exports !== "undefined" && module.ex
     function $StateRefActiveDirective($state, $stateParams, $interpolate) {
         return {
             restrict: "A",
-            controller: ['$scope', '$element', '$attrs', function($scope, $element, $attrs) {
+            controller: ['$scope', '$element', '$attrs', function ($scope, $element, $attrs) {
                 var state, params, activeClass;
 
                 // There probably isn't much point in $observing this
@@ -3575,7 +3590,7 @@ if (typeof module !== "undefined" && typeof exports !== "undefined" && module.ex
                 activeClass = $interpolate($attrs.uiSrefActiveEq || $attrs.uiSrefActive || '', false)($scope);
 
                 // Allow uiSref to communicate with uiSrefActive[Equals]
-                this.$$setStateInfo = function(newState, newParams) {
+                this.$$setStateInfo = function (newState, newParams) {
                     state = $state.get(newState, stateContext($element));
                     params = newParams;
                     update();
@@ -3623,7 +3638,7 @@ if (typeof module !== "undefined" && typeof exports !== "undefined" && module.ex
      */
     $IsStateFilter.$inject = ['$state'];
     function $IsStateFilter($state) {
-        return function(state) {
+        return function (state) {
             return $state.is(state);
         };
     }
@@ -3639,7 +3654,7 @@ if (typeof module !== "undefined" && typeof exports !== "undefined" && module.ex
      */
     $IncludedByStateFilter.$inject = ['$state'];
     function $IncludedByStateFilter($state) {
-        return function(state) {
+        return function (state) {
             return $state.includes(state);
         };
     }
