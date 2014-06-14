@@ -51,8 +51,11 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Web.ApplicationServices" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AccountItems\AppMembershipUser.cs" />
+    <Compile Include="AccountItems\UserIdentity.cs" />
     <Compile Include="AccountItems\UserQuizList.cs" />
     <Compile Include="Quiz\Answer.cs" />
     <Compile Include="Quiz\KeyValueItem.cs" />

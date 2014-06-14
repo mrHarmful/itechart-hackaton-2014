@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
+using Seed.Bcs;
 using Seed.Entities;
 using Seed.Entities.AccountItems;
 using Seed.Web.Uipc.ViewModels;
@@ -47,7 +48,9 @@ namespace Seed.Web.Uipc
             result.Meta.EndDate = question.EndDate;
             result.Meta.SelectedCategoryId = question.CategoryId;
             result.Meta.SelectedPriorityId = question.PriorityId;
-            result.Meta.SelectedTargetIds = question.Targets;
+            result.Meta.Targets =
+                SampleBc.Instance.GetTargets().Where(t => question.Targets.Contains(t.Id)).ToList().
+                    MapToCaptionSelectList("Departments");
             result.Meta.StartDate = question.StartDate;
             result.Question = new QuestionVm();
             result.Question.Enquiry = question.Enquiry;
@@ -79,7 +82,9 @@ namespace Seed.Web.Uipc
             result.Meta.Reason = quiz.Reason;
             result.Meta.SelectedCategoryId = quiz.CategoryId;
             result.Meta.SelectedPriorityId = (int) quiz.PriorityId;
-            result.Meta.SelectedTargetIds = quiz.Targets;
+            result.Meta.Targets =
+                SampleBc.Instance.GetTargets().Where(t => quiz.Targets.Contains(t.Id)).ToList().MapToCaptionSelectList(
+                    "Departments");
             result.Meta.StartDate = quiz.StartDate;
             result.Meta.Title = quiz.Title;
             result.Questions = new List<QuestionVm>();

@@ -24,7 +24,7 @@ namespace Seed.Web.Uipc.ViewModels
             result.Id = Id;
             result.PriorityId = Meta.SelectedPriorityId;
             result.StartDate = Meta.StartDate;
-            result.Targets = Meta.SelectedTargetIds;
+            result.Targets = Meta.Targets.Items.Where(t => t.Selected).Select(t => long.Parse(t.Value)).ToList(); ;
             result.Answers = Question.Answers.Select(a => a.ToEntity()).ToList();
             result.CanSkip = Question.CanSkip;
             result.Enquiry = Question.Enquiry;
