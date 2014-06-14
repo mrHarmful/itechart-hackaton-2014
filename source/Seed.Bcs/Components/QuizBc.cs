@@ -55,64 +55,15 @@ namespace Seed.Bcs
 
         public QuizList GetQuizListForAttend(long userId)
         {
-            var result = new QuizList(); //_quizDac.GetQuizList(userId);
-            result.Quizzes = new List<Quiz>();
-            for (int i = 1; i < 12; i++)
-            {
-                var q = new Quiz();
-                q.Title = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer.";
-                q.Id = i;
-                q.CategoryId = 1;
-                q.Targets = new List<long>();
-                q.Targets.Add(1);
-                q.PriorityId = 1;
-                for (int j = 0; j < 11; j++)
-                {
-                    var qq = new SingleQuestion();
-                    qq.Enquiry = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer.";
-                    q.Questions.Add(qq);
-                }
-                result.Quizzes.Add(q);
-            }
-
-            //var result = _quizDac.GetUserQuizList(userId);
+            var result = _quizDac.GetAvailableQuizes(userId);
 
             return result;
         }
 
         public UserQuizList GetQuizList(long userId)
         {
-            UserQuizList result = new UserQuizList(); //_quizDac.GetQuizList(userId);
-            result.Questions = new List<SingleQuestion>();
-            for (int i = 1; i < 12; i++)
-            {
-                var q = new SingleQuestion();
-                q.Enquiry = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer.";
-                q.Id = i;
-                q.CategoryId = 1;
-                q.Targets = new List<long>();
-                q.Targets.Add(1);
-                q.PriorityId = 1;
-                result.Questions.Add(q);
-            }
-            result.Quizzes = new List<Quiz>();
-            for (int i = 1; i < 12; i++)
-            {
-                var q = new Quiz();
-                q.Title = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer.";
-                q.Id = i;
-                q.CategoryId = 1;
-                q.Targets = new List<long>();
-                q.Targets.Add(1);
-                q.PriorityId = 1;
-                for (int j = 0; j < 11; j++)
-                {
-                    var qq = new SingleQuestion();
-                    qq.Enquiry = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer.";
-                    q.Questions.Add(qq);
-                }
-                result.Quizzes.Add(q);
-            }
+            var result = _quizDac.GetUserQuizList(userId);
+            
             return result;
         }
 

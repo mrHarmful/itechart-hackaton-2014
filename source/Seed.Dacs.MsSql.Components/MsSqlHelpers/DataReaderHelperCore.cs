@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Data.SqlClient;
 using Seed.Entities;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace Seed.Dacs.MsSql.Components.MsSqlHelpers
 {
@@ -16,8 +18,32 @@ namespace Seed.Dacs.MsSql.Components.MsSqlHelpers
             return new KeyValueItem{Id = key, Caption = value};
         }
 
+        public static Quiz GetSearchQuiz(this SqlDataReader reader)
+        {
+            Quiz result = new Quiz();
+            //Id, Title, Reason, CategoryId, PriorityId, CreateDate, StartTime, EndTime, CreateCost, QuestionsCount
 
+            result.Id = reader.GetValue<long>("Id");
+            result.Title = reader.GetValue<string>("Title");
+            result.Reason = reader.GetValue<string>("Reason");
+            result.CategoryId = reader.GetValue<long>("CategoryId");
+            result.PriorityId = reader.GetValue<long>("PriorityId");
+            result.StartDate = reader.GetValue<DateTime>("StartTime");
+            result.EndDate = reader.GetValue<DateTime>("EndTime");
 
+            int questionsCount = reader.GetValue<int>("QuestionsCount");
+            result.Questions = new List<Question>(new Question[questionsCount]);
+
+            return result;
+        }
+
+        public static Tuple<long, long> GetRestrictionEntry(this SqlDataReader reader)
+        {
+            long itemId = reader.GetValue<long>("ItemId");
+            long deptId = (long)reader.GetValue<int>("DeptId");
+
+            return new Tuple<long, long>(itemId, deptId);
+        }
 
 
         public static T GetValue<T>(this SqlDataReader dataReader, string columnName)

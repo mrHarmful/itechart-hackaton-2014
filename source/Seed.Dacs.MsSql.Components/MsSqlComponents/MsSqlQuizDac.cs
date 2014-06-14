@@ -10,9 +10,25 @@ namespace Seed.Dacs.MsSql.Components.MsSqlComponents
     {
         #region IQuizDac Members
 
+        public QuizList GetAvailableQuizes(long userId)
+        {
+            var command = new SearchAvailableQuizesCommand(userId);
+
+            command.Execute();
+
+            return command.CommandResult;
+        }
+
         public UserQuizList GetUserQuizList(long userId)
         {
-            throw new NotImplementedException();
+            var command = new SearchQuizesByUserIdCommand(userId);
+
+            command.Execute();
+
+            UserQuizList list = new UserQuizList();
+            list.Quizzes = command.CommandResult.Quizzes;
+
+            return list;
         }
 
         public Quiz GetQuiz(long quizId)

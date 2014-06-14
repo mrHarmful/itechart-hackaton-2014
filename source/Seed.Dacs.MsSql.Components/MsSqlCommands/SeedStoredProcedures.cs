@@ -12,6 +12,14 @@
 
         public const string GetDepartments = "sp_Common_GetDepartments";
 
+        public const string SearchQuizzes = "sp_SearchSessions";
+
+        public const string SearchQuizzesByCreator = "sp_SearchSessionsByCreator";
+
+        public const string SearchSingleQuestions = "sp_SearchSingleQuestions";
+
+        public const string SearchSingleQuestionsByCreator = "sp_SearchSingleQuestionsByCreator";
+
         #endregion
 
         #region Put stored procedures
