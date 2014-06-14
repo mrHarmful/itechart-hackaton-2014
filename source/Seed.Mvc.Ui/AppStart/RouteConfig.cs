@@ -9,6 +9,8 @@ namespace Seed.Web.Api
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            routes.IgnoreRoute("Scripts/*");
+
             routes.MapRoute("LandingPage",
                             "",
                             new

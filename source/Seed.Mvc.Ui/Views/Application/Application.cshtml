@@ -1,8 +1,7 @@
 ﻿@using System.Globalization
 @using System.Web.Optimization
-@using Seed.Mvc.Uipc.ViewModelsProviders
+@using Seed.Web.Uipc
 @using Newtonsoft.Json
-@using Newtonsoft.Json.Serialization
 
 <!DOCTYPE html>
 
@@ -17,27 +16,8 @@
         @Styles.Render("~/Content/less/less-bundle")
     </head>
     <body class="app">
-        <header>
-        <div class="container">
-            <div class="row row-centred">
-                <div class="col-lg-2">
-                    <img title="" alt="" 
-                         src="~/Content/Images/Logo/logo.png"/>
-                </div>
-                <div class=" col-lg-10 txt-r">
-                    <span>Hello, username |</span>
-                    <a href="/log-off" target="_self">
-                        Log Off
-                    </a>
-                </div>
-                
-                </div>
-            </div>
-        </header>
-        <div class="container">
-            <div ui-view></div>
+        <div class="container" ui-view>
         </div>
-        @{Html.RenderPartial("Partial/Footer");}
         @Scripts.Render("~/Scripts/lib-bundle")
         @Scripts.Render("~/Scripts/app-bundle")
         <script type="text/javascript">

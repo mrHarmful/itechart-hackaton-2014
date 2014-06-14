@@ -4,6 +4,98 @@
 @import '_mixins.less';
 @import '_variables.less';
 
-.navigation{
+.navigation {
     background-color: @brand-color;
+    height: 100%;
+    color: @white;
+
+    a.logo {
+        font-size: 50px;
+        margin-left: 15px;
+    }
+
+    .menu {
+        li {
+            display: block;
+            position: relative;
+            border-top: 1px solid rgba(255,255,255,0.5);
+            transition: background-color linear 0.3s;
+            padding: 15px 10px;
+            cursor: pointer;
+
+            > a {
+                color: @white;
+                font-weight: bold;
+                font-size: 18px;
+
+                i {
+                    font-size: 23px;
+                }
+            }
+
+                > a:hover {
+                    text-decoration: none;
+                }
+        }
+
+        li:hover {
+            background-color: rgba(255,255,255,0.2);
+        }
+
+        li:last-child{
+            border-bottom: 1px solid rgba(255,255,255,0.5);
+        }
+    }
+
+    .alerts{
+        margin-top: 20px;
+
+        li{
+            background-color: #FB6B5B;
+            padding: 15px 10px;
+            margin-bottom: 5px;
+
+            .icon-remove{
+                position: relative;
+                top: -7px;
+                font-size: 12px;
+                padding: 2px;
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+.top-bar {
+    height: 71px;
+    background-color: @secondary-color;
+    margin-left: -15px;
+    margin-right: -15px;
+    color: @white;
+    padding: 5px 10px;
+
+    .title{
+        font-size: 18px;
+    }
+
+    .description{
+        font-size: 15px;
+    }
+
+    .user{
+        a, a:hover{
+            color: white;
+        }
+    }
+}
+
+.app {
+    > .container {
+        max-width: none;
+        height: 100%;
+
+        > .row {
+            height: 100%;
+        }
+    }
 }

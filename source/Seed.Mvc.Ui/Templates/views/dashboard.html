@@ -1,21 +1,66 @@
 ﻿<div class="row">
-    <div class="col-lg-4">
-        <ul class="list-unstyled navigation">
-            <li>
-                My profile
-            </li>
-            <li>
-                My surveys
-            </li>
-            <li>
-                My achivements
-            </li>
-            <li>
-                My notifications
-            </li>
-        </ul>
-    </div>
-    <div class="col-lg-8">
-        
+    <aside class="col-lg-2 navigation">
+        <div class="row">
+            <a class="logo">
+                ?
+            </a>
+        </div>
+        <div class="row">
+            <ul class="list-unstyled menu">
+                <li>
+                    <a>
+                        <i class="icon-user"></i>
+                        Profile
+                    </a>
+                </li>
+                <li>
+                    <a ui-sref="dashboard.surveysManager">
+                        <i class="icon-note"></i>
+                        Manage surveys
+                    </a>
+                </li>
+                <li>
+                    <a>
+                        <i class="icon-star"></i>
+                        Available surveys
+                    </a>
+                </li>
+                <li>
+                    <a>
+                        <i class="icon-star"></i>
+                        My achivements
+                    </a>
+                </li>
+                <li>
+                    <a>
+                        <i class="icon-stack"></i>
+                        My notifications
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="row">
+            <ul class="list-unstyled alerts">
+                <li>
+                    <i class="icon-remove pull-right"></i>
+                    Sample alert!
+                </li>
+            </ul>
+        </div>
+    </aside>
+    <div class="col-lg-10">
+        <div class="top-bar">
+            <i class="icon-page-next"></i>
+            <span class="title" ng-bind="title"></span>
+            -
+            <span class="description" ng-bind="description"></span>
+            <div class="pull-right user">
+                <i class="icon-user"></i>
+                <span>Username</span>
+                |
+                <a>Log out</a>
+            </div>
+        </div>
+        <div ui-view></div>
     </div>
 </div>

@@ -153,7 +153,8 @@
     <Content Include="Global.asax" />
     <Content Include="Scripts\app\controllers\app\dashboardController.js" />
     <Content Include="Scripts\app\controllers\app\errorController.js" />
-    <Content Include="Scripts\app\controllers\views\sampleController.js" />
+    <Content Include="Scripts\app\controllers\views\surveyManagerController.js" />
+    <Content Include="Scripts\app\controllers\views\profileController.js" />
     <Content Include="Scripts\app\directives\controls\paginationDirective.js" />
     <Content Include="Scripts\app\directives\controls\selectListDirective.js" />
     <Content Include="Scripts\app\directives\events\documentClickDirective.js" />
@@ -191,6 +192,8 @@
     <Content Include="Scripts\lib\moment-2.6.0.js" />
     <Content Include="Templates\partials\pagination.html" />
     <Content Include="Templates\partials\selectList.html" />
+    <Content Include="Templates\views\surveysManager.html" />
+    <Content Include="Templates\views\profile.html" />
     <Content Include="Templates\views\dashboard.html" />
     <Content Include="Templates\views\error.html" />
     <Content Include="Web.config">
@@ -218,10 +221,8 @@
     <Content Include="Content\Less\scafollding.less" />
     <Content Include="Content\Less\text.less" />
     <Content Include="Content\Less\visibility.less" />
-    <Content Include="Content\Less\tiles.less" />
     <Content Include="Content\Less\header.less" />
     <Content Include="Content\Less\landing-page.less" />
-    <Content Include="Content\Less\graphs.less" />
     <Content Include="Content\Less\buttons.less" />
     <Content Include="Content\Fonts\icomoon.eot" />
     <Content Include="Content\Fonts\icomoon.ttf" />
@@ -240,7 +241,6 @@
     <Content Include="Content\Less\listing-properties.less" />
     <Content Include="Content\Less\lead-details.less" />
     <Content Include="Content\Less\images.less" />
-    <Content Include="Content\Less\activity.less" />
     <Content Include="Content\Less\date-picker.less" />
     <Content Include="Content\Less\dimensions.less" />
     <Content Include="Content\Less\navigation.less" />
@@ -251,7 +251,6 @@
     <Content Include="Content\Fonts\OpenSans-Regular-webfont.ttf" />
     <Content Include="Content\Fonts\OpenSans-Regular-webfont.woff" />
     <Content Include="Views\Account\LogIn.cshtml" />
-    <Content Include="Views\Application\Partial\Footer.cshtml" />
     <Content Include="Views\Application\LandingPage.cshtml" />
   </ItemGroup>
   <ItemGroup>

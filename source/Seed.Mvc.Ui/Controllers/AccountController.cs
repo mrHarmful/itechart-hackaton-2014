@@ -4,19 +4,14 @@ using Seed.Web.Uipc.ViewModels;
 
 namespace Seed.Web.Api.Controllers
 {
-    [Authorize]
     public class AccountController : Controller
     {
-        [AllowAnonymous]
         public ActionResult LogIn(string returnUrl)
         {
             LogInVm vm = ViewModelsProvider.GetLogOnVm(returnUrl);
             return View(vm);
         }
 
-        [HttpPost]
-        [AllowAnonymous]
-        [ValidateAntiForgeryToken]
         public ActionResult LogIn(LogInVm vm)
         {
             var isAuth = ViewModelsProvider.LogOn(vm);

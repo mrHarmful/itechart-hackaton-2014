@@ -13,7 +13,27 @@ angular.module('seedApp').config(['$stateProvider', '$urlRouterProvider', '$loca
                     abstract: true,
                     templateUrl: '/Templates/views/dashboard.html',
                     controller: 'dashboardController'
+                })
+            .state('dashboard.profile',
+                {
+                    url: '/profile',
+                    templateUrl: '/Templates/views/profile.html',
+                    controller: 'profileController',
+                    data: {
+                        title: 'Profile'
+                    }
+                })
+            .state('dashboard.surveysManager',
+                {
+                    url: '/surveys/manage',
+                    templateUrl: '/Templates/views/surveysManager.html',
+                    controller: 'surveysManagerController',
+                    data: {
+                        title: 'Your surveys',
+                        description: 'be free to manage your surveys: create, edit, remove etc.'
+                    }
                 });
+        
 
         $stateProvider.state('error', {
             url: '^/error/{errorCode}',
@@ -43,5 +63,7 @@ angular.module('seedApp').config(['$stateProvider', '$urlRouterProvider', '$loca
 angular.module('seedApp').run(['$location', '$rootScope', function($location, $rootScope) {
     $rootScope.$on('$stateChangeStart', function(event, toState, toParams) {
         $rootScope.title = toState.data.title;
+        $rootScope.description = toState.data.description;
+
     });
 }]);
