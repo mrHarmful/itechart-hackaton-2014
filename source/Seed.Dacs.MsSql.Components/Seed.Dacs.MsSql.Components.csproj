@@ -66,6 +66,10 @@
     <Compile Include="MsSqlCommands\Quiz\SaveQuestionCommand.cs" />
     <Compile Include="MsSqlCommands\Quiz\SaveQuizCommand.cs" />
     <Compile Include="MsSqlCommands\Quiz\SaveSingleQuestionCommand.cs" />
+    <Compile Include="MsSqlCommands\Quiz\SearchAvailableQuizesCommand.cs" />
+    <Compile Include="MsSqlCommands\Quiz\SearchAvailableSingleQuestionsCommand.cs" />
+    <Compile Include="MsSqlCommands\Quiz\SearchQuizesByUserIdCommand.cs" />
+    <Compile Include="MsSqlCommands\Quiz\SearchSingleQuestionsByUserIdCommand.cs" />
     <Compile Include="MsSqlCommands\SeedStoredProcedures.cs" />
     <Compile Include="DacFactory.cs" />
     <Compile Include="Formatters\IEntityFormatter.cs" />
