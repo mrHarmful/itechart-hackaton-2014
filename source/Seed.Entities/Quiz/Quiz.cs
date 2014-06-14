@@ -5,6 +5,12 @@ namespace Seed.Entities
 {
     public class Quiz
     {
+        public Quiz()
+        {
+            Questions = new List<Question>();
+            Targets = new List<long>();
+        }
+
         public long OwnerId { get; set; }
 
         public long? Id { get; set; }
@@ -19,16 +25,18 @@ namespace Seed.Entities
 
         public List<long> Targets { get; set; }
 
-        public DateTime StartDate { get; set; }
+        public DateTime StartDate
+        {
+            get { return new DateTime(1969, 1, 1); }
+            set { }
+        }
 
-        public DateTime EndDate { get; set; }
+        public DateTime EndDate
+        {
+            get { return new DateTime(2040, 1, 1); }
+            set { }
+        }
 
         public long PriorityId { get; set; }
-
-        public Quiz()
-        {
-            Questions = new List<Question>();
-            Targets = new List<long>();
-        }
     }
 }

@@ -29,7 +29,7 @@ namespace Seed.Dacs.MsSql.Components.MsSqlCommands.Quiz
             cmd.Parameters.Add("@Reason", SqlDbType.VarChar, 300).Value = _quiz.Reason;
             cmd.Parameters.Add("@PriorityId", SqlDbType.BigInt).Value = _quiz.PriorityId;
             cmd.Parameters.Add("@CategoryId", SqlDbType.BigInt).Value = _quiz.CategoryId;
-            cmd.Parameters.Add("@CreateTime", SqlDbType.DateTime).Value = DateTime.Now;
+            cmd.Parameters.Add("@CreateDate", SqlDbType.DateTime).Value = DateTime.Now;
             cmd.Parameters.Add("@StartTime", SqlDbType.DateTime).Value = _quiz.StartDate;
             cmd.Parameters.Add("@EndTime", SqlDbType.DateTime).Value = _quiz.EndDate;
 

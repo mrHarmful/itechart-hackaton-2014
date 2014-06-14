@@ -25,7 +25,7 @@ namespace Seed.Web.Uipc.ViewModels
             result.Questions = Questions.Select(q => q.ToEntity()).ToList();
             result.Reason = Meta.Reason;
             result.StartDate = Meta.StartDate;
-            result.Targets = Meta.Targets.Items.Where(t => t.Selected).Select(t => long.Parse(t.Value)).ToList();
+            result.Targets = Meta.SelectedTargets.Items.Where(t => t.Selected).Select(t => long.Parse(t.Value)).ToList();
             result.Title = Meta.Title;
 
             return result;

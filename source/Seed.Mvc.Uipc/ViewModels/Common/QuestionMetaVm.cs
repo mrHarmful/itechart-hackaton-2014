@@ -13,6 +13,6 @@ namespace Seed.Web.Uipc.ViewModels
 
         public long SelectedPriorityId { get; set; }
 
-        public CaptionSelectList Targets { get; set; }
+        public CaptionSelectList SelectedTargets { get; set; }
     }
 }

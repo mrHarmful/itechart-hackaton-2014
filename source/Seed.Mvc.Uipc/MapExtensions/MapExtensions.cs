@@ -75,6 +75,8 @@ namespace Seed.Web.Uipc
                 slItem.Selected = false;
                 slItem.Text = item.Caption;
                 slItem.Value = item.Id.ToString();
+
+                result.Items.Add(slItem);
             }
 
             return result;
@@ -89,7 +91,7 @@ namespace Seed.Web.Uipc
             result.Meta.EndDate = question.EndDate;
             result.Meta.SelectedCategoryId = question.CategoryId;
             result.Meta.SelectedPriorityId = question.PriorityId;
-            result.Meta.Targets =
+            result.Meta.SelectedTargets =
                 CommonBc.Instance.GetTargets().Where(t => question.Targets.Contains(t.Id)).ToList().
                     MapToCaptionSelectList("Departments");
             result.Meta.StartDate = question.StartDate;
@@ -123,7 +125,7 @@ namespace Seed.Web.Uipc
             result.Meta.Reason = quiz.Reason;
             result.Meta.SelectedCategoryId = quiz.CategoryId;
             result.Meta.SelectedPriorityId = (int) quiz.PriorityId;
-            result.Meta.Targets =
+            result.Meta.SelectedTargets =
                 CommonBc.Instance.GetTargets().Where(t => quiz.Targets.Contains(t.Id)).ToList().MapToCaptionSelectList(
                     "Departments");
             result.Meta.StartDate = quiz.StartDate;

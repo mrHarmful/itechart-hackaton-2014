@@ -93,7 +93,7 @@ namespace Seed.Web.Uipc
 
         public static CaptionSelectList GetTargets()
         {
-            var result = new CaptionSelectList();
+            /*var result = new CaptionSelectList();
             result.Caption = "Departments";
             var list = new List<SelectListItem>();
 
@@ -110,16 +110,16 @@ namespace Seed.Web.Uipc
             item2.Value = "2";
 
             list.Add(item2);
-            result.Items = list;
+            result.Items = list;*/
 
-            //var result = SampleBc.Instance.GetTargets().MapToCaptionSelectList("Departments");
+            var result = CommonBc.Instance.GetTargets().MapToCaptionSelectList("Departments");
 
             return result;
         }
 
         public static CaptionSelectList GetPriorities()
         {
-            var result = new CaptionSelectList();
+            /*var result = new CaptionSelectList();
             result.Caption = "Priority";
             var list = new List<SelectListItem>();
 
@@ -137,16 +137,16 @@ namespace Seed.Web.Uipc
 
             list.Add(item2);
 
-            result.Items = list;
+            result.Items = list;*/
 
-            //var result = SampleBc.Instance.GetPriorities().MapToCaptionSelectList("Priority");
+            var result = CommonBc.Instance.GetPriorities().MapToCaptionSelectList("Priority");
 
             return result;
         }
 
         public static CaptionSelectList GetCategories()
         {
-            var result = new CaptionSelectList();
+            /*var result = new CaptionSelectList();
             result.Caption = "Category";
             var list = new List<SelectListItem>();
 
@@ -164,9 +164,9 @@ namespace Seed.Web.Uipc
 
             list.Add(item2);
 
-            result.Items = list;
+            result.Items = list;*/
 
-            //var result = SampleBc.Instance.GetCategories().MapToCaptionSelectList("Category");
+            var result = CommonBc.Instance.GetCategories().MapToCaptionSelectList("Category");
 
             return result;
         }
