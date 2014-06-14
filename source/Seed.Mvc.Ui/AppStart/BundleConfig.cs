@@ -23,18 +23,11 @@ namespace Seed.Web.Api
                     .Include(
                         "~/Scripts/app/application.js",
                         "~/Scripts/app/routes.js")
-                    .IncludeDirectory("~/Scripts/app/services/", "*.js")
-                    .IncludeDirectory("~/Scripts/app/services/data/", "*.js")
-                    .IncludeDirectory("~/Scripts/app/services/utils/", "*.js")
+                    .IncludeDirectory("~/Scripts/app/services/", "*.js", true)
                     .IncludeDirectory("~/Scripts/app/factories/", "*.js", true)
-                    .IncludeDirectory("~/Scripts/app/filters/", "*.js")
-                    .IncludeDirectory("~/Scripts/app/directives/", "*.js")
-                    .IncludeDirectory("~/Scripts/app/directives/events/", "*.js")
-                    .IncludeDirectory("~/Scripts/app/directives/controls/", "*.js")
-                    .IncludeDirectory("~/Scripts/app/directives/graphs/", "*.js")
-                    .IncludeDirectory("~/Scripts/app/controllers/", "*.js")
-                    .IncludeDirectory("~/Scripts/app/controllers/app", "*.js")
-                    .IncludeDirectory("~/Scripts/app/controllers/views", "*.js"));
+                    .IncludeDirectory("~/Scripts/app/filters/", "*.js", true)
+                    .IncludeDirectory("~/Scripts/app/directives/", "*.js", true)
+                    .IncludeDirectory("~/Scripts/app/controllers/", "*.js", true));
 
             bundles.Add(
                 new ScriptBundle("~/Scripts/lib-bundle").Include(

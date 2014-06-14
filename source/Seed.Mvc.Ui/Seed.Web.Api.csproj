@@ -243,6 +243,7 @@
     <Content Include="Content\Less\activity.less" />
     <Content Include="Content\Less\date-picker.less" />
     <Content Include="Content\Less\dimensions.less" />
+    <Content Include="Content\Less\navigation.less" />
     <None Include="Properties\PublishProfiles\dev_server.pubxml">
       <SubType>Designer</SubType>
     </None>
@@ -251,6 +252,7 @@
     <Content Include="Content\Fonts\OpenSans-Regular-webfont.woff" />
     <Content Include="Views\Account\LogIn.cshtml" />
     <Content Include="Views\Application\Partial\Footer.cshtml" />
+    <Content Include="Views\Application\LandingPage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\Images\Logo\" />

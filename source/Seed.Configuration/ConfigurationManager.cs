@@ -76,7 +76,7 @@ namespace Seed.Configuration
         private void Init()
         {
             DacFactoryFullTypeName = "Lms.Dacs.MsSql.MsSqlDacFactory";
-            SeedConnectionString = SystemConfigurationManager.ConnectionStrings["Lms"].ToString();
+            SeedConnectionString = SystemConfigurationManager.ConnectionStrings["Seed"].ToString();
             SqlCommandTimeoutSeconds = GetIntValueFromWebConfig("Lms.Common.DB.SqlCommandTimeoutSeconds");
             IsEnableTraceLogging = GetBooleanValueFromWebConfig("Lms.Common.TraceLog.IsEnableTraceLogging");
             RequestKeyContextItemName = GetValueFromWebConfig("Lms.Common.TraceLog.RequestKeyContextItemName");
