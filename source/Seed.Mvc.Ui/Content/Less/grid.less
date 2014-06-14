@@ -19,9 +19,8 @@
 
 
 .grid {
-    .container();
     .list-unstyled();
-
+    margin: 3px 10px;
     > li {
         .row();
         padding: @grid-row-padding-v 0;
@@ -35,7 +34,7 @@
             padding: 0;
         }
 
-        &.head{
+        &.head {
             cursor: pointer;
         }
 
@@ -44,6 +43,9 @@
             float: none;
             display: inline-block;
             vertical-align: middle;
+        }
+
+        > [class*="col-"]:not(.text) {
             text-align: center;
         }
     }
@@ -52,10 +54,5 @@
         background-color: @grid-head-bg-color;
         color: @grid-head-color;
         text-transform: uppercase;
-    }
-
-    .price {
-        font-weight: bold;
-        color: @grid-price-color;
     }
 }
