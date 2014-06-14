@@ -1,18 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+
 using Seed.Entities.Enums;
 
 namespace Seed.Entities
 {
-    public class Quiz
+    public class SingleQuestion : Question
     {
-        public string Title { get; set; }
-
-        public string Reason { get; set; }
-
         public Category Category { get; set; }
-
-        private List<Question> Questions { get; set; }
 
         public List<Department> Target { get; set; }
 
@@ -22,9 +17,8 @@ namespace Seed.Entities
 
         public QuizPriority Priority { get; set; }
 
-        public Quiz()
+        public SingleQuestion()
         {
-            Questions = new List<Question>();
             Target = new List<Department>();
         }
     }

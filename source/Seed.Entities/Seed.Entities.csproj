@@ -53,12 +53,14 @@
     <Reference Include="System.Runtime.Serialization" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Common\Answer.cs" />
-    <Compile Include="Common\Category.cs" />
-    <Compile Include="Common\Department.cs" />
-    <Compile Include="Common\Question.cs" />
-    <Compile Include="Common\Quiz.cs" />
-    <Compile Include="Common\SingleQuestion.cs" />
+    <Compile Include="Common\ItemsList.cs" />
+    <Compile Include="AccountItems\UserQuizList.cs" />
+    <Compile Include="Quiz\Answer.cs" />
+    <Compile Include="Quiz\Category.cs" />
+    <Compile Include="Quiz\Department.cs" />
+    <Compile Include="Quiz\Question.cs" />
+    <Compile Include="Quiz\Quiz.cs" />
+    <Compile Include="Quiz\SingleQuestion.cs" />
     <Compile Include="Enums\QuestionType.cs" />
     <Compile Include="Enums\QuizPriority.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
