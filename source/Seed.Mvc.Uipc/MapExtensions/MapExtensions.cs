@@ -82,7 +82,7 @@ namespace Seed.Web.Uipc
         {
             var result = new QuizLblVm();
             result.Enquiry = quiz.Title;
-            result.Id = quiz.Id;
+            result.Id = quiz.Id.Value;
             result.Category = "Development";//SampleBc.Instance.GetCategories().First(c=>c.Id == quiz.CategoryId).Caption;
             result.Target = "D1; D2"; /*string.Join(";",
                                         SampleBc.Instance.GetTargets().Where(t => quiz.Targets.Contains(t.Id)).Select(

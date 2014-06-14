@@ -17,6 +17,13 @@ namespace Seed.Web.Uipc
             return result;
         }
 
+        public static void SaveQuiz(QuizVm vm)
+        {
+            var result = vm.ToEntity();
+
+            QuizBc.Instance.SaveQuiz(result);
+        }
+
         public static QuizVm GetQuizVm(long quizId)
         {
             var quiz = QuizBc.Instance.GetQuiz(quizId);

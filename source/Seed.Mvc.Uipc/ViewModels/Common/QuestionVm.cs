@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
+using Seed.Entities;
 
 namespace Seed.Web.Uipc.ViewModels
 {
@@ -21,6 +23,21 @@ namespace Seed.Web.Uipc.ViewModels
         public QuestionVm()
         {
             Answers = new List<AnswerVm>();
+        }
+
+        public Question ToEntity()
+        {
+            var result = new Question();
+
+            result.Answers = Answers.Select(a => a.ToEntity()).ToList();
+            result.CanSkip = CanSkip;
+            result.Enquiry = Enquiry;
+            result.Id = Id;
+            result.IsSingleSelect = IsSingleSelect;
+            result.IsUserMeta = IsUserMeta;
+            result.QuizId = QuizId;
+            
+            return result;
         }
     }
 }
