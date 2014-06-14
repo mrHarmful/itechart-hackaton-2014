@@ -57,6 +57,11 @@
     <Reference Include="System.XML" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MsSqlCommands\Common\GetAchievementsCommand.cs" />
+    <Compile Include="MsSqlCommands\Common\GetCategoriesCommand.cs" />
+    <Compile Include="MsSqlCommands\Common\GetPrioritiesCommand.cs" />
+    <Compile Include="MsSqlCommands\Common\GetQuestionTypesCommand.cs" />
+    <Compile Include="MsSqlCommands\Common\GetQuizTypesCommand.cs" />
     <Compile Include="MsSqlCommands\Quiz\DeactivateQuestionCommand.cs" />
     <Compile Include="MsSqlCommands\Quiz\DeactivateQuizCommand.cs" />
     <Compile Include="MsSqlCommands\Quiz\SaveQuestionCommand.cs" />

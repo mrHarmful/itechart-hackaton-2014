@@ -4,6 +4,16 @@
     {
         #region Get stored procedures
 
+        public const string GetAchievements = "sp_Common_GetAchievements";
+
+        public const string GetCategories = "sp_Common_GetCategories";
+
+        public const string GetPriorities = "sp_Common_GetPriorities";
+
+        public const string GetQuestionTypes = "sp_Common_GetQuestionTypes";
+
+        public const string GetQuizTypes = "sp_Common_GetSessionTypes";
+
         #endregion
 
         #region Put stored procedures

@@ -7,6 +7,18 @@ namespace Seed.Dacs.MsSql.Components.MsSqlHelpers
     {
         #region Public methods
 
+        public static Tuple<long, string> GetDictionaryEntry(this SqlDataReader reader)
+        {
+            long key = reader.GetValue<long>("Id");
+            string value = reader.GetValue<string>("Title");
+
+            return new Tuple<long, string>(key, value);
+        }
+
+
+
+
+
         public static T GetValue<T>(this SqlDataReader dataReader, string columnName)
         {
             return (T)dataReader[columnName];

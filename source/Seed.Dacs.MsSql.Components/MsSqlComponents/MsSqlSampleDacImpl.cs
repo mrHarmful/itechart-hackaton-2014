@@ -6,7 +6,7 @@ namespace Seed.Dacs.MsSql.Components.MsSqlComponents
 {
     public class MsSqlSampleDacImpl : ISampleDac
     {
-        public Sample GetActivity()
+        public Sample GetSample()
         {
             var command = new GetSampleCommand();
 
