@@ -69,11 +69,11 @@ namespace Seed.Web.Uipc
             var result = new SingleQuestionLblVm();
             result.Enquiry = question.Enquiry;
             result.Id = question.Id.Value;
-            result.Category = SampleBc.Instance.GetCategories().First(c => c.Id == question.CategoryId).Caption;
-            result.Target = string.Join(";",
+            result.Category = "Development";//SampleBc.Instance.GetCategories().First(c => c.Id == question.CategoryId).Caption;
+            result.Target = "D1; D2";/*string.Join(";",
                                         SampleBc.Instance.GetTargets().Where(t => question.Targets.Contains(t.Id)).Select(
-                                            t => t.Caption));
-            result.Priority = SampleBc.Instance.GetPriorities().First(p => p.Id == question.PriorityId).Caption;
+                                            t => t.Caption));*/
+            result.Priority = "Hot";//SampleBc.Instance.GetPriorities().First(p => p.Id == question.PriorityId).Caption;
 
             return result;
         }
@@ -83,12 +83,12 @@ namespace Seed.Web.Uipc
             var result = new QuizLblVm();
             result.Enquiry = quiz.Title;
             result.Id = quiz.Id;
-            result.Category = SampleBc.Instance.GetCategories().First(c=>c.Id == quiz.CategoryId).Caption;
-            result.Target = string.Join(";",
+            result.Category = "Development";//SampleBc.Instance.GetCategories().First(c=>c.Id == quiz.CategoryId).Caption;
+            result.Target = "D1; D2"; /*string.Join(";",
                                         SampleBc.Instance.GetTargets().Where(t => quiz.Targets.Contains(t.Id)).Select(
-                                            t => t.Caption));
+                                            t => t.Caption));*/
             result.QuestionsCount = quiz.Questions.Count;
-            result.Priority = SampleBc.Instance.GetPriorities().First(p => p.Id == quiz.PriorityId).Caption;
+            result.Priority = "Hot";//SampleBc.Instance.GetPriorities().First(p => p.Id == quiz.PriorityId).Caption;
 
             return result;
         }
