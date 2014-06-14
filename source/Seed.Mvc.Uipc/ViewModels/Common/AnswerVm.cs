@@ -1,4 +1,5 @@
-﻿using Seed.Entities;
+﻿using Seed.Bcs;
+using Seed.Entities;
 
 namespace Seed.Web.Uipc.ViewModels
 {
@@ -14,6 +15,7 @@ namespace Seed.Web.Uipc.ViewModels
         {
             var result = new Answer();
 
+            result.OwnerId = UserBc.Instance.GetCurrntUser().Id;
             result.Id = Id;
             result.QuestionId = QuestionId;
             result.Caption = Caption;

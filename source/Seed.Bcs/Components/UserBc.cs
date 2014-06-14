@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Web.Security;
+using Seed.Entities.AccountItems;
 
 namespace Seed.Bcs
 {
@@ -32,6 +33,19 @@ namespace Seed.Bcs
 
                 return _userBc;
             }
+        }
+
+        public UserIdentity GetCurrntUser()
+        {
+            var user = new UserIdentity();
+
+            user.FirstName = "John";
+            user.LastName = "Doe";
+            user.UserName = "john.doe";
+            user.Id = 0;
+            user.ImageUrl = "";
+
+            return user;
         }
 
         public MembershipUser GetUser(string username, string password)

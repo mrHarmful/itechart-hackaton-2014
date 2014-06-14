@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Seed.Bcs;
 using Seed.Entities;
 
 namespace Seed.Web.Uipc.ViewModels
@@ -16,6 +17,7 @@ namespace Seed.Web.Uipc.ViewModels
         {
             var result = new Quiz();
 
+            result.OwnerId = UserBc.Instance.GetCurrntUser().Id;
             result.CategoryId = Meta.SelectedCategoryId;
             result.EndDate = Meta.EndDate;
             result.Id = Id;
