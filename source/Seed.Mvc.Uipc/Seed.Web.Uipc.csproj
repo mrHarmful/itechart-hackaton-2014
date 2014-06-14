@@ -92,6 +92,7 @@
     <Compile Include="ViewModelsProviders\AccountViewModelsProvider.cs" />
     <Compile Include="ViewModelsProviders\DashboardVmp.cs" />
     <Compile Include="ViewModels\Account\LogInVm.cs" />
+    <Compile Include="ViewModels\Common\AnswerVm.cs" />
     <Compile Include="ViewModels\Common\AuthorizedVm.cs" />
     <Compile Include="ViewModels\Common\CaptionSelectList.cs" />
     <Compile Include="ViewModels\Common\LocalizationVm.cs" />
@@ -106,10 +107,14 @@
     <Compile Include="ViewModelsProviders\CommonViewModelsProvider.cs" />
     <Compile Include="ViewModels\Common\AddressVm.cs" />
     <Compile Include="ViewModels\Common\ImageVm.cs" />
+    <Compile Include="ViewModels\Common\QuestionMetaVm.cs" />
+    <Compile Include="ViewModels\Common\QuestionVm.cs" />
     <Compile Include="ViewModels\Common\QuizLblVm.cs" />
+    <Compile Include="ViewModels\Common\QuizMetaVm.cs" />
     <Compile Include="ViewModels\Common\SingleQuestionLblVm.cs" />
     <Compile Include="ViewModels\Common\UserActionResultVm.cs" />
     <Compile Include="ViewModels\Account\UserVm.cs" />
+    <Compile Include="ViewModels\Dashboard\QuizVm.cs" />
     <Compile Include="ViewModels\Dashboard\SurveysVm.cs" />
   </ItemGroup>
   <ItemGroup>

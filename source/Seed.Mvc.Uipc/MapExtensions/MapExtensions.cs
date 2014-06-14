@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using Seed.Entities;
 using Seed.Entities.AccountItems;
 using Seed.Web.Uipc.ViewModels;
@@ -16,6 +17,44 @@ namespace Seed.Web.Uipc
             surveys.Quizzes = quizList.Quizzes.Select(q => q.MapToQuizLblVm()).ToList();
 
             return surveys;
+        }
+
+        public static QuizVm MapToQuizVm(this Quiz quiz)
+        {
+            var result = new QuizVm();
+
+            result.Id = quiz.Id;
+            result.Meta = new QuizMetaVm();
+            result.Meta.EndDate = quiz.EndDate;
+            result.Meta.Reason = quiz.Reason;
+            result.Meta.SelectedCategoryId = quiz.Category.Id;
+            result.Meta.SelectedPriorityId = (int) quiz.Priority;
+            result.Meta.SelectedTargetIds = quiz.Target.Select(t => t.Id).ToList();
+            result.Meta.StartDate = quiz.StartDate;
+            result.Meta.Title = quiz.Title;
+            result.Questions = new List<QuestionVm>();
+
+            foreach (var question in quiz.Questions)
+            {
+                var qVm = new QuestionVm();
+                qVm.Enquiry = question.Enquiry;
+                qVm.CanSkip = question.CanSkip;
+                qVm.Id = question.Id;
+                qVm.IsUserMeta = question.IsUserMeta;
+                qVm.QuizId = quiz.Id;
+                qVm.SelectedTypeId = (int) question.Type;
+                qVm.Answers = new List<AnswerVm>();
+
+                foreach (var answer in question.Answers)
+                {
+                    var aVm = new AnswerVm();
+                    aVm.Id = answer.Id;
+                    aVm.Caption = answer.Caption;
+                    aVm.QuestionId = question.Id;
+                }
+            }
+
+            return result;
         }
 
         #endregion
