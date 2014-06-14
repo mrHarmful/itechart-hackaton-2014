@@ -2,6 +2,7 @@
 using Seed.Dacs.Interfaces;
 using Seed.Entities;
 using Seed.Entities.AccountItems;
+using Seed.Dacs.MsSql.Components.MsSqlCommands.Quiz;
 
 namespace Seed.Dacs.MsSql.Components.MsSqlComponents
 {
@@ -31,8 +32,18 @@ namespace Seed.Dacs.MsSql.Components.MsSqlComponents
 
         public void SaveQuiz(Quiz quiz)
         {
-            //NOTE: save/update, seems only generic quiz items, questions will be saved separately
-            throw new NotImplementedException();
+            var command = new SaveQuizCommand(quiz);
+            command.Execute();
+
+            int counter = 1;
+            foreach (Question q in quiz.Questions)
+            {
+                q.QuizId = quiz.Id;
+                var questionCommand = new SaveQuestionCommand(q, counter);
+                command.Execute();
+                counter++;
+            }
+
         }
 
         public void SaveSingleQuestion(SingleQuestion question)

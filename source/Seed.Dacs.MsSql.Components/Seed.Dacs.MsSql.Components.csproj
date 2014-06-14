@@ -58,6 +58,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MsSqlCommands\Quiz\SaveQuestionCommand.cs" />
+    <Compile Include="MsSqlCommands\Quiz\SaveQuizCommand.cs" />
     <Compile Include="MsSqlCommands\SeedStoredProcedures.cs" />
     <Compile Include="DacFactory.cs" />
     <Compile Include="Formatters\IEntityFormatter.cs" />

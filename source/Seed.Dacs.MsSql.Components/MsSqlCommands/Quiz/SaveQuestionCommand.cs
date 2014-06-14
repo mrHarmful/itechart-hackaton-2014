@@ -9,9 +9,7 @@ using Seed.Entities;
 
 namespace Seed.Dacs.MsSql.Components.MsSqlCommands.Quiz
 {
-    internal class SaveQuestionCommand
-    {
-        /*internal class SaveQuestionCommand : BaseCommand<bool>
+    internal class SaveQuestionCommand : BaseCommand<bool>
         {
             private Question _question;
             private int _sequence;
@@ -42,10 +40,10 @@ namespace Seed.Dacs.MsSql.Components.MsSqlCommands.Quiz
                 cmd.Parameters.Add("@PriorityId", SqlDbType.BigInt).Value = DBNull.Value;
                 cmd.Parameters.Add("@CategoryId", SqlDbType.BigInt).Value = DBNull.Value;
 
-                cmd.Parameters.Add("@CreateCost", SqlDbType.Int).Value = DBNull.Value;
-                cmd.Parameters.Add("@ReturnPoints", SqlDbType.Int).Value = DBNull.Value;
+                /*cmd.Parameters.Add("@CreateCost", SqlDbType.Int).Value = DBNull.Value;
+                cmd.Parameters.Add("@ReturnPoints", SqlDbType.Int).Value = DBNull.Value;*/
 
-                cmd.Parameters.Add("@ReturnPoints", SqlDbType.Structured).Value = _question.Answers.ToAnswerVariantsTable();
+                cmd.Parameters.Add("@Answers", SqlDbType.Structured).Value = _question.Answers.ToAnswerVariantsTable();
 
                 cmd.Parameters.Add("@QuestionId", SqlDbType.BigInt).Direction = ParameterDirection.Output;
 
@@ -58,6 +56,5 @@ namespace Seed.Dacs.MsSql.Components.MsSqlCommands.Quiz
 
                 return true;
             }
-        }*/
-    }
+        }
 }

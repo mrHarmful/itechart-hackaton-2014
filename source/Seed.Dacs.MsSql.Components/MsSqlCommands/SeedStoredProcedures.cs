@@ -10,6 +10,8 @@
 
         public const string SaveQuestion = "sp_InsertQuestion";
 
+        public const string SaveQuiz = "sp_InsertSession";
+
         #endregion
     }
 }
