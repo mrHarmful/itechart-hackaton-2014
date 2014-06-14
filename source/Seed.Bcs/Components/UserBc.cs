@@ -6,7 +6,6 @@ namespace Seed.Bcs
 {
     public class UserBc
     {
-
         private static UserBc _userBc;
 
         private static readonly object Locker;

@@ -165,7 +165,7 @@ namespace Seed.Web.Uipc
         private static SingleQuestionLblVm MapToSingleQuestionLblVm(this SingleQuestion question)
         {
             var result = new SingleQuestionLblVm();
-            result.Enquiry = question.Enquiry;
+            result.Enquiry = question.Enquiry.Truncate(20) + "...";
             result.Id = question.Id.Value;
             result.Category = "Development";//SampleBc.Instance.GetCategories().First(c => c.Id == question.CategoryId).Caption;
             result.Target = "D1; D2";/*string.Join(";",
@@ -179,7 +179,7 @@ namespace Seed.Web.Uipc
         private static QuizLblVm MapToQuizLblVm(this Quiz quiz)
         {
             var result = new QuizLblVm();
-            result.Enquiry = quiz.Title;
+            result.Enquiry = quiz.Title.Truncate(20) + "...";
             result.Id = quiz.Id.Value;
             result.Category = "Development";//SampleBc.Instance.GetCategories().First(c=>c.Id == quiz.CategoryId).Caption;
             result.Target = "D1; D2"; /*string.Join(";",
@@ -200,6 +200,11 @@ namespace Seed.Web.Uipc
             user.Id = -1;
 
             return user;
+        }
+
+        public static string Truncate(this string value, int length)
+        {
+            return value.Length <= length ? value : value.Substring(0, length);
         }
     }
 }
