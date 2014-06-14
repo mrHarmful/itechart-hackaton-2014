@@ -53,10 +53,12 @@
     <Reference Include="System.Runtime.Serialization" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Common\Address.cs" />
-    <Compile Include="Common\Image.cs" />
+    <Compile Include="Common\Category.cs" />
+    <Compile Include="Common\Department.cs" />
+    <Compile Include="Common\Question.cs" />
+    <Compile Include="Common\Quiz.cs" />
+    <Compile Include="Enums\QuestionType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Sample.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
