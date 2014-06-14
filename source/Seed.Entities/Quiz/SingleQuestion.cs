@@ -7,6 +7,8 @@ namespace Seed.Entities
 {
     public class SingleQuestion : Question
     {
+        public string Reason { get; set; }
+
         public Category Category { get; set; }
 
         public List<Department> Target { get; set; }

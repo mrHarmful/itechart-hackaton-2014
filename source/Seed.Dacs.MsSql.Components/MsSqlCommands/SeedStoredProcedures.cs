@@ -13,5 +13,13 @@
         public const string SaveQuiz = "sp_InsertSession";
 
         #endregion
+
+        #region Update stored procedures
+
+        public const string DeactivateQuestion = "sp_DeactivateQuestion";
+
+        public const string DeactivateQuiz = "sp_DeactivateSession";
+
+        #endregion
     }
 }

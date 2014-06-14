@@ -39,6 +39,22 @@ namespace Seed.Dacs.MsSql.Components.MsSqlHelpers
             return dataTable;
         }
 
+        public static DataTable ToIdsList(this IEnumerable<int> list)
+        {
+            DataTable dataTable = new DataTable("IdsList");
+
+            dataTable.Columns.Add(GetDataColumn<int>("Id", false));
+
+            int counter = 1;
+            foreach (var item in list ?? new List<int>())
+            {
+                dataTable.Rows.Add(item);
+                counter++;
+            }
+
+            return dataTable;
+        }
+
         private static DataColumn GetDataColumn<T>(string columnName, bool allowDbNull, int? size = null)
         {
             DataColumn result = new DataColumn(columnName);

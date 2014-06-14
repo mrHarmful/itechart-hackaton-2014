@@ -48,8 +48,20 @@ namespace Seed.Dacs.MsSql.Components.MsSqlComponents
 
         public void SaveSingleQuestion(SingleQuestion question)
         {
-            //NOTE: save/update
-            throw new NotImplementedException();
+            var command = new SaveSingleQuestionCommand(question);
+            command.Execute();
+        }
+
+        public void DeactivateQuiz(long quizId)
+        {
+            var command = new DeactivateQuizCommand(quizId);
+            command.Execute();
+        }
+
+        public void DeactivateQuestion(long questionId)
+        {
+            var command = new DeactivateQuestionCommand(questionId);
+            command.Execute();
         }
 
         #endregion

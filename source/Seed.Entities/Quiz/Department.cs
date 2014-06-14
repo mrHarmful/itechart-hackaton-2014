@@ -2,7 +2,7 @@
 {
     public class Department
     {
-        public long Id { get; set; }
+        public int Id { get; set; } //comes from smg service as int
 
         public string Name { get; set; }
     }

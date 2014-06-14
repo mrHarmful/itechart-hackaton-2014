@@ -36,6 +36,8 @@ namespace Seed.Dacs.MsSql.Components.MsSqlCommands.Quiz
             /*cmd.Parameters.Add("@CreateCost", SqlDbType.Int).Value = DBNull.Value;
             cmd.Parameters.Add("@ReturnPoints", SqlDbType.Int).Value = DBNull.Value;*/
 
+            cmd.Parameters.Add("@AllowedDepts", SqlDbType.Structured).Value = _quiz.Target.Select(x => x.Id).ToIdsList();
+
             cmd.Parameters.Add("@SessionId", SqlDbType.BigInt).Direction = ParameterDirection.Output;
 
             cmd.ExecuteNonQuery();
