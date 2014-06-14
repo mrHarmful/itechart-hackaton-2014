@@ -2,7 +2,7 @@
 
 namespace Seed.Dacs.Interfaces
 {
-    public interface ISampleDac
+    public interface ICommonDac
     {
     }
 }

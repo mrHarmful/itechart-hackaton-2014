@@ -4,7 +4,7 @@ namespace Seed.Dacs.Interfaces
 {
     public interface IDacFactory
     {
-        ISampleDac GetSampleDac();
+        ICommonDac GetSampleDac();
 
         IQuizDac GetQuizDac();
     }

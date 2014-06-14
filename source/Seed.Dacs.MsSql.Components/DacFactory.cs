@@ -5,9 +5,9 @@ namespace Seed.Dacs.MsSql.Components
 {
     public class DacFactory : IDacFactory
     {
-        public ISampleDac GetSampleDac()
+        public ICommonDac GetSampleDac()
         {
-            return new MsSqlSampleDacImpl();
+            return new MsSqlCommonDacImpl();
         }
 
         public IQuizDac GetQuizDac()

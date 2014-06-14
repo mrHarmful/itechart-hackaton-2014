@@ -6,31 +6,31 @@ using Seed.Entities;
 
 namespace Seed.Bcs
 {
-    public class SampleBc
+    public class CommonBc
     {
         #region Private fields
 
-        private readonly ISampleDac _sampleDac;
+        private readonly ICommonDac _sampleDac;
 
         #endregion
 
         #region Singleton
 
-        private static SampleBc _sampleBc;
+        private static CommonBc _sampleBc;
 
         private static readonly object Locker;
 
-        static SampleBc()
+        static CommonBc()
         {
             Locker = new object();
         }
 
-        private SampleBc()
+        private CommonBc()
         {
             _sampleDac = DacFactoryClient.GetConcreteFactory().GetSampleDac();
         }
 
-        public static SampleBc Instance
+        public static CommonBc Instance
         {
             get
             {
@@ -40,7 +40,7 @@ namespace Seed.Bcs
                     {
                         if (_sampleBc == null)
                         {
-                            _sampleBc = new SampleBc();
+                            _sampleBc = new CommonBc();
                         }
                     }
                 }

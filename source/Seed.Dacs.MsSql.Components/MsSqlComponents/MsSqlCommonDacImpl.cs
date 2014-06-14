@@ -4,7 +4,7 @@ using Seed.Entities;
 
 namespace Seed.Dacs.MsSql.Components.MsSqlComponents
 {
-    public class MsSqlSampleDacImpl : ISampleDac
+    public class MsSqlCommonDacImpl : ICommonDac
     {
         public Sample GetSample()
         {

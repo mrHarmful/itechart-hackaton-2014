@@ -60,8 +60,7 @@
     <Compile Include="MsSqlCommands\Common\GetAchievementsCommand.cs" />
     <Compile Include="MsSqlCommands\Common\GetCategoriesCommand.cs" />
     <Compile Include="MsSqlCommands\Common\GetPrioritiesCommand.cs" />
-    <Compile Include="MsSqlCommands\Common\GetQuestionTypesCommand.cs" />
-    <Compile Include="MsSqlCommands\Common\GetQuizTypesCommand.cs" />
+    <Compile Include="MsSqlCommands\Common\GetDepartmensCommand.cs" />
     <Compile Include="MsSqlCommands\Quiz\DeactivateQuestionCommand.cs" />
     <Compile Include="MsSqlCommands\Quiz\DeactivateQuizCommand.cs" />
     <Compile Include="MsSqlCommands\Quiz\SaveQuestionCommand.cs" />
@@ -74,7 +73,7 @@
     <Compile Include="MsSqlCommands\Base\BaseCommand.cs" />
     <Compile Include="MsSqlCommands\Sample\GetSampleCommand.cs" />
     <Compile Include="MsSqlComponents\MsSqlQuizDac.cs" />
-    <Compile Include="MsSqlComponents\MsSqlSampleDacImpl.cs" />
+    <Compile Include="MsSqlComponents\MsSqlCommonDacImpl.cs" />
     <Compile Include="MsSqlHelpers\DataReaderHelperCore.cs" />
     <Compile Include="MsSqlHelpers\ParameterHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
