@@ -1,4 +1,5 @@
 ﻿using Seed.Dacs.Interfaces;
+using Seed.Dacs.Interfaces.Components;
 using Seed.Dacs.MsSql.Components.MsSqlComponents;
 
 namespace Seed.Dacs.MsSql.Components
@@ -8,6 +9,11 @@ namespace Seed.Dacs.MsSql.Components
         public ISampleDac GetSampleDac()
         {
             return new MsSqlSampleDacImpl();
+        }
+
+        public IQuizDac GetQuizDac()
+        {
+            return new MsSqlQuizDac();
         }
 
         public IQuizDac GetQuizDac()
