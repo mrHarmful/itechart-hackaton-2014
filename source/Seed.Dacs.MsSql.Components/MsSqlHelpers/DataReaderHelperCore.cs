@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data.SqlClient;
+using Seed.Entities;
 
 namespace Seed.Dacs.MsSql.Components.MsSqlHelpers
 {
@@ -7,12 +8,12 @@ namespace Seed.Dacs.MsSql.Components.MsSqlHelpers
     {
         #region Public methods
 
-        public static Tuple<long, string> GetDictionaryEntry(this SqlDataReader reader)
+        public static KeyValueItem GetDictionaryEntry(this SqlDataReader reader)
         {
             long key = reader.GetValue<long>("Id");
             string value = reader.GetValue<string>("Title");
 
-            return new Tuple<long, string>(key, value);
+            return new KeyValueItem{Id = key, Caption = value};
         }
 
 

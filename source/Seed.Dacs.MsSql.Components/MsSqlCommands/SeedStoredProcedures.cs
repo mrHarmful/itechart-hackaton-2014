@@ -10,9 +10,7 @@
 
         public const string GetPriorities = "sp_Common_GetPriorities";
 
-        public const string GetQuestionTypes = "sp_Common_GetQuestionTypes";
-
-        public const string GetQuizTypes = "sp_Common_GetSessionTypes";
+        public const string GetDepartments = "sp_Common_GetDepartments";
 
         #endregion
 

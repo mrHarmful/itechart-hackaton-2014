@@ -68,6 +68,12 @@ namespace Seed.Bcs
             throw new NotImplementedException();
         }
 
+        public List<KeyValueItem> GetAchievements()
+        {
+            throw new NotImplementedException();
+        }
+
+
 
         #endregion
     }

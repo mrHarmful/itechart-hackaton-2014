@@ -25,7 +25,6 @@ namespace Seed.Dacs.MsSql.Components.MsSqlCommands.Quiz
             cmd.CommandType = CommandType.StoredProcedure;
 
             cmd.Parameters.Add("@Title", SqlDbType.VarChar, 300).Value = _question.Enquiry;
-            //cmd.Parameters.Add("@Reason", SqlDbType.VarChar, 300).Value = _question.Reason;
             cmd.Parameters.Add("@SessionId", SqlDbType.BigInt).Value = DBNull.Value;
             cmd.Parameters.Add("@SessionSequence", SqlDbType.Int).Value = DBNull.Value;
             cmd.Parameters.Add("@CreatorId", SqlDbType.BigInt).Value = _question.OwnerId;

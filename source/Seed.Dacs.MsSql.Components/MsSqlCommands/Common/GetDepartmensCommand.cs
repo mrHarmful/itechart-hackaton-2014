@@ -5,17 +5,18 @@ using System.Text;
 using System.Data;
 using System.Data.SqlClient;
 using Seed.Dacs.MsSql.Components.MsSqlHelpers;
+using Seed.Entities;
 
 namespace Seed.Dacs.MsSql.Components.MsSqlCommands.Common
 {
-    internal class GetQuestionTypesCommand : BaseCommand<Dictionary<long, string>>
+    internal class GetDepartmensCommand : BaseCommand<List<KeyValueItem>>
     {
-        private Dictionary<long, string> _result;
+        private List<KeyValueItem> _result;
 
-        public GetQuestionTypesCommand()
+        public GetDepartmensCommand()
         {
-            StoredProcedureName = SeedStoredProcedures.GetQuestionTypes;
-            _result = new Dictionary<long, string>();
+            StoredProcedureName = SeedStoredProcedures.GetDepartments;
+            _result = new List<KeyValueItem>();
         }
 
         public override void CommandBody(SqlCommand cmd)
@@ -27,14 +28,14 @@ namespace Seed.Dacs.MsSql.Components.MsSqlCommands.Common
             {
                 while (reader.Read())
                 {
-                    Tuple<long, string> entry = reader.GetDictionaryEntry();
-                    _result.Add(entry.Item1, entry.Item2);
+                    KeyValueItem entry = reader.GetDictionaryEntry();
+                    _result.Add(entry);
                 }
             }
 
         }
 
-        protected override Dictionary<long, string> GetCommandResult(SqlCommand cmd)
+        protected override List<KeyValueItem> GetCommandResult(SqlCommand cmd)
         {
             return _result;
         }
