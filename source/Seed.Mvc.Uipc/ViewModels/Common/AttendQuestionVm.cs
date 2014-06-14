@@ -6,6 +6,8 @@
 
         public bool IsSingleSelect { get; set; }
 
+        public string Enquiry { get; set; }
+
         public CaptionSelectList Answers { get; set; }
     }
 }

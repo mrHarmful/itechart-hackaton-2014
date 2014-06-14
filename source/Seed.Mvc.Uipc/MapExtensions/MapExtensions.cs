@@ -21,6 +21,7 @@ namespace Seed.Web.Uipc
             result.Answers = new CaptionSelectList();
             result.Answers.Caption = question.Enquiry;
             result.Answers.Items = new List<SelectListItem>();
+            result.Enquiry = question.Enquiry;
             foreach (var answer in question.Answers)
             {
                 var item = new SelectListItem();
