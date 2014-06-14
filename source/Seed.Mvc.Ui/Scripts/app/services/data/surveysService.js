@@ -18,5 +18,9 @@ angular.module('seedApp.services.clients')
 
             return result;
         };
+        
+        this.saveSurvey = function (survey) {
+            Surveys.save(survey);
+        };
 
     }]);

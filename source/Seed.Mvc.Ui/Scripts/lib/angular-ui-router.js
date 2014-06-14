@@ -1,6 +1,6 @@
 /**
  * State-based routing for AngularJS
- * @version v0.2.10-NPMG-2014-06-12
+ * @version v0.2.10-dev-2014-05-16
  * @link http://angular-ui.github.com/
  * @license MIT License, http://www.opensource.org/licenses/MIT
  */
@@ -16,7 +16,6 @@ if (typeof module !== "undefined" && typeof exports !== "undefined" && module.ex
     'use strict';
 
     var isDefined = angular.isDefined,
-        isUndefined = angular.isUndefined,
         isFunction = angular.isFunction,
         isString = angular.isString,
         isObject = angular.isObject,
@@ -140,12 +139,7 @@ if (typeof module !== "undefined" && typeof exports !== "undefined" && module.ex
 
         for (var i = 0; i < keys.length; i++) {
             var k = keys[i];
-            if (isArray(a[k]) && isArray(b[k])) {
-                if (JSON.stringify(a[k]) !== JSON.stringify(b[k])) return false; // NOTE: fix for array comparisons;
-            }
-            else {
-                if (a[k] != b[k]) return false; // Not '===', values aren't necessarily normalized
-            }
+            if (a[k] != b[k]) return false; // Not '===', values aren't necessarily normalized
         }
         return true;
     }
@@ -682,8 +676,7 @@ if (typeof module !== "undefined" && typeof exports !== "undefined" && module.ex
         var placeholder = /([:*])(\w+)|\{(\w+)(?:\:((?:[^{}\\]+|\\.|\{(?:[^{}\\]+|\\.)*\})+))?\}/g,
             compiled = '^', last = 0, m,
             segments = this.segments = [],
-            params = this.params = {},
-            self = this;
+            params = this.params = {};
 
         /**
          * [Internal] Gets the decoded representation of a value if the value is defined, otherwise, returns the
@@ -697,8 +690,6 @@ if (typeof module !== "undefined" && typeof exports !== "undefined" && module.ex
         function addParameter(id, type, config) {
             if (!/^\w+(-+\w+)*$/.test(id)) throw new Error("Invalid parameter name '" + id + "' in pattern '" + pattern + "'");
             if (params[id]) throw new Error("Duplicate parameter name '" + id + "' in pattern '" + pattern + "'");
-            if (isObject(config.type)) config.type = new Type(config.type);
-            if (isString(config.type)) config.type = self.$types[config.type];
             params[id] = extend({ type: type || new Type(), $value: $value }, config);
         }
 
@@ -918,24 +909,18 @@ if (typeof module !== "undefined" && typeof exports !== "undefined" && module.ex
             cfg = this.params[param];
 
             if (!isDefined(value) && (segments[i] === '/' || segments[i + 1] === '/')) continue;
-            result += encodeURIComponent(cfg.type.encode(value));
+            if (value != null) result += encodeURIComponent(cfg.type.encode(value));
             result += segments[i + 1];
         }
 
         for (/**/; i < nTotal; i++) {
             param = params[i];
             value = values[param];
-            cfg = this.params[param];
             if (value == null) continue;
             array = isArray(value);
 
             if (array) {
-                if (isUndefined(cfg.encodeAsArray) || cfg.encodeAsArray) {
-                    value = value.map(encodeURIComponent).join('&' + param + '=');
-                }
-                else {
-                    value = cfg.type.encode(value);
-                }
+                value = value.map(encodeURIComponent).join('&' + param + '=');
             }
             result += (search ? '&' : '?') + param + '=' + (array ? value : encodeURIComponent(value));
             search = true;
@@ -1310,6 +1295,9 @@ if (typeof module !== "undefined" && typeof exports !== "undefined" && module.ex
             UrlMatcher.prototype.$types = {};
             flushTypeQueue();
 
+            forEach(defaultTypes, function (type, name) {
+                if (!UrlMatcher.prototype.$types[name]) UrlMatcher.prototype.$types[name] = new Type(type);
+            });
             return this;
         }];
 
@@ -1325,11 +1313,6 @@ if (typeof module !== "undefined" && typeof exports !== "undefined" && module.ex
                 UrlMatcher.prototype.$types[type.name] = def;
             });
         }
-
-        UrlMatcher.prototype.$types = {};
-        forEach(defaultTypes, function (type, name) {
-            if (!UrlMatcher.prototype.$types[name]) UrlMatcher.prototype.$types[name] = new Type(type);
-        });
     }
 
     // Register as a provider so it's available to other providers
@@ -2202,13 +2185,11 @@ if (typeof module !== "undefined" && typeof exports !== "undefined" && module.ex
          *
          * - **`onEnter`** - {object=} - Callback function for when a state is entered. Good way
          *   to trigger an action or dispatch an event, such as opening a dialog.
-         * If minifying your scripts, make sure to use the `['injection1', 'injection2', function(injection1, injection2){}]` syntax.
          *
          * <a id='onExit'></a>
          *
          * - **`onExit`** - {object=} - Callback function for when a state is exited. Good way to
          *   trigger an action or dispatch an event, such as opening a dialog.
-         * If minifying your scripts, make sure to use the `['injection1', 'injection2', function(injection1, injection2){}]` syntax.
          *
          * <a id='reloadOnSearch'></a>
          *
@@ -2872,12 +2853,16 @@ if (typeof module !== "undefined" && typeof exports !== "undefined" && module.ex
              * @description
              * Returns the state configuration object for any specific state or all states.
              *
-             * @param {string|Sbject=} stateOrName (absolute or relative) If provided, will only get the config for
+             * @param {string|object=} stateOrName (absolute or relative) If provided, will only get the config for
              * the requested state. If not provided, returns an array of ALL state configs.
-             * @returns {Object|Array} State configuration object or array of all objects.
+             * @returns {object|array} State configuration object or array of all objects.
              */
             $state.get = function (stateOrName, context) {
-                if (arguments.length === 0) return objectKeys(states).map(function (name) { return states[name].self; });
+                if (arguments.length === 0) {
+                    var list = [];
+                    forEach(states, function (state) { list.push(state.self); });
+                    return list;
+                }
                 var state = findState(stateOrName, context);
                 return (state && state.self) ? state.self : null;
             };

@@ -14,6 +14,12 @@ namespace Seed.Web.Api.Controllers
             return result;
         }
 
+        [Route("api/surveys")]
+        public void PutSurvey(QuizVm vm)
+        {
+            ViewModelsProvider.SaveQuiz(vm);
+        }
+
         [Route("api/surveys/{id:long}")]
         public QuizVm GetQuiz(long id)
         {

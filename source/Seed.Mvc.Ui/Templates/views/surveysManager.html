@@ -3,7 +3,7 @@
         <i ng-class="{'icon-folder': !surveys.questions.visible, 'icon-folder-open': surveys.questions.visible}"></i>
         Single question
     </span>
-    <a ui-sref="dashboard.surveyEdit" class="btn btn-bordered-brand">
+    <a ui-sref="dashboard.surveyEdit({surveyId: null})" class="btn btn-bordered-brand">
         <i class="icon-pencil"></i>
         Create
     </a>
@@ -44,7 +44,7 @@
         <i ng-class="{'icon-folder': !surveys.quizzes.visible, 'icon-folder-open': surveys.quizzes.visible}"></i>
         Quizzes
     </span>
-    <a ui-sref="dashboard.surveyEdit" class="btn btn-bordered-brand">
+    <a ui-sref="dashboard.surveyEdit({surveyId: null})" class="btn btn-bordered-brand">
         <i class="icon-pencil"></i>
         Create
     </a>

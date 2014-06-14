@@ -18,7 +18,7 @@ angular.module('seedApp.directives.controls').directive('seedSelectList', ['sele
             $scope.onItemClick = function(itemValue) {
                 $scope.selectList.hideList();
                 $scope.selectList.setSelectedItem(itemValue);
-                $scope.lmsSelectedValue = $scope.selectList.getSelectedValue();
+                $scope.selectedValue = $scope.selectList.getSelectedValue();
             };
         }
     };

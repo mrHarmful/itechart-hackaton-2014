@@ -8,6 +8,7 @@ angular.module('seedApp.factories.resources')
         return $resource('/api/surveys/:id', null,
             {
                 'all': { method: 'GET' },
-                'get': {method: 'GET'}
+                'get': { method: 'GET' },
+                'save': {method: 'PUT'}
             });
     }]);

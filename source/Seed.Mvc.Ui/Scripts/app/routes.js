@@ -35,10 +35,10 @@ angular.module('seedApp').config(['$stateProvider', '$urlRouterProvider', '$loca
                 })
             .state('dashboard.surveyEdit',
                 {
-                    url: $urlMatcherFactory.compile('/surveys/edit/:surveyId', {
+                    url: $urlMatcherFactory.compile('/surveys/edit/{surveyId}', {
                         params: {
                             surveyId: {
-                                value: null
+                                value: null,
                             }
                         }
                     }),

@@ -6,25 +6,31 @@
 angular.module('seedApp.controllers.views')
     .controller('surveyEditController', [
         '$scope',
-        '$stateParams',
+        '$state',
         'surveysService',
         'SelectLists',
-        function($scope, $stateParams, surveysService, SelectLists) {
-            if ($stateParams.surveyId === null) {
+        function($scope, $state, surveysService, SelectLists) {
+            if ($state.params.surveyId === null || angular.isUndefined($state.params.surveyId)) {
                 $scope.survey = {                    
                     meta: {
                         selectedTargets: $scope.targets = SelectLists.targets(),
+                        selectedCategoryId: null,
+                        selectedPriorityId: null
                     },
                     questions: []
                 };
             } else {
-                $scope.survey = surveysService.getSurvey($stateParams.surveyId);
+                $scope.survey = surveysService.getSurvey($state.params.surveyId);
             }
 
             $scope.tab = 'meta';
 
             $scope.categories = SelectLists.categories();
             $scope.priorities = SelectLists.priorities();
+
+            $scope.saveSurvey = function () {
+                surveysService.saveSurvey($scope.survey);
+            };
 
             $scope.addQuestion = function (type) {
                 var question = {};
