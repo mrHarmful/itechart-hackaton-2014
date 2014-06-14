@@ -53,6 +53,22 @@ namespace Seed.Bcs
 
         #region Public methods
 
+        public List<KeyValueItem> GetTargets()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<KeyValueItem> GetPriorities()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<KeyValueItem> GetCategories()
+        {
+            throw new NotImplementedException();
+        }
+
+
         #endregion
     }
 }

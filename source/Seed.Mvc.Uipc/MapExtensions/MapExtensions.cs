@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Seed.Bcs;
 using Seed.Entities;
 using Seed.Entities.AccountItems;
 using Seed.Web.Uipc.ViewModels;
@@ -27,9 +28,9 @@ namespace Seed.Web.Uipc
             result.Meta = new QuizMetaVm();
             result.Meta.EndDate = quiz.EndDate;
             result.Meta.Reason = quiz.Reason;
-            result.Meta.SelectedCategoryId = quiz.Category.Id;
-            result.Meta.SelectedPriorityId = (int) quiz.Priority;
-            result.Meta.SelectedTargetIds = quiz.Target.Select(t => t.Id).ToList();
+            result.Meta.SelectedCategoryId = quiz.CategoryId;
+            result.Meta.SelectedPriorityId = (int) quiz.PriorityId;
+            result.Meta.SelectedTargetIds = quiz.Targets;
             result.Meta.StartDate = quiz.StartDate;
             result.Meta.Title = quiz.Title;
             result.Questions = new List<QuestionVm>();
@@ -42,7 +43,7 @@ namespace Seed.Web.Uipc
                 qVm.Id = question.Id;
                 qVm.IsUserMeta = question.IsUserMeta;
                 qVm.QuizId = quiz.Id;
-                qVm.SelectedTypeId = (int) question.Type;
+                qVm.IsSingleSelect = question.IsSingleSelect;
                 qVm.Answers = new List<AnswerVm>();
 
                 foreach (var answer in question.Answers)
@@ -50,7 +51,7 @@ namespace Seed.Web.Uipc
                     var aVm = new AnswerVm();
                     aVm.Id = answer.Id;
                     aVm.Caption = answer.Caption;
-                    aVm.QuestionId = question.Id;
+                    aVm.QuestionId = question.Id.Value;
                 }
             }
 
@@ -66,11 +67,13 @@ namespace Seed.Web.Uipc
         private static SingleQuestionLblVm MapToSingleQuestionLblVm(this SingleQuestion question)
         {
             var result = new SingleQuestionLblVm();
-            result.Enquiry = string.Format("{0}...", question.Enquiry.Take(50));
-            result.Id = question.Id;
-            result.Category = question.Category.Title;
-            result.Target = string.Join(";", question.Target.Select(t => t.Name));
-            result.Priority = question.Priority.ToString();
+            result.Enquiry = question.Enquiry;
+            result.Id = question.Id.Value;
+            result.Category = SampleBc.Instance.GetCategories().First(c => c.Id == question.CategoryId).Caption;
+            result.Target = string.Join(";",
+                                        SampleBc.Instance.GetTargets().Where(t => question.Targets.Contains(t.Id)).Select(
+                                            t => t.Caption));
+            result.Priority = SampleBc.Instance.GetPriorities().First(p => p.Id == question.PriorityId).Caption;
 
             return result;
         }
@@ -78,12 +81,14 @@ namespace Seed.Web.Uipc
         private static QuizLblVm MapToQuizLblVm(this Quiz quiz)
         {
             var result = new QuizLblVm();
-            result.Enquiry = string.Format("{0}...", quiz.Title.Take(50));
+            result.Enquiry = quiz.Title;
             result.Id = quiz.Id;
-            result.Category = quiz.Category.Title;
-            result.Target = string.Join(";", quiz.Target.Select(t => t.Name));
+            result.Category = SampleBc.Instance.GetCategories().First(c=>c.Id == quiz.CategoryId).Caption;
+            result.Target = string.Join(";",
+                                        SampleBc.Instance.GetTargets().Where(t => quiz.Targets.Contains(t.Id)).Select(
+                                            t => t.Caption));
             result.QuestionsCount = quiz.Questions.Count;
-            result.Priority = quiz.Priority.ToString();
+            result.Priority = SampleBc.Instance.GetPriorities().First(p => p.Id == quiz.PriorityId).Caption;
 
             return result;
         }

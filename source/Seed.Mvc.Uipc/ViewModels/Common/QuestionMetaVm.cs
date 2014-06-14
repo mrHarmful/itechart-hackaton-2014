@@ -13,11 +13,11 @@ namespace Seed.Web.Uipc.ViewModels
 
         public long SelectedPriorityId { get; set; }
 
-        public List<int> SelectedTargetIds { get; set; }
+        public List<long> SelectedTargetIds { get; set; }
 
         public QuestionMetaVm()
         {
-            SelectedTargetIds = new List<int>();
+            SelectedTargetIds = new List<long>();
         }
     }
 }

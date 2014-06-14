@@ -8,7 +8,7 @@ namespace Seed.Web.Uipc.ViewModels
 
         public string Enquiry { get; set; }
 
-        public int SelectedTypeId { get; set; }
+        public bool IsSingleSelect { get; set; }
 
         public List<AnswerVm> Answers { get; set; }
 

@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using Seed.Entities.Enums;
 
 namespace Seed.Entities
 {
@@ -7,13 +6,13 @@ namespace Seed.Entities
     {
         public long OwnerId { get; set; }
 
-        public long Id { get; set; }
+        public long? Id { get; set; }
 
         public long? QuizId { get; set; }
 
         public string Enquiry { get; set; }
 
-        public QuestionType Type { get; set; }
+        public bool IsSingleSelect { get; set; }
 
         public bool CanSkip { get; set; }
 

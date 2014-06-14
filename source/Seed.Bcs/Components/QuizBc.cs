@@ -2,7 +2,6 @@
 using Seed.Dacs.Interfaces;
 using Seed.Entities;
 using Seed.Entities.AccountItems;
-using Seed.Entities.Enums;
 
 namespace Seed.Bcs
 {
@@ -55,17 +54,17 @@ namespace Seed.Bcs
 
         public UserQuizList GetQuizList(long userId)
         {
-            UserQuizList result = new UserQuizList();//_quizDac.GetQuizList(userId);
+            UserQuizList result = new UserQuizList(); //_quizDac.GetQuizList(userId);
             result.Questions = new List<SingleQuestion>();
             for (int i = 1; i < 12; i++)
             {
                 var q = new SingleQuestion();
                 q.Enquiry = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer.";
                 q.Id = i;
-                q.Category = new Category {Title = "CatTitle"};
-                q.Target = new List<Department>();
-                q.Target.Add(new Department(){Name = "D1"});
-                q.Priority = QuizPriority.Hight;
+                q.CategoryId = 1;
+                q.Targets = new List<long>();
+                q.Targets.Add(1);
+                q.PriorityId = 1;
                 result.Questions.Add(q);
             }
             result.Quizzes = new List<Quiz>();
@@ -74,10 +73,10 @@ namespace Seed.Bcs
                 var q = new Quiz();
                 q.Title = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer.";
                 q.Id = i;
-                q.Category = new Category { Title = "CatTitle" };
-                q.Target = new List<Department>();
-                q.Target.Add(new Department() { Name = "D1" });
-                q.Priority = QuizPriority.Hight;
+                q.CategoryId = 1;
+                q.Targets = new List<long>();
+                q.Targets.Add(1);
+                q.PriorityId = 1;
                 for (int j = 0; j < 11; j++)
                 {
                     var qq = new SingleQuestion();
@@ -97,10 +96,10 @@ namespace Seed.Bcs
             q.Title = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer.";
             q.Id = quizId;
             q.Reason = "Lorem Ipsum is simply dummy text of the printing.";
-            q.Category = new Category { Title = "Work", Id = 1 };
-            q.Target = new List<Department>();
-            q.Target.Add(new Department() { Name = "D1", Id = 1 });
-            q.Priority = QuizPriority.Hot;
+            q.CategoryId = 1;
+            q.Targets = new List<long>();
+            q.Targets.Add(1);
+            q.PriorityId = 1;
             for (int j = 1; j < 12; j++)
             {
                 var qq = new Question();

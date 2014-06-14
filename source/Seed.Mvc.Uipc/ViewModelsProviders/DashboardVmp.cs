@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using System.Web.Mvc;
 using Seed.Bcs;
 using Seed.Entities.AccountItems;
@@ -30,8 +26,10 @@ namespace Seed.Web.Uipc
             return result;
         }
 
-        public static List<SelectListItem> GetTargets()
+        public static CaptionSelectList GetTargets()
         {
+            var result = new CaptionSelectList();
+            result.Caption = "Departments";
             var list = new List<SelectListItem>();
 
             var item1 = new SelectListItem();
@@ -47,12 +45,15 @@ namespace Seed.Web.Uipc
             item2.Value = "2";
 
             list.Add(item2);
+            result.Items = list;
 
-            return list;
+            return result;
         }
 
-        public static List<SelectListItem> GetPriorities()
+        public static CaptionSelectList GetPriorities()
         {
+            var result = new CaptionSelectList();
+            result.Caption = "Priority";
             var list = new List<SelectListItem>();
 
             var item1 = new SelectListItem();
@@ -69,11 +70,15 @@ namespace Seed.Web.Uipc
 
             list.Add(item2);
 
-            return list;
+            result.Items = list;
+
+            return result;
         }
 
-        public static List<SelectListItem> GetCategories()
+        public static CaptionSelectList GetCategories()
         {
+            var result = new CaptionSelectList();
+            result.Caption = "Category";
             var list = new List<SelectListItem>();
 
             var item1 = new SelectListItem();
@@ -90,7 +95,9 @@ namespace Seed.Web.Uipc
 
             list.Add(item2);
 
-            return list;
+            result.Items = list;
+
+            return result;
         }
     }
 }

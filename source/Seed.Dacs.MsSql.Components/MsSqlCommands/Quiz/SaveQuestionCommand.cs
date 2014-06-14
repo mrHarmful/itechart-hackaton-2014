@@ -31,7 +31,7 @@ namespace Seed.Dacs.MsSql.Components.MsSqlCommands.Quiz
             cmd.Parameters.Add("@SessionId", SqlDbType.BigInt).Value = _question.QuizId;
             cmd.Parameters.Add("@SessionSequence", SqlDbType.Int).Value = _sequence;
             cmd.Parameters.Add("@CreatorId", SqlDbType.BigInt).Value = _question.OwnerId;
-            cmd.Parameters.Add("@IsSingleSelect", SqlDbType.Bit).Value = _question.Type == Entities.Enums.QuestionType.SingleSelect;
+            cmd.Parameters.Add("@IsSingleSelect", SqlDbType.Bit).Value = _question.IsSingleSelect;
             cmd.Parameters.Add("@IsSkippable", SqlDbType.Bit).Value = _question.CanSkip;
             cmd.Parameters.Add("@CreateTime", SqlDbType.DateTime).Value = DateTime.Now;
             cmd.Parameters.Add("@StartTime", SqlDbType.DateTime).Value = DBNull.Value;

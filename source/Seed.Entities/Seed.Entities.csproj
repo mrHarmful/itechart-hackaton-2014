@@ -55,18 +55,16 @@
   <ItemGroup>
     <Compile Include="AccountItems\UserQuizList.cs" />
     <Compile Include="Quiz\Answer.cs" />
-    <Compile Include="Quiz\Category.cs" />
-    <Compile Include="Quiz\Department.cs" />
+    <Compile Include="Quiz\KeyValueItem.cs" />
     <Compile Include="Quiz\Question.cs" />
     <Compile Include="Quiz\Quiz.cs" />
     <Compile Include="Quiz\SingleQuestion.cs" />
-    <Compile Include="Enums\QuestionType.cs" />
-    <Compile Include="Enums\QuizPriority.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sample.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Common\" />
+    <Folder Include="Enums\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -29,19 +29,19 @@ namespace Seed.Dacs.MsSql.Components.MsSqlCommands.Quiz
             cmd.Parameters.Add("@SessionId", SqlDbType.BigInt).Value = DBNull.Value;
             cmd.Parameters.Add("@SessionSequence", SqlDbType.Int).Value = DBNull.Value;
             cmd.Parameters.Add("@CreatorId", SqlDbType.BigInt).Value = _question.OwnerId;
-            cmd.Parameters.Add("@IsSingleSelect", SqlDbType.Bit).Value = _question.Type == Entities.Enums.QuestionType.SingleSelect;
+            cmd.Parameters.Add("@IsSingleSelect", SqlDbType.Bit).Value = _question.IsSingleSelect;
             cmd.Parameters.Add("@IsSkippable", SqlDbType.Bit).Value = _question.CanSkip;
             cmd.Parameters.Add("@CreateTime", SqlDbType.DateTime).Value = DateTime.Now;
             cmd.Parameters.Add("@StartTime", SqlDbType.DateTime).Value = _question.StartDate;
             cmd.Parameters.Add("@EndTime", SqlDbType.DateTime).Value = _question.EndDate;
-            cmd.Parameters.Add("@PriorityId", SqlDbType.BigInt).Value = (long)_question.Priority;
-            cmd.Parameters.Add("@CategoryId", SqlDbType.BigInt).Value = _question.Category.Id;
+            cmd.Parameters.Add("@PriorityId", SqlDbType.BigInt).Value = _question.PriorityId;
+            cmd.Parameters.Add("@CategoryId", SqlDbType.BigInt).Value = _question.CategoryId;
 
             /*cmd.Parameters.Add("@CreateCost", SqlDbType.Int).Value = DBNull.Value;
             cmd.Parameters.Add("@ReturnPoints", SqlDbType.Int).Value = DBNull.Value;*/
 
             cmd.Parameters.Add("@Answers", SqlDbType.Structured).Value = _question.Answers.ToAnswerVariantsTable();
-            cmd.Parameters.Add("@AllowedDepts", SqlDbType.Structured).Value = _question.Target.Select(x => x.Id).ToIdsList();
+            cmd.Parameters.Add("@AllowedDepts", SqlDbType.Structured).Value = _question.Targets.Select(x => (int) x).ToIdsList();
 
             cmd.Parameters.Add("@QuestionId", SqlDbType.BigInt).Direction = ParameterDirection.Output;
 
