@@ -93,25 +93,6 @@ namespace Seed.Web.Uipc
 
         public static CaptionSelectList GetTargets()
         {
-            /*var result = new CaptionSelectList();
-            result.Caption = "Departments";
-            var list = new List<SelectListItem>();
-
-            var item1 = new SelectListItem();
-            item1.Selected = false;
-            item1.Text = "D1";
-            item1.Value = "1";
-
-            list.Add(item1);
-
-            var item2 = new SelectListItem();
-            item2.Selected = false;
-            item2.Text = "D2";
-            item2.Value = "2";
-
-            list.Add(item2);
-            result.Items = list;*/
-
             var result = CommonBc.Instance.GetTargets().MapToCaptionSelectList("Departments");
 
             return result;
@@ -119,26 +100,6 @@ namespace Seed.Web.Uipc
 
         public static CaptionSelectList GetPriorities()
         {
-            /*var result = new CaptionSelectList();
-            result.Caption = "Priority";
-            var list = new List<SelectListItem>();
-
-            var item1 = new SelectListItem();
-            item1.Selected = false;
-            item1.Text = "Hot";
-            item1.Value = "1";
-
-            list.Add(item1);
-
-            var item2 = new SelectListItem();
-            item2.Selected = false;
-            item2.Text = "Medium";
-            item2.Value = "2";
-
-            list.Add(item2);
-
-            result.Items = list;*/
-
             var result = CommonBc.Instance.GetPriorities().MapToCaptionSelectList("Priority");
 
             return result;
@@ -146,26 +107,6 @@ namespace Seed.Web.Uipc
 
         public static CaptionSelectList GetCategories()
         {
-            /*var result = new CaptionSelectList();
-            result.Caption = "Category";
-            var list = new List<SelectListItem>();
-
-            var item1 = new SelectListItem();
-            item1.Selected = false;
-            item1.Text = "Work";
-            item1.Value = "1";
-
-            list.Add(item1);
-
-            var item2 = new SelectListItem();
-            item2.Selected = false;
-            item2.Text = "Health";
-            item2.Value = "2";
-
-            list.Add(item2);
-
-            result.Items = list;*/
-
             var result = CommonBc.Instance.GetCategories().MapToCaptionSelectList("Category");
 
             return result;

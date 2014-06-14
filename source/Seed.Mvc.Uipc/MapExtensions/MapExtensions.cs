@@ -167,11 +167,11 @@ namespace Seed.Web.Uipc
             var result = new SingleQuestionLblVm();
             result.Enquiry = question.Enquiry.Truncate(20) + "...";
             result.Id = question.Id.Value;
-            result.Category = "Development";//SampleBc.Instance.GetCategories().First(c => c.Id == question.CategoryId).Caption;
-            result.Target = "D1; D2";/*string.Join(";",
-                                        SampleBc.Instance.GetTargets().Where(t => question.Targets.Contains(t.Id)).Select(
-                                            t => t.Caption));*/
-            result.Priority = "Hot";//SampleBc.Instance.GetPriorities().First(p => p.Id == question.PriorityId).Caption;
+            result.Category = CommonBc.Instance.GetCategories().First(c => c.Id == question.CategoryId).Caption;
+            result.Target = string.Join(";",
+                                        CommonBc.Instance.GetTargets().Where(t => question.Targets.Contains(t.Id)).Select(
+                                            t => t.Caption));
+            result.Priority = CommonBc.Instance.GetPriorities().First(p => p.Id == question.PriorityId).Caption;
 
             return result;
         }
@@ -181,12 +181,12 @@ namespace Seed.Web.Uipc
             var result = new QuizLblVm();
             result.Enquiry = quiz.Title.Truncate(20) + "...";
             result.Id = quiz.Id.Value;
-            result.Category = "Development";//SampleBc.Instance.GetCategories().First(c=>c.Id == quiz.CategoryId).Caption;
-            result.Target = "D1; D2"; /*string.Join(";",
-                                        SampleBc.Instance.GetTargets().Where(t => quiz.Targets.Contains(t.Id)).Select(
-                                            t => t.Caption));*/
+            result.Category = CommonBc.Instance.GetCategories().First(c => c.Id == quiz.CategoryId).Caption;
+            result.Target = string.Join(";",
+                                        CommonBc.Instance.GetTargets().Where(t => quiz.Targets.Contains(t.Id)).Select(
+                                            t => t.Caption));
             result.QuestionsCount = quiz.Questions.Count;
-            result.Priority = "Hot";//SampleBc.Instance.GetPriorities().First(p => p.Id == quiz.PriorityId).Caption;
+            result.Priority = CommonBc.Instance.GetPriorities().First(p => p.Id == quiz.PriorityId).Caption;
 
             return result;
         }
