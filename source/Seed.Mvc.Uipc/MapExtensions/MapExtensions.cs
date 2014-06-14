@@ -46,6 +46,13 @@ namespace Seed.Web.Uipc
             return result;
         }
 
+        public static List<QuizLblVm> MapToQuizLblListVm(this QuizList quizList)
+        {
+            var result = quizList.Quizzes.Select(q => q.MapToQuizLblVm()).ToList();
+
+            return result;
+        }
+
         public static SurveysVm MapToSurveysVm(this UserQuizList quizList)
         {
             var surveys = new SurveysVm();

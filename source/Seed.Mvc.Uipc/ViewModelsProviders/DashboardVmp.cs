@@ -9,11 +9,11 @@ namespace Seed.Web.Uipc
 {
     public static partial class ViewModelsProvider
     {
-        public static SurveysVm GetavAilableSurveysVm(long userId)
+        public static List<QuizLblVm> GetavAilableQuizzesVm(long userId)
         {
-            UserQuizList quizList = QuizBc.Instance.GetQuizListForAttend(userId);
+            QuizList quizList = QuizBc.Instance.GetQuizListForAttend(userId);
 
-            var result = quizList.MapToSurveysVm();
+            var result = quizList.MapToQuizLblListVm();
 
             return result;
         }

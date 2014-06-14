@@ -53,21 +53,9 @@ namespace Seed.Bcs
 
         #region Public methods
 
-        public UserQuizList GetQuizListForAttend(long userId)
+        public QuizList GetQuizListForAttend(long userId)
         {
-            UserQuizList result = new UserQuizList(); //_quizDac.GetQuizList(userId);
-            result.Questions = new List<SingleQuestion>();
-            for (int i = 1; i < 12; i++)
-            {
-                var q = new SingleQuestion();
-                q.Enquiry = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer.";
-                q.Id = i;
-                q.CategoryId = 1;
-                q.Targets = new List<long>();
-                q.Targets.Add(1);
-                q.PriorityId = 1;
-                result.Questions.Add(q);
-            }
+            var result = new QuizList(); //_quizDac.GetQuizList(userId);
             result.Quizzes = new List<Quiz>();
             for (int i = 1; i < 12; i++)
             {

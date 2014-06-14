@@ -2,10 +2,8 @@
 
 namespace Seed.Entities.AccountItems
 {
-    public class UserQuizList
+    public class UserQuizList : QuizList
     {
-        public List<Quiz> Quizzes { get; set; }
-
         public List<SingleQuestion> Questions { get; set; }
     }
 }
