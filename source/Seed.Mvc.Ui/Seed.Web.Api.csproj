@@ -214,6 +214,7 @@
     <Content Include="Templates\partials\question.html" />
     <Content Include="Templates\partials\selectList.html" />
     <Content Include="Templates\views\answerSurvey.html" />
+    <Content Include="Templates\views\achivements.html" />
     <Content Include="Templates\views\singleQuestionEdit.html" />
     <Content Include="Templates\views\surveyEdit.html" />
     <Content Include="Templates\views\availableSurveys.html" />
@@ -267,7 +268,7 @@
     <Content Include="Content\Less\lead-details.less" />
     <Content Include="Content\Less\images.less" />
     <Content Include="Content\Less\date-picker.less" />
-    <Content Include="Content\Less\dimensions.less" />
+    <Content Include="Content\Less\achivements.less" />
     <Content Include="Content\Less\navigation.less" />
     <None Include="Properties\PublishProfiles\dev_server.pubxml">
       <SubType>Designer</SubType>

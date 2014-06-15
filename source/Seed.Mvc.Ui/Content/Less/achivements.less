@@ -1,0 +1,27 @@
+﻿html {
+}
+
+@import '_mixins.less';
+@import '_variables.less';
+
+.title{
+    font-size: 18px;
+}
+
+.achivements{
+    .list-unstyled();
+    margin-bottom: 20px;
+    li{
+        width: 90%;
+        border-bottom: 1px dashed @brand-color;
+        margin-top: 5px;
+        padding: 5px 10px;
+        position: relative;
+
+        .date{
+            position: absolute;
+            right: 0;
+            top: 5px;
+        }
+    }
+}

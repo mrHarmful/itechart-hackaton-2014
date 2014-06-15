@@ -23,6 +23,15 @@ angular.module('seedApp').config(['$stateProvider', '$urlRouterProvider', '$loca
                         title: 'Profile'
                     }
                 })
+            .state('dashboard.achivements',
+                {
+                    url: '/achivements',
+                    templateUrl: '/Templates/views/achivements.html',
+                    data: {
+                        title: 'Achievements',
+                        description: 'enjoy your succes story.'
+                    }
+                })
             .state('dashboard.surveysManager',
                 {
                     url: '/surveys/manage',
