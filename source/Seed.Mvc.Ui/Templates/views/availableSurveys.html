@@ -1,7 +1,4 @@
 ﻿<div class="surveys">
-    <span class="title txt-upper">
-        Quizzes
-    </span>
     <ul class="grid" ng-show="surveys.$resolved">
         <li class="head">
             <div class="col-lg-3 text">
@@ -20,9 +17,10 @@
                 Questions
             </div>
         </li>
-        <li class="value" ng-repeat="quiz in surveys">
+        <li class="value" ng-repeat="quiz in surveys" ng-click="respond(quiz)">
             <div class="col-lg-3 text">
                 {{quiz.enquiry}}
+                <i class="icon-bullhorn"></i>
             </div>
             <div class="col-lg-2">
                 {{quiz.category}}
@@ -37,9 +35,7 @@
                 {{quiz.questionsCount}}
             </div>
             <div class="col-lg-1">
-                <a class="btn btn-bordered-brand" ui-sref="dashboard.answerSurvey({surveyId: quiz.id})">
-                    Respond
-                </a>
+                
             </div>
         </li>
     </ul>

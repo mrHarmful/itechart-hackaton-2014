@@ -20,15 +20,12 @@
 
 .grid {
     .list-unstyled();
-    margin: 3px 10px;
+
     > li {
         .row();
         padding: @grid-row-padding-v 0;
         font-size: 0;
-
-        &:not(.stub) {
-            border-bottom: 1px solid @grid-body-border-color;
-        }
+        cursor: pointer;
 
         &.details {
             padding: 0;
@@ -45,8 +42,28 @@
             vertical-align: middle;
         }
 
-        > [class*="col-"]:not(.text) {
-            text-align: center;
+            > [class*="col-"]:not(.text) {
+                text-align: center;
+            }
+
+            > [class*="col-"].text {
+                font-weight: bold;
+                text-align: center;
+            }
+
+        &:nth-child(2n+1) {
+            background-color: fade(@brand-color, 15%);
+        }
+
+        .icon-bullhorn {
+                font-size: 23px;
+                color: @text-color;
+            }
+
+        &:hover {
+            .icon-bullhorn {
+                color: @brand-color;
+            }
         }
     }
 

@@ -10,4 +10,8 @@ angular.module('seedApp.controllers.views')
         'surveysService',
         function($scope, $state, surveysService) {
             $scope.surveys = surveysService.getAvailableSurveys();
+
+            $scope.respond = function(survey) {
+                $state.go('dashboard.answerSurvey', { surveyId: survey.id });
+            };
         }]);
