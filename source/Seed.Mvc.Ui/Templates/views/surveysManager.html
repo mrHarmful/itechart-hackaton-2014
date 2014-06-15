@@ -1,13 +1,13 @@
-﻿<div class="surveys" ng-show="surveys.questions">
+﻿<div class="surveys">
     <span class="title txt-upper" ng-click="toggle(surveys.questions)">
         <i ng-class="{'icon-folder': !surveys.questions.visible, 'icon-folder-open': surveys.questions.visible}"></i>
         Single question
     </span>
-    <a ui-sref="dashboard.surveyEdit({surveyId: null})" class="btn btn-bordered-brand">
+    <a ui-sref="dashboard.singleQuestionEdit" class="btn btn-bordered-brand">
         <i class="icon-pencil"></i>
         Create
     </a>
-    <ul class="grid" ng-show="surveys.questions.visible">
+    <ul class="grid" ng-show="surveys.questions && surveys.questions.visible">
         <li class="head">
             <div class="col-lg-3 text">
                 Enquiry
@@ -38,17 +38,17 @@
         </li>
     </ul>
 </div>
-<div class="splitter"></div>
-<div class="surveys" ng-show="surveys.quizzes">
+<div class="surveys">
+    <div class="splitter"></div>
     <span class="title txt-upper" ng-click="toggle(surveys.quizzes)">
         <i ng-class="{'icon-folder': !surveys.quizzes.visible, 'icon-folder-open': surveys.quizzes.visible}"></i>
         Quizzes
     </span>
-    <a ui-sref="dashboard.surveyEdit({surveyId: null})" class="btn btn-bordered-brand">
+    <a ui-sref="dashboard.surveyEdit({surveyId: null, type: 'quiz'})" class="btn btn-bordered-brand">
         <i class="icon-pencil"></i>
         Create
     </a>
-    <ul class="grid" ng-show="surveys.quizzes.visible">
+    <ul class="grid" ng-show="surveys.quizzes && surveys.quizzes.visible">
         <li class="head">
             <div class="col-lg-3 text">
                 Enquiry

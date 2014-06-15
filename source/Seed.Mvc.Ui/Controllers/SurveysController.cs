@@ -23,16 +23,30 @@ namespace Seed.Web.Api.Controllers
             return result;
         }
 
-        [Route("api/surveys")]
+        [Route("api/surveys/quiz")]
         public void PutSurvey(QuizVm vm)
         {
             ViewModelsProvider.SaveQuiz(vm);
         }
+        
+        [Route("api/surveys/single-question")]
+        public void PutSingleQuestion(SingleQuestionVm vm)
+        {
+            ViewModelsProvider.SaveSingleQuestion(vm);
+        }
 
-        [Route("api/surveys/{id:long}")]
+        [Route("api/surveys/{id:long}/quiz")]
         public QuizVm GetQuiz(long id)
         {
             var result = ViewModelsProvider.GetQuizVm(id);
+
+            return result;
+        }
+
+        [Route("api/surveys/{id:long}/single-question")]
+        public SingleQuestionVm GetSingleQuestion(long id)
+        {
+            var result = ViewModelsProvider.GetSingleQuestionVm(id);
 
             return result;
         }

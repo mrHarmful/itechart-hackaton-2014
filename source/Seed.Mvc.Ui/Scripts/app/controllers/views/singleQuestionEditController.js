@@ -4,7 +4,7 @@
 'use strict';
 
 angular.module('seedApp.controllers.views')
-    .controller('surveyEditController', [
+    .controller('singleQuestionEditController', [
         '$scope',
         '$state',
         'surveysService',
@@ -20,7 +20,7 @@ angular.module('seedApp.controllers.views')
                     questions: []
                 };
             } else {
-                $scope.survey = surveysService.getQuiz($state.params.surveyId);
+                $scope.survey = surveysService.getSingleQuestion($state.params.surveyId);
             }
 
             $scope.tab = 'meta';
@@ -29,7 +29,7 @@ angular.module('seedApp.controllers.views')
             $scope.priorities = SelectLists.priorities();
 
             $scope.saveSurvey = function () {
-                surveysService.saveQuiz($scope.survey);
+                surveysService.saveSingleQuestion($scope.survey);
             };
 
             $scope.addQuestion = function (type) {
@@ -98,8 +98,6 @@ angular.module('seedApp.controllers.views')
                 default:
                 }
 
-                question.enquiry = 'Some enquiry...';
-                
-                $scope.survey.questions.push(question);
+                $scope.survey.question = question;
             };
         }]);

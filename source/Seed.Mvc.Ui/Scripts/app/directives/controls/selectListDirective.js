@@ -12,20 +12,14 @@ angular.module('seedApp.directives.controls').directive('seedSelectList', ['sele
             model: '=seedSelectList',
             selectedValue: '='
         },
-        link: function($scope) {
+        link: function ($scope) {
+            $scope.selectList = selectListFactory.get($scope.model, $scope.selectedValue);
+
             $scope.onItemClick = function(itemValue) {
                 $scope.selectList.hideList();
                 $scope.selectList.setSelectedItem(itemValue);
                 $scope.selectedValue = $scope.selectList.getSelectedValue();
             };
-
-            $scope.$watch('model', function(newValue, oldValue) {
-                if (newValue === oldValue) {
-                    return;
-                }
-
-                $scope.selectList = selectListFactory.get($scope.model, $scope.lmsSelectedValue);
-            });
         }
     };
 }]);

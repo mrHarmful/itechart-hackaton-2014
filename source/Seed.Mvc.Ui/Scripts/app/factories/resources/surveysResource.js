@@ -9,8 +9,10 @@ angular.module('seedApp.factories.resources')
             {
                 'all': { method: 'GET' },
                 'available': { method: 'GET', url: '/api/surveys/available', isArray: true},
-                'get': { method: 'GET' },
+                'getQuiz': { method: 'GET', url: '/api/surveys/:id/quiz' },
+                'getSingleQuestion': { method: 'GET', url: '/api/surveys/:id/single-question' },
                 'getAttend': { method: 'GET', url: '/api/surveys/:id/attend'},
-                'save': {method: 'PUT'}
+                'saveQuiz': { method: 'PUT', url: '/api/surveys/quiz' },
+                'saveSingleQuestion': { method: 'PUT', url: '/api/surveys/single-question' }
             });
     }]);

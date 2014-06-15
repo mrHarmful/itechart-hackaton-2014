@@ -35,7 +35,7 @@ angular.module('seedApp').config(['$stateProvider', '$urlRouterProvider', '$loca
                 })
             .state('dashboard.surveyEdit',
                 {
-                    url: $urlMatcherFactory.compile('/surveys/edit/{surveyId}', {
+                    url: $urlMatcherFactory.compile('/surveys/edit/quiz/{surveyId}', {
                         params: {
                             surveyId: {
                                 value: null,
@@ -46,6 +46,22 @@ angular.module('seedApp').config(['$stateProvider', '$urlRouterProvider', '$loca
                     controller: 'surveyEditController',
                     data: {
                         title: 'Survey edit',
+                        description: 'reveal your deepest hidden phantasies and create a survey, but remember conciseness and clearness are keys to goal.'
+                    }
+                })
+            .state('dashboard.singleQuestionEdit',
+                {
+                    url: $urlMatcherFactory.compile('/surveys/edit/single-question/{surveyId}', {
+                        params: {
+                            surveyId: {
+                                value: null,
+                            }
+                        }
+                    }),
+                    templateUrl: '/Templates/views/singleQuestionEdit.html',
+                    controller: 'singleQuestionEditController',
+                    data: {
+                        title: 'Single Question edit',
                         description: 'reveal your deepest hidden phantasies and create a survey, but remember conciseness and clearness are keys to goal.'
                     }
                 })

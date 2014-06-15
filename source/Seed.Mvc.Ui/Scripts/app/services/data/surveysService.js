@@ -19,8 +19,14 @@ angular.module('seedApp.services.clients')
             return result;
         };
         
-        this.getSurvey = function (id) {
-            var result = Surveys.get({id: id});
+        this.getQuiz = function (id) {
+            var result = Surveys.getQuiz({id: id});
+
+            return result;
+        };
+        
+        this.getSingleQuestion = function (id) {
+            var result = Surveys.getSingleQuestion({ id: id });
 
             return result;
         };
@@ -31,8 +37,11 @@ angular.module('seedApp.services.clients')
             return result;
         };
         
-        this.saveSurvey = function (survey) {
-            Surveys.save(survey);
+        this.saveQuiz = function (survey) {
+            Surveys.saveQuiz(survey);
         };
-
+        
+        this.saveSingleQuestion = function (survey) {
+            Surveys.saveSingleQuestion(survey);
+        };
     }]);
