@@ -20,7 +20,8 @@ angular.module('seedApp').config(['$stateProvider', '$urlRouterProvider', '$loca
                     templateUrl: '/Templates/views/profile.html',
                     controller: 'profileController',
                     data: {
-                        title: 'Profile'
+                        title: 'Profile',
+                        description: 'something about you.'
                     }
                 })
             .state('dashboard.achivements',
