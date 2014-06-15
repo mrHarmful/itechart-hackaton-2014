@@ -11,7 +11,11 @@ angular.module('seedApp.controllers.views')
         function($scope, $state, surveysService) {
             $scope.surveys = surveysService.getUserSurveys();
 
-            $scope.toggle = function(collection) {
+            $scope.toggle = function (collection) {
+                if (angular.isUndefined(collection)) {
+                    return;
+                }
+                
                 collection.visible = !collection.visible;
             };
         }]);
