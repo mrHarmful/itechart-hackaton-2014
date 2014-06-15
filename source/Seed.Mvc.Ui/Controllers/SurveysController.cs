@@ -58,5 +58,13 @@ namespace Seed.Web.Api.Controllers
 
             return result;
         }
+
+        [Route("api/points/status")]
+        public PointsStatusVm GetPointsStatus()
+        {
+            var result = ViewModelsProvider.GetPointsStatusVm();
+
+            return result;
+        }
     }
 }

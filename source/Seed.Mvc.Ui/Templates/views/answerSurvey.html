@@ -17,6 +17,9 @@
         Submit
     </a>
 </div>
-<div class="row" ng-show="completed">
+<div class="row" ng-if="completed">
     Congratulations, you`ve finished!
+    <p ng-if="status.$resolved && status.isNeedShow">
+        {{status.change}} points earned for survey completion. You now have {{status.total}} points!
+    </p>
 </div>

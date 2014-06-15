@@ -35,6 +35,7 @@ angular.module('seedApp.controllers.views')
 
                     if (current + 1 >= questions.length) {
                         $scope.completed = true;
+                        $scope.status = surveysService.getPointStatus();
                         return;
                     }
 

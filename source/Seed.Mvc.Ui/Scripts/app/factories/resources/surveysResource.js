@@ -13,6 +13,7 @@ angular.module('seedApp.factories.resources')
                 'getSingleQuestion': { method: 'GET', url: '/api/surveys/:id/single-question' },
                 'getAttend': { method: 'GET', url: '/api/surveys/:id/attend'},
                 'saveQuiz': { method: 'PUT', url: '/api/surveys/quiz' },
-                'saveSingleQuestion': { method: 'PUT', url: '/api/surveys/single-question' }
+                'saveSingleQuestion': { method: 'PUT', url: '/api/surveys/single-question' },
+                'getStatus': { method: 'GET', url: '/api/points/status' }
             });
     }]);

@@ -44,4 +44,8 @@ angular.module('seedApp.services.clients')
         this.saveSingleQuestion = function (survey) {
             Surveys.saveSingleQuestion(survey);
         };
+        
+        this.getPointsStatus = function () {
+            Surveys.getStatus();
+        };
     }]);
