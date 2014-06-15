@@ -15,12 +15,12 @@
 .select {
     position: relative;
     cursor: pointer;
-    border: 1px solid @brand-color;
+    border-bottom: 1px solid #E5E4ED;
 
     > .items {
         .list-unstyled();
         .clearfix();
-        background-color: @select-items-bg-color;
+        background-color: @white;
         position: absolute;
         color: @select-items-color;
         z-index: @select-items-zindex;
@@ -28,17 +28,24 @@
         border-bottom: 2px solid @brand-color;
 
         > li {
-            padding: @select-items-padding;
+            padding: 10px 15px;
 
             &:hover {
-                background-color: @select-items-hover-bg-color;
-                color: @select-items-hover-color;
+            }
+
+            &:nth-child(2n+1) {
+                background-color: fade(@brand-color, 15%);
             }
         }
     }
 
     > .caption {
         min-width: @select-caption-min-width;
-        text-align: center;
+        font-size: 18px;
+        cursor: pointer;
+        background-color: #aeb6cb;
+        color: @white;
+        padding: 7px 15px;
+        position: relative;
     }
 }

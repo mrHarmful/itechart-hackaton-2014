@@ -33,5 +33,5 @@ angular.module('seedApp.controllers.app').controller('dashboardController', ['$s
         $scope.alerts.splice(index, 1);
     };
     
-    $scope.showAlert('Sample', 'green', true);
+    $scope.showAlert('Welcome back, Dmitry!', 'green', true);
 }]);

@@ -1,76 +1,43 @@
 ﻿<div class="editor">
-    <div class="col-lg-8">
-        <div class="row">
-            <div class="col-lg-6">
-                Title
-            </div>
-            <div class="col-lg-6">
-                <input type="text" ng-model="survey.meta.title" />
-            </div>
-            <div class="col-lg-6">
-                Reason
-            </div>
-            <div class="col-lg-6">
-                <textarea ng-model="survey.meta.reason" />
-            </div>
-            <div class="col-lg-6">
-                Target group
-            </div>
-            <div class="col-lg-6">
-                <div ng-if="survey.meta.selectedTargets.$resolved" seed-checkbox-dropdown="survey.meta.selectedTargets"></div>
-            </div>
-            <div class="col-lg-6">
-                Priority
-            </div>
-            <div class="col-lg-6">
-                <div ng-if="priorities.$resolved" seed-select-list="priorities" selected-value="survey.meta.selectedPriorityId"></div>
-            </div>
-            <div class="col-lg-6">
-                Category
-            </div>
-            <div class="col-lg-6">
-                <div ng-if="categories.$resolved" seed-select-list="categories" selected-value="survey.meta.selectedCategoryId"></div>
-            </div>
-        </div>
-        <div class="row">
-            <div seed-edit-question="survey.question"></div>
-        </div>
-    </div>
-    <div class="col-lg-3 col-lg-offset-1 toolbar">
-        <div class="row">
-            <a class="btn btn-bordered-brand" ng-click="saveSurvey()">
-                <i class="icon-page-next"></i>
+    <ul class="meta">
+        <li class="input">
+            <input type="text" placeholder="Title.." ng-model="survey.meta.title" />
+        </li>
+        <li class="input">
+            <input type="text" placeholder="Reason..." ng-model="survey.meta.reason" />
+        </li>
+        <li class="input">
+            <div ng-if="survey.meta.selectedTargets.$resolved" seed-checkbox-dropdown="survey.meta.selectedTargets"></div>
+        </li>
+        <li class="input">
+            <div ng-if="priorities.$resolved" seed-select-list="priorities" selected-value="survey.meta.selectedPriorityId"></div>
+        </li>
+        <li class="input">
+            <div ng-if="categories.$resolved" seed-select-list="categories" selected-value="survey.meta.selectedCategoryId"></div>
+        </li>
+        <li class="head">
+            Question
+            <a class="btn-head yes-no" ng-click="addQuestion('yes|no')">
+                Yes|No
+            </a>
+            <a class="btn-head assurance" ng-click="addQuestion('assurance')">
+                Assurance
+            </a>
+            <a class="btn-head single" ng-click="addQuestion('single')">
+                Single
+            </a>
+            <a class="btn-head multi" ng-click="addQuestion('multi')">
+                Multi
+            </a>
+        </li>
+    </ul>
+    <div seed-edit-question="survey.question"></div>
+    <ul class="meta">
+        <li class="head">
+            &nbsp;
+            <a class="btn-head multi" ng-click="saveSurvey()">
                 Save
             </a>
-        </div>
-        <div class="row">
-            <div class="splitter"></div>
-            <ul class="list-unstyled">
-                <li>
-                    <a class="btn btn-bordered-brand" ng-click="addQuestion('yes|no')">
-                        <i class="icon-page-next"></i>
-                        Yes|No question
-                    </a>
-                </li>
-                <li>
-                    <a class="btn btn-bordered-brand" ng-click="addQuestion('assurance')">
-                        <i class="icon-page-next"></i>
-                        "Assurance level" question
-                    </a>
-                </li>
-                <li>
-                    <a class="btn btn-bordered-brand" ng-click="addQuestion('single')">
-                        <i class="icon-page-next"></i>
-                        Single select question
-                    </a>
-                </li>
-                <li>
-                    <a class="btn btn-bordered-brand" ng-click="addQuestion('multi')">
-                        <i class="icon-page-next"></i>
-                        Multi select question
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </div>
+        </li>
+    </ul>
 </div>

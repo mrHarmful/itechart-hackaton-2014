@@ -1,9 +1,8 @@
-﻿<div class="col-lg-6">
-    Enquiry
-</div>
-<textarea class="col-lg-6" ng-model="question.enquiry" />
-<ul class="list-unstyled">
-    <li class="answer" ng-repeat="answer in question.answers">
-        <input type="text" ng-model="answer.caption" />
+﻿<ul class="meta">
+    <li class="input">
+        <input type="text" placeholder="Enquiry" ng-model="question.enquiry" />
+    </li>
+    <li class="input" ng-repeat="answer in question.answers">
+        <input type="text" placeholder="Answer..." ng-model="answer.caption" />
     </li>
 </ul>

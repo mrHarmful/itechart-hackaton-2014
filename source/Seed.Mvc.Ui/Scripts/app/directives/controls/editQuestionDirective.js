@@ -7,6 +7,7 @@ angular.module('seedApp.directives.controls').directive('seedEditQuestion', func
     return {
         restrict: 'A',
         templateUrl: '/Templates/partials/editQuestion.html',
+        replace: true,
         scope: {
             question: '=seedEditQuestion'
         },
