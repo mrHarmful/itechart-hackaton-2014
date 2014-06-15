@@ -52,18 +52,20 @@ namespace Seed.Bcs
 
         #region Public methods
 
+        private static int CurrentpPoints = 0;
+
         public PointsStatus CheckPoints()
         {
             var status = new PointsStatus();
 
-            var currentpPoints = _sampleDac.GetUserPoints(UserBc.Instance.GetCurrntUser().Id);
+            var currentpPoints = CurrentpPoints + 20;
             var oldPoints = currentpPoints;
 
             if (HttpContext.Current != null && HttpContext.Current.Session != null)
             {
                 object sessionData = HttpContext.Current.Session["points"];
 
-                oldPoints = (int) sessionData;
+                oldPoints = sessionData != null ? (int) sessionData : 0;
             }
             if (HttpContext.Current != null && HttpContext.Current.Session != null)
             {
