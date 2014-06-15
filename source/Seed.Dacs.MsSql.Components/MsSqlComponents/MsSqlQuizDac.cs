@@ -49,7 +49,11 @@ namespace Seed.Dacs.MsSql.Components.MsSqlComponents
 
         public Question GetQuestion(long questionId)
         {
-            throw new NotImplementedException();
+            var command = new GetQuestionCommand(questionId);
+
+            command.Execute();
+
+            return command.CommandResult;
         }
 
         public SingleQuestion GetSingleQuestion(long questionId)

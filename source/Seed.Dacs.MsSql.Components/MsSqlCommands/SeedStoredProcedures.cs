@@ -22,6 +22,8 @@
 
         public const string GetQuiz = "sp_GetSession";
 
+        public const string GetQuestion = "sp_GetQuestion";
+
         public const string GetSingleQuestion = "sp_GetSingleQuestion";
 
         #endregion

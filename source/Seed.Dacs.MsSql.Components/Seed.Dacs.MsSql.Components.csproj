@@ -63,6 +63,7 @@
     <Compile Include="MsSqlCommands\Common\GetDepartmentsCommand.cs" />
     <Compile Include="MsSqlCommands\Quiz\DeactivateQuestionCommand.cs" />
     <Compile Include="MsSqlCommands\Quiz\DeactivateQuizCommand.cs" />
+    <Compile Include="MsSqlCommands\Quiz\GetQuestionCommand.cs" />
     <Compile Include="MsSqlCommands\Quiz\GetQuizCommand.cs" />
     <Compile Include="MsSqlCommands\Quiz\GetSingleQuestionCommand.cs" />
     <Compile Include="MsSqlCommands\Quiz\SaveQuestionCommand.cs" />
