@@ -5,7 +5,14 @@
 
 angular.module('seedApp.controllers.app').controller('dashboardController', ['$scope', '$timeout', function ($scope, $timeout) {
     $scope.alerts = [];
-
+    $scope.statAlert = {
+        questions: 20,
+        quizzes: 10,
+        points: 30,
+        css: 'red',
+        visible: false
+    };
+    
     $scope.showAlert = function (text, type, fade) {
         type = type || 'red';
         
@@ -19,8 +26,12 @@ angular.module('seedApp.controllers.app').controller('dashboardController', ['$s
         if (fade) {
             $timeout(function() {
                 $scope.removeAlert(alert);
-            }, 8000);
+            }, 3000);
         }
+    };
+
+    $scope.showStatAlert = function () {
+        $scope.statAlert.visible = true;
     };
 
     $scope.removeAlert = function (alert) {
@@ -34,4 +45,5 @@ angular.module('seedApp.controllers.app').controller('dashboardController', ['$s
     };
     
     $scope.showAlert('Welcome back, Dmitry!', 'green', true);
+    $scope.showStatAlert();
 }]);

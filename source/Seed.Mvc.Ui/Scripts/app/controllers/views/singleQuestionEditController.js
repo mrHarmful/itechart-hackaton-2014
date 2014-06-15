@@ -30,6 +30,8 @@ angular.module('seedApp.controllers.views')
 
             $scope.saveSurvey = function () {
                 surveysService.saveSingleQuestion($scope.survey);
+
+                $state.go('dashboard.surveysManager');
             };
 
             $scope.addQuestion = function (type) {

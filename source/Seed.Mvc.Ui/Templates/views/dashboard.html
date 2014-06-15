@@ -2,7 +2,7 @@
     <aside class="col-lg-2 navigation">
         <div class="row">
             <a class="logo">
-                ?
+                soci<i class="icon-check-circle-o"></i>rama
             </a>
         </div>
         <div class="row">
@@ -19,7 +19,7 @@
                     <a ui-sref="dashboard.surveysManager">
                         <i class="icon-note"></i>
                         <span class="txt-upper">
-                            Manage surveys
+                            My quizzes
                         </span>
                     </a>
                 </li>
@@ -27,7 +27,7 @@
                     <a ui-sref="dashboard.surveyView">
                         <i class="icon-bubble"></i>
                         <span class="txt-upper">
-                            Available surveys
+                            Rock questions
                         </span>
                     </a>
                 </li>
@@ -35,6 +35,13 @@
         </div>
         <div class="row">
             <ul class="list-unstyled alerts">
+                <li ng-class="statAlert.css" ng-show="statAlert.visible">
+                    <i class="icon-remove pull-right" ng-click="statAlert.visible = false"></i>
+                    Your stats: <br />
+                    Questions: {{statAlert.questions}} <br />
+                    Quizzes: {{statAlert.quizzes}} <br />
+                    Points: {{statAlert.points}} <br />
+                </li>
                 <li ng-class="alert.css" ng-repeat="alert in alerts">
                     <i class="icon-remove pull-right" ng-click="removeAlert(alert)"></i>
                     {{alert.text}}
@@ -44,15 +51,12 @@
     </aside>
     <div class="col-lg-10">
         <div class="top-bar">
-            <i class="icon-page-next"></i>
-            <span class="title" ng-bind="title"></span>
-            -
-            <span class="description" ng-bind="description"></span>
+            <p class="description" ng-bind="description"></p>
             <div class="pull-right user">
                 <i class="icon-user"></i>
                 <span class="txt-upper">Dmitry Turach</span>
                 |
-                <a class="txt-upper">Log out</a>
+                <a class="txt-upper" href="/" target="_self">Log out</a>
             </div>
         </div>
         <div ui-view></div>

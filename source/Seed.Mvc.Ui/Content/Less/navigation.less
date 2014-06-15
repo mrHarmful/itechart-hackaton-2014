@@ -4,16 +4,26 @@
 @import '_mixins.less';
 @import '_variables.less';
 
+a.logo {
+        font-size: 40px;
+        margin-left: 15px;
+        color: @white;
+
+        &:hover {
+            text-decoration: none;
+            color: @white;
+        }
+
+        i {
+            margin-right: -5px;
+        }
+    }
+
 .navigation {
     background-color: @brand-color;
     height: 100%;
     color: @white;
-
-    a.logo {
-        font-size: 50px;
-        margin-left: 15px;
-    }
-
+    
     .menu {
         li {
             display: block;
@@ -85,7 +95,8 @@
     }
 
     .description{
-        font-size: 15px;
+        font-size: 18px;
+        margin-top: 15px;
     }
 
     .user{

@@ -21,7 +21,7 @@ angular.module('seedApp').config(['$stateProvider', '$urlRouterProvider', '$loca
                     controller: 'profileController',
                     data: {
                         title: 'Profile',
-                        description: 'something about you.'
+                        description: 'Something about you.'
                     }
                 })
             .state('dashboard.achivements',
@@ -30,7 +30,7 @@ angular.module('seedApp').config(['$stateProvider', '$urlRouterProvider', '$loca
                     templateUrl: '/Templates/views/achivements.html',
                     data: {
                         title: 'Achievements',
-                        description: 'enjoy your succes story.'
+                        description: 'Enjoy your succes story.'
                     }
                 })
             .state('dashboard.surveysManager',
@@ -40,7 +40,7 @@ angular.module('seedApp').config(['$stateProvider', '$urlRouterProvider', '$loca
                     controller: 'surveysManagerController',
                     data: {
                         title: 'Your surveys',
-                        description: 'feel free to manage your surveys: create, edit, remove etc.'
+                        description: 'Feel free to manage your surveys: create, edit, remove etc.'
                     }
                 })
             .state('dashboard.surveyEdit',
@@ -56,7 +56,7 @@ angular.module('seedApp').config(['$stateProvider', '$urlRouterProvider', '$loca
                     controller: 'surveyEditController',
                     data: {
                         title: 'Survey edit',
-                        description: 'reveal your deepest hidden phantasies and create a survey, but remember conciseness and clearness are keys to goal.'
+                        description: 'Reveal your deepest hidden phantasies and create a survey, but remember conciseness and clearness are keys to goal.'
                     }
                 })
             .state('dashboard.singleQuestionEdit',
@@ -72,7 +72,7 @@ angular.module('seedApp').config(['$stateProvider', '$urlRouterProvider', '$loca
                     controller: 'singleQuestionEditController',
                     data: {
                         title: 'Single Question edit',
-                        description: 'reveal your deepest hidden phantasies and create a survey, but remember conciseness and clearness are keys to goal.'
+                        description: 'Reveal your deepest hidden phantasies and create a survey, but remember conciseness and clearness are keys to goal.'
                     }
                 })
             .state('dashboard.surveyView',
@@ -82,7 +82,7 @@ angular.module('seedApp').config(['$stateProvider', '$urlRouterProvider', '$loca
                     controller: 'surveysViewController',
                     data: {
                         title: 'Available surveys',
-                        description: 'answer questions, earn points ... profit!.'
+                        description: 'Answer questions, earn points ... profit!.'
                     }
                 })
             .state('dashboard.answerSurvey',
@@ -98,7 +98,7 @@ angular.module('seedApp').config(['$stateProvider', '$urlRouterProvider', '$loca
                     controller: 'surveyAnswerController',
                     data: {
                         title: 'Answer survey',
-                        description: 'answer questions, earn points ... profit!.'
+                        description: 'Answer questions, earn points ... profit!.'
                     }
                 });
 

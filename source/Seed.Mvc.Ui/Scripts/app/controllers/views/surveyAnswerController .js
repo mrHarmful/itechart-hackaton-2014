@@ -34,11 +34,17 @@ angular.module('seedApp.controllers.views')
                     var questions = $scope.survey.questionsIds,
                     current = questions.indexOf($scope.currentQuestionId);
 
+                    $scope.showAlert('Earned 1 point!', 'green', true);
+                    $scope.statAlert.points += 1;
+                    $scope.statAlert.questions += 1;
+
                     if (current + 1 >= questions.length) {
                         $scope.completed = true;
                         $scope.status = surveysService.getPointsStatus();
 
                         $scope.showAlert('Conratulations, you`ve earned 20 pts. for quiz completion.', 'green', true);
+                        $scope.statAlert.points += 20;
+                        $scope.statAlert.quizzes += 1;
                         $state.go('dashboard.profile');
                         return;
                     }
