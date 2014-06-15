@@ -15,6 +15,7 @@ angular.module('seedApp.controllers.views')
             $scope.survey.$promise.then(function () {
                 if ($scope.survey.questionsIds.length > 0) {
                     $scope.currentQuestionId = $scope.survey.questionsIds[0];
+                    $scope.currentQuestionIndex = 1;
                 }
             });
 
@@ -36,11 +37,14 @@ angular.module('seedApp.controllers.views')
                     if (current + 1 >= questions.length) {
                         $scope.completed = true;
                         $scope.status = surveysService.getPointsStatus();
+
+                        $scope.showAlert('Conratulations, you`ve earned 20 pts. for quiz completion.', 'green', true);
+                        $state.go('dashboard.profile');
                         return;
                     }
 
                     $scope.currentQuestionId = questions[current + 1];
-                    $scope.currentQuestionIndex = current + 1;
+                    $scope.currentQuestionIndex = current + 2;
                 });
             };
 

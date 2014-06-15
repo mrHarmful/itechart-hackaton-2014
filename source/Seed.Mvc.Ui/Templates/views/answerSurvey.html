@@ -1,18 +1,20 @@
 ﻿<div class="answer-survey">
-    <div class="col-lg-6">
-        <dl class="meta">
-            <dt>Title</dt>
-            <dd>{{survey.title}}</dd>
-            <dt>Reason</dt>
-            <dd>{{survey.reason}}</dd>
-            <dt>Questions total</dt>
-            <dd>{{survey.questionsCount}}</dd>
-        </dl>
-    </div>
-    <div class="col-lg-6" ng-if="question.$resolved">
-        <span> Question # {{currentQuestionIndex + 1}}</span>
+    <ul class="meta">
+        <li class="head">{{survey.title}} / {{survey.reason}} / {{survey.questionsCount}} questions</li>
+        <li>{{question.enquiry}}</li>
+    </ul>
+    <div ng-if="question.isSingleSelect" seed-radio-list="question.answers"></div>
+    <div ng-if="!question.isSingleSelect" seed-checkbox-list="question.answers"></div>
+    <ul class="meta">
+        <li class="head">
+            Question #{{currentQuestionIndex}}
+            <a class="btn-submit" ng-click="submitAnswer()">
+                Submit
+            </a>
+        </li>
+    </ul>
+    <!--<div ng-if="question.$resolved">
         <div class="row" ng-show="!completed">
-            <div ng-if="question.$resolved" seed-question="question"></div>
         </div>
         <div class="row" ng-show="!completed">
             <div class="splitter"></div>
@@ -27,5 +29,5 @@
                 {{status.change}} points earned for survey completion. You now have {{status.total}} points!
             </p>
         </div>
-    </div>
+    </div>-->
 </div>

@@ -4,10 +4,55 @@
 @import '_mixins.less';
 @import '_variables.less';
 
-.answer-survey{
-    .container();
+.answer-survey {
+    .row();
 
-    .meta{
+    .meta {
+        .list-unstyled();
 
+        > li.head {
+            font-size: 18px;
+            cursor: pointer;
+            background-color: #aeb6cb;
+            color: @white;
+            padding: 7px 15px;
+            position: relative;
+            border-bottom: 1px solid #E5E4ED;
+
+            a.btn-submit {
+                width: 7%;
+                color: @white;
+                background-color: @brand-color;
+                position: absolute;
+                right: 0;
+                top: 0;
+                bottom: 0;
+                text-align: center;
+                padding-top: 5px;
+                border-left: 1px solid rgba(255,255,255,0.9);
+                transition: background-color linear 0.3s;
+
+                &:hover {
+                    text-decoration: none;
+                    background-color: fade(@brand-color, 70%);
+                }
+            }
+        }
+
+        > li:not(.head) {
+            padding: 10px 15px;
+
+            &:nth-child(2n) {
+                background-color: fade(@brand-color, 15%);
+            }
+        }
+    }
+
+    .answer{
+        padding: 10px 15px;
+
+        &:nth-child(2n){
+            background-color: fade(@brand-color, 15%);
+        }
     }
 }
