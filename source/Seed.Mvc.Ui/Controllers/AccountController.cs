@@ -12,20 +12,10 @@ namespace Seed.Web.Api.Controllers
             return View(vm);
         }
 
+        [HttpPost]
         public ActionResult LogIn(LogInVm vm)
         {
-            var isAuth = ViewModelsProvider.LogOn(vm);
-
-            if (isAuth)
-            {
-                if (Url.IsLocalUrl(vm.ReturnUrl))
-                {
-                    return Redirect(vm.ReturnUrl);
-                }
-                return RedirectToAction("Application", "Application");
-            }
-
-            return View(vm);
+            return Redirect("/profile");
         }
 
         public ActionResult LogOff()

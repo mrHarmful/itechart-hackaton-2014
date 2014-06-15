@@ -23,17 +23,7 @@ namespace Seed.Web.Uipc
 
         public static bool LogOn(LogInVm vm)
         {
-            if (vm == null)
-            {
-                return false;
-            }
-            if (Membership.ValidateUser(vm.UserName, vm.Password))
-            {
-                FormsAuthentication.SetAuthCookie(vm.UserName, vm.RememberMe);
-                return true;
-            }
-            vm.ErrorMessage = "Wrong username or password.";
-            return false;
+            return true;
         }
 
         public static void LogOff()
