@@ -9,35 +9,14 @@
                 Questions
             </div>
         </div>
-        <div class="row" ng-show="tab == 'meta'">
-            <div class="col-lg-6">
-                Title
+        <div class="row meta" ng-show="tab == 'meta'">
+            <div class="col-lg-4">
+                <input class="col-lg-12" type="text" placeholder="Title..." ng-model="survey.meta.title" />
+                <textarea class="col-lg-12" placeholder="Reason..." ng-model="survey.meta.reason" />
             </div>
-            <div class="col-lg-6">
-                <input type="text" ng-model="survey.meta.title" />
-            </div>
-            <div class="col-lg-6">
-                Reason
-            </div>
-            <div class="col-lg-6">
-                <textarea ng-model="survey.meta.reason" />
-            </div>
-            <div class="col-lg-6">
-                Target group
-            </div>
-            <div class="col-lg-6">
+            <div class="col-lg-4 col-lg-offset-2">
                 <div ng-if="survey.meta.selectedTargets.$resolved" seed-checkbox-dropdown="survey.meta.selectedTargets"></div>
-            </div>
-            <div class="col-lg-6">
-                Priority
-            </div>
-            <div class="col-lg-6">
                 <div ng-if="priorities.$resolved" seed-select-list="priorities" selected-value="survey.meta.selectedPriorityId"></div>
-            </div>
-            <div class="col-lg-6">
-                Category
-            </div>
-            <div class="col-lg-6">
                 <div ng-if="categories.$resolved" seed-select-list="categories" selected-value="survey.meta.selectedCategoryId"></div>
             </div>
         </div>

@@ -3,7 +3,7 @@
         {{getSelectedText()}}
         <i class="icon-stack"></i>
     </div>
-    <ul class="list-unstyled" ng-show="isVisibleList">
+    <ul class="items" ng-show="isVisibleList">
         <li data-ng-repeat="checkbox in model.items">
             <label>
                 <input type="checkbox" data-ng-model="checkbox.selected" />
