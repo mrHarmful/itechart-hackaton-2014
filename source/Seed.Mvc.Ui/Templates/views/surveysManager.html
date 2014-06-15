@@ -1,12 +1,14 @@
 ﻿<div class="surveys">
-    <span class="title txt-upper" ng-click="toggle(surveys.questions)">
-        <i ng-class="{'icon-folder': !surveys.questions.visible, 'icon-folder-open': surveys.questions.visible}"></i>
-        Single question
-    </span>
-    <a ui-sref="dashboard.singleQuestionEdit" class="btn btn-bordered-brand">
-        <i class="icon-pencil"></i>
-        Create
-    </a>
+    <div class="row">
+        <span class="title txt-upper" ng-click="toggle(surveys.questions)">
+            Single question
+            <i ng-class="{'icon-folder': !surveys.questions.visible, 'icon-folder-open': surveys.questions.visible}"></i>
+        </span>
+        <a ui-sref="dashboard.singleQuestionEdit" class="btn-add">
+            <i class="icon-squere-plus"></i>
+            Add
+        </a>
+    </div>
     <ul class="grid" ng-show="surveys.questions && surveys.questions.visible">
         <li class="head">
             <div class="col-lg-3 text">
@@ -39,15 +41,16 @@
     </ul>
 </div>
 <div class="surveys">
-    <div class="splitter"></div>
-    <span class="title txt-upper" ng-click="toggle(surveys.quizzes)">
-        <i ng-class="{'icon-folder': !surveys.quizzes.visible, 'icon-folder-open': surveys.quizzes.visible}"></i>
-        Quizzes
-    </span>
-    <a ui-sref="dashboard.surveyEdit({surveyId: null, type: 'quiz'})" class="btn btn-bordered-brand">
-        <i class="icon-pencil"></i>
-        Create
-    </a>
+    <div class="row">
+        <span class="title txt-upper" ng-click="toggle(surveys.quizzes)">
+            Quizzes
+            <i ng-class="{'icon-folder': !surveys.quizzes.visible, 'icon-folder-open': surveys.quizzes.visible}"></i>
+        </span>
+        <a ui-sref="dashboard.singleQuestionEdit" class="btn-add">
+            <i class="icon-squere-plus"></i>
+            Add
+        </a>
+    </div>
     <ul class="grid" ng-show="surveys.quizzes && surveys.quizzes.visible">
         <li class="head">
             <div class="col-lg-3 text">

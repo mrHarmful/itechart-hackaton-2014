@@ -4,24 +4,55 @@
 @import '_mixins.less';
 @import '_variables.less';
 
-.title{
+.head {
     font-size: 18px;
+    cursor: pointer;
+    background-color: #aeb6cb;
+    color: @white;
+    padding: 7px 15px;
+    position: relative;
+
+    .title {
+        font-size: 18px;
+    }
 }
 
-.achivements{
+.achivements {
     .list-unstyled();
-    margin-bottom: 20px;
-    li{
-        width: 90%;
-        border-bottom: 1px dashed @brand-color;
-        margin-top: 5px;
-        padding: 5px 10px;
+    .row();
+
+    li {
+        padding: 10px 15px;
         position: relative;
 
-        .date{
+        &.name {
+            font-size: 18px;
+            cursor: pointer;
+            background-color: #aeb6cb;
+            color: @white;
+            padding: 7px 15px;
+            position: relative;
+        }
+
+        .date {
             position: absolute;
-            right: 0;
+            right: 15px;
             top: 5px;
+        }
+
+        &:nth-child(2n) {
+            background-color: fade(@brand-color, 15%);
+        }
+
+        .icon-diamond {
+            font-size: 20px;
+            margin-right: 3px;
+        }
+
+        &:hover {
+            .icon-diamond {
+                color: @brand-color;
+            }
         }
     }
 }
