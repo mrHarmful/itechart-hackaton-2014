@@ -1,25 +1,31 @@
-﻿<div class="row">
-    <dl>
-        <dt>Title</dt>
-        <dd>{{survey.title}}</dd>
-        <dt>Reason</dt>
-        <dd>{{survey.reason}}</dd>
-        <dt>Questions</dt>
-        <dd>{{survey.questionsCount}}</dd>
-    </dl>
-</div>
-<div class="row slider" ng-show="!completed">
-    <div ng-if="question.$resolved" seed-question="question"></div>
-</div>
-<div class="row" ng-show="!completed">
-    <a class="btn btn-bordered-brand" ng-click="submitAnswer()">
-        <i class="icon-page-next"></i>
-        Submit
-    </a>
-</div>
-<div class="row" ng-if="completed">
-    Congratulations, you`ve finished!
-    <p ng-if="status.$resolved && status.isNeedShow">
-        {{status.change}} points earned for survey completion. You now have {{status.total}} points!
-    </p>
+﻿<div class="answer-survey">
+    <div class="col-lg-6">
+        <dl class="meta">
+            <dt>Title</dt>
+            <dd>{{survey.title}}</dd>
+            <dt>Reason</dt>
+            <dd>{{survey.reason}}</dd>
+            <dt>Questions total</dt>
+            <dd>{{survey.questionsCount}}</dd>
+        </dl>
+    </div>
+    <div class="col-lg-6" ng-if="question.$resolved">
+        <span> Question # {{currentQuestionIndex + 1}}</span>
+        <div class="row" ng-show="!completed">
+            <div ng-if="question.$resolved" seed-question="question"></div>
+        </div>
+        <div class="row" ng-show="!completed">
+            <div class="splitter"></div>
+            <a class="btn btn-bordered-brand" ng-click="submitAnswer()">
+                <i class="icon-page-next"></i>
+                Submit
+            </a>
+        </div>
+        <div class="row" ng-if="completed">
+            Congratulations, you`ve finished!
+            <p ng-if="status.$resolved && status.isNeedShow">
+                {{status.change}} points earned for survey completion. You now have {{status.total}} points!
+            </p>
+        </div>
+    </div>
 </div>

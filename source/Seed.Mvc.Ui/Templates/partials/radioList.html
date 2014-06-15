@@ -1,0 +1,8 @@
+﻿<ul class="list-unstyled">
+    <li data-ng-repeat="radio in list">
+        <label>
+            <input type="radio" name="answer" ng-model="selected" ng-value="radio.value"/>
+            <span data-ng-bind="radio.text"></span>
+        </label>
+    </li>
+</ul>

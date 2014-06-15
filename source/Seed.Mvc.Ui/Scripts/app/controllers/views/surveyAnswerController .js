@@ -25,9 +25,9 @@ angular.module('seedApp.controllers.views')
                     return item.value;
                 });
                 
-                if (answers.length == 0) {
-                    return;
-                }
+                //if (answers.length == 0) {
+                //    return;
+                //}
 
                 questionsService.saveQuestionAnswer($scope.question.id, answers).$promise.then(function() {
                     var questions = $scope.survey.questionsIds,
@@ -35,11 +35,12 @@ angular.module('seedApp.controllers.views')
 
                     if (current + 1 >= questions.length) {
                         $scope.completed = true;
-                        $scope.status = surveysService.getPointStatus();
+                        $scope.status = surveysService.getPointsStatus();
                         return;
                     }
 
                     $scope.currentQuestionId = questions[current + 1];
+                    $scope.currentQuestionIndex = current + 1;
                 });
             };
 

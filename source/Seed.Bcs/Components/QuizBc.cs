@@ -77,6 +77,7 @@ namespace Seed.Bcs
         public Question GetQuestion(long questionId)
         {
             Question result = _quizDac.GetQuestion(questionId);
+            result.IsSingleSelect = true;
 
             return result;
         }

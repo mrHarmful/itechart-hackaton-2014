@@ -162,6 +162,7 @@
     <Content Include="Scripts\app\controllers\views\surveysViewController.js" />
     <Content Include="Scripts\app\controllers\views\surveyManagerController.js" />
     <Content Include="Scripts\app\controllers\views\profileController.js" />
+    <Content Include="Scripts\app\directives\controls\radioListDirective.js" />
     <Content Include="Scripts\app\directives\controls\checkboxListDirective.js" />
     <Content Include="Scripts\app\directives\controls\editQuestionDirective.js" />
     <Content Include="Scripts\app\directives\controls\questionDirective.js" />
@@ -206,6 +207,7 @@
     <Content Include="Scripts\lib\modernizr.js" />
     <Content Include="Scripts\lib\moment-2.6.0.js" />
     <Content Include="Templates\partials\checkboxDropdown.html" />
+    <Content Include="Templates\partials\radioList.html" />
     <Content Include="Templates\partials\checkboxList.html" />
     <Content Include="Templates\partials\pagination.html" />
     <Content Include="Templates\partials\editQuestion.html" />
@@ -238,7 +240,7 @@
     <Content Include="Content\Less\links.less" />
     <Content Include="Content\Less\list.less" />
     <Content Include="Content\Less\margined.less" />
-    <Content Include="Content\Less\notification.less" />
+    <Content Include="Content\Less\answers.less" />
     <Content Include="Content\Less\padding.less" />
     <Content Include="Content\Less\popover.less" />
     <Content Include="Content\Less\scafollding.less" />

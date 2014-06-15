@@ -1,5 +1,10 @@
-﻿<div ng-if="question.isSingleSelect">
-    <div seed-select-list="question.answers"></div>
+﻿<dl>
+    <dt>Enquiry</dt>
+    <dd>{{question.enquiry}}</dd>
+</dl>
+<div class="splitter"></div>
+<div ng-if="question.isSingleSelect">
+    <div seed-radio-list="question.answers"></div>
 </div>
 <div ng-if="!question.isSingleSelect">
     <div seed-checkbox-list="question.answers"></div>
