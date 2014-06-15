@@ -6,12 +6,21 @@ using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using System.Web.SessionState;
 using Seed.Logging;
 
 namespace Seed.Web.Api
 {
     public class MvcApplication : HttpApplication
     {
+        protected void Application_PostAuthorizeRequest()
+        {
+            if (IsWebApiRequest())
+            {
+                HttpContext.Current.SetSessionStateBehavior(SessionStateBehavior.Required);
+            }
+        }
+
         public void Application_AcquireRequestState(object sender, EventArgs e)
         {
             var currentCulture = new CultureInfo("en-US");
@@ -40,6 +49,13 @@ namespace Seed.Web.Api
             {
                 Logger.Error(exception.Message, exception);
             }
+        }
+
+        private bool IsWebApiRequest()
+        {
+            return HttpContext.Current != null
+                   && HttpContext.Current.Request.AppRelativeCurrentExecutionFilePath != null
+                   && HttpContext.Current.Request.AppRelativeCurrentExecutionFilePath.StartsWith("~/api");
         }
     }
 }

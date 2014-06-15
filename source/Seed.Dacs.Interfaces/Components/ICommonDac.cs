@@ -12,5 +12,7 @@ namespace Seed.Dacs.Interfaces
         List<KeyValueItem> GetCategories();
 
         List<KeyValueItem> GetAchievements();
+
+        int GetUserPoints(long userId);
     }
 }

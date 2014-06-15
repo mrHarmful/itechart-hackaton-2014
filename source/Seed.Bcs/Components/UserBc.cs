@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Web.Security;
+using Seed.Entities;
 using Seed.Entities.AccountItems;
 
 namespace Seed.Bcs

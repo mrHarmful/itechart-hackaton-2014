@@ -1,6 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
+using System.Web;
 using Seed.Dacs.Interfaces;
 using Seed.Entities;
 
@@ -52,6 +51,36 @@ namespace Seed.Bcs
         #endregion
 
         #region Public methods
+
+        public PointsStatus CheckPoints()
+        {
+            var status = new PointsStatus();
+
+            var currentpPoints = _sampleDac.GetUserPoints(UserBc.Instance.GetCurrntUser().Id);
+            var oldPoints = currentpPoints;
+
+            if (HttpContext.Current != null && HttpContext.Current.Session != null)
+            {
+                object sessionData = HttpContext.Current.Session["points"];
+
+                oldPoints = (int) sessionData;
+            }
+            if (HttpContext.Current != null && HttpContext.Current.Session != null)
+            {
+                HttpContext.Current.Session["points"] = currentpPoints;
+            }
+
+            if(oldPoints != currentpPoints)
+            {
+                status.IsIncreased = oldPoints < currentpPoints;
+                status.Change = currentpPoints - oldPoints;
+                status.Total = currentpPoints;
+
+                return status;
+            }
+
+            return null;
+        }
 
         public List<KeyValueItem> GetTargets()
         {

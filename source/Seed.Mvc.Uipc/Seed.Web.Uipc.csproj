@@ -92,6 +92,7 @@
     <Compile Include="ViewModelsProviders\AccountViewModelsProvider.cs" />
     <Compile Include="ViewModelsProviders\DashboardVmp.cs" />
     <Compile Include="ViewModels\Account\LogInVm.cs" />
+    <Compile Include="ViewModels\Common\PointsStatusVm.cs" />
     <Compile Include="ViewModels\Common\SubmitAnswerVm.cs" />
     <Compile Include="ViewModels\Common\AnswerVm.cs" />
     <Compile Include="ViewModels\Common\AttendQuestionVm.cs" />

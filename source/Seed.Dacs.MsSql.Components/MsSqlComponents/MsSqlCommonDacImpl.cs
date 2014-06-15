@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Seed.Dacs.Interfaces;
 using Seed.Dacs.MsSql.Components.MsSqlCommands.Common;
 using Seed.Entities;
@@ -43,6 +44,9 @@ namespace Seed.Dacs.MsSql.Components.MsSqlComponents
             return command.CommandResult;
         }
 
-
+        public int GetUserPoints(long userId)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

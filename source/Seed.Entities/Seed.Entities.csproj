@@ -57,6 +57,7 @@
     <Compile Include="AccountItems\AppMembershipUser.cs" />
     <Compile Include="AccountItems\UserIdentity.cs" />
     <Compile Include="AccountItems\UserQuizList.cs" />
+    <Compile Include="Common\PointsStatus.cs" />
     <Compile Include="Quiz\Answer.cs" />
     <Compile Include="Quiz\KeyValueItem.cs" />
     <Compile Include="Quiz\Question.cs" />
@@ -67,7 +68,6 @@
     <Compile Include="Sample.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Common\" />
     <Folder Include="Enums\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

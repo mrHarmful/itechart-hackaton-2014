@@ -111,5 +111,20 @@ namespace Seed.Web.Uipc
 
             return result;
         }
+
+        public static PointsStatusVm GetPointsStatusVm()
+        {
+            var points = CommonBc.Instance.CheckPoints();
+            var result = new PointsStatusVm();
+            if(points != null)
+            {
+                result.IsNeedShow = true;
+                result.IsIncreased = points.IsIncreased;
+                result.Change = points.Change;
+                result.Total = points.Total;
+            }
+
+            return result;
+        }
     }
 }
