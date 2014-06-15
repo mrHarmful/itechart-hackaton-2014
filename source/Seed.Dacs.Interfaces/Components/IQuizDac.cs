@@ -15,6 +15,10 @@ namespace Seed.Dacs.Interfaces
 
         SingleQuestion GetSingleQuestion(long questionId);
 
+        SingleQuestion GetQuestionOfTheDay(long userId);
+
+        SingleQuestion GetRandomQuestion(long userId);
+
         void SaveAnswer(long questionId, long answerId, long userId);
 
         void SaveQuiz(Quiz quiz);

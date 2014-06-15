@@ -9,15 +9,15 @@ using Seed.Entities;
 
 namespace Seed.Dacs.MsSql.Components.MsSqlCommands.Quiz
 {
-    internal class GetSingleQuestionCommand : BaseCommand<SingleQuestion>
+    internal class GetRandomQuestionCommand : BaseCommand<SingleQuestion>
     {
         private SingleQuestion _result;
-        private long _questionId;
+        private long _userId;
 
-        public GetSingleQuestionCommand(long questionId)
+        public GetRandomQuestionCommand(long userId)
         {
-            StoredProcedureName = SeedStoredProcedures.GetSingleQuestion;
-            _questionId = questionId;
+            StoredProcedureName = SeedStoredProcedures.GetQuestionOfTheDay;
+            _userId = userId;
             _result = new SingleQuestion();
         }
 
@@ -26,7 +26,7 @@ namespace Seed.Dacs.MsSql.Components.MsSqlCommands.Quiz
             cmd.CommandText = StoredProcedureName;
             cmd.CommandType = CommandType.StoredProcedure;
 
-            cmd.Parameters.Add("@QuestionId", SqlDbType.BigInt).Value = _questionId;
+            cmd.Parameters.Add("@UserId", SqlDbType.BigInt).Value = _userId;
 
             using (SqlDataReader reader = cmd.ExecuteReader())
             {

@@ -65,6 +65,24 @@ namespace Seed.Dacs.MsSql.Components.MsSqlComponents
             return command.CommandResult;
         }
 
+        public SingleQuestion GetQuestionOfTheDay(long userId)
+        {
+            var command = new GetQuestionOfTheDayCommand(userId);
+
+            command.Execute();
+
+            return command.CommandResult;
+        }
+
+        public SingleQuestion GetRandomQuestion(long userId)
+        {
+            var command = new GetRandomQuestionCommand(userId);
+
+            command.Execute();
+
+            return command.CommandResult;
+        }
+
         public void SaveAnswer(long questionId, long answerId, long userId)
         {
             var command = new SaveAnswerCommand(questionId, answerId, userId);

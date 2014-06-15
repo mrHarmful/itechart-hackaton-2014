@@ -83,7 +83,16 @@ namespace Seed.Bcs
 
         public SingleQuestion GetRamdomSingleQuestionForUser(long userId)
         {
-            throw new NotImplementedException();
+            SingleQuestion result = _quizDac.GetRandomQuestion(userId);
+
+            return result;
+        }
+
+        public SingleQuestion GetQuestionOfTheDay(long userId)
+        {
+            SingleQuestion result = _quizDac.GetQuestionOfTheDay(userId);
+
+            return result;
         }
 
         public SingleQuestion GetSingleQuestion(long questionId)

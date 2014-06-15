@@ -26,6 +26,10 @@
 
         public const string GetSingleQuestion = "sp_GetSingleQuestion";
 
+        public const string GetQuestionOfTheDay = "sp_GetQuestionOfTheDay";
+
+        public const string GetRandomQuestion = "sp_GetRandomSingleQuestion";
+
         #endregion
 
         #region Put stored procedures
