@@ -20,6 +20,10 @@
 
         public const string SearchSingleQuestionsByCreator = "sp_SearchSingleQuestionsByCreator";
 
+        public const string GetQuiz = "sp_GetSession";
+
+        public const string GetSingleQuestion = "sp_GetSingleQuestion";
+
         #endregion
 
         #region Put stored procedures

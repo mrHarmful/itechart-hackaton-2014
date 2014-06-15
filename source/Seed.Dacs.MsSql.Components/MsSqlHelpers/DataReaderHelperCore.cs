@@ -54,6 +54,29 @@ namespace Seed.Dacs.MsSql.Components.MsSqlHelpers
             return result;
         }
 
+        public static Question GetQuestion(this SqlDataReader reader)
+        {
+            Question result = new Question();
+
+            result.Id = reader.GetValue<long>("Id");
+            result.Enquiry = reader.GetValue<string>("Title");
+            result.CanSkip = reader.GetValue<bool>("IsSkippable");
+            result.IsSingleSelect = reader.GetValue<bool>("IsSingleSelect");
+
+            return result;
+        }
+
+        public static Answer GetAnswer(this SqlDataReader reader)
+        {
+            Answer result = new Answer();
+
+            result.Id = reader.GetValue<long>("Id");
+            result.QuestionId = reader.GetValue<long>("QuestionId");
+            result.Caption = reader.GetValue<string>("Text");
+
+            return result;
+        }
+
         public static Tuple<long, long> GetRestrictionEntry(this SqlDataReader reader)
         {
             long itemId = reader.GetValue<long>("ItemId");

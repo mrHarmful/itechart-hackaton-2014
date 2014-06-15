@@ -40,7 +40,11 @@ namespace Seed.Dacs.MsSql.Components.MsSqlComponents
 
         public Quiz GetQuiz(long quizId)
         {
-            throw new NotImplementedException();
+            var command = new GetQuizCommand(quizId);
+
+            command.Execute();
+
+            return command.CommandResult;
         }
 
         public Question GetQuestion(long questionId)
@@ -50,7 +54,11 @@ namespace Seed.Dacs.MsSql.Components.MsSqlComponents
 
         public SingleQuestion GetSingleQuestion(long questionId)
         {
-            throw new NotImplementedException();
+            var command = new GetSingleQuestionCommand(questionId);
+
+            command.Execute();
+
+            return command.CommandResult;
         }
 
         public void SaveQuiz(Quiz quiz)

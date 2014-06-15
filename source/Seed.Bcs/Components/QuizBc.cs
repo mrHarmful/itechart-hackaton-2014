@@ -69,41 +69,9 @@ namespace Seed.Bcs
 
         public Quiz GetQuiz(long quizId)
         {
-            //Quiz result = _quizDac.GetQuiz(quizId);
+            Quiz result = _quizDac.GetQuiz(quizId);
 
-            var q = new Quiz();
-            q.Title = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer.";
-            q.Id = quizId;
-            q.Reason = "Lorem Ipsum is simply dummy text of the printing.";
-            q.CategoryId = 1;
-            q.Targets = new List<long>();
-            q.Targets.Add(1);
-            q.PriorityId = 1;
-            for (int j = 1; j < 12; j++)
-            {
-                var qq = new Question();
-                qq.Id = j;
-                qq.CanSkip = false;
-                qq.IsUserMeta = false;
-                qq.QuizId = quizId;
-                qq.Enquiry = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer.";
-                
-                var a1 = new Answer();
-                a1.Caption = "Yes";
-                a1.Id = quizId*j;
-                a1.QuestionId = j;
-
-                var a2 = new Answer();
-                a2.Caption = "No";
-                a2.Id = quizId * j - j;
-                a2.QuestionId = j;
-                qq.Answers.Add(a1);
-                qq.Answers.Add(a2);
-
-                q.Questions.Add(qq);
-            }
-
-            return q;
+            return result;
         }
 
         public Question GetQuestion(long questionId)
