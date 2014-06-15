@@ -11,7 +11,7 @@ namespace Seed.Web.Uipc
     {
         public static List<QuizLblVm> GetavAvailableQuizzesVm(long userId)
         {
-            QuizList quizList = QuizBc.Instance.GetQuizListForAttend(userId);
+            QuizList quizList = QuizBc.Instance.GetQuizListForAttend(UserBc.Instance.GetCurrntUser().Id);
 
             var result = quizList.MapToQuizLblListVm();
 
@@ -43,7 +43,7 @@ namespace Seed.Web.Uipc
 
         public static AttendQuestionVm GetAttendSingleQuestionVm(long userId)
         {
-            Question question = QuizBc.Instance.GetRamdomSingleQuestionForUser(userId);
+            Question question = QuizBc.Instance.GetRamdomSingleQuestionForUser(UserBc.Instance.GetCurrntUser().Id);
 
             var result = question.MapToAttendQuizQuestionVm();
 
@@ -52,7 +52,7 @@ namespace Seed.Web.Uipc
 
         public static SurveysVm GetSurveysVm(long userId)
         {
-            UserQuizList quizList = QuizBc.Instance.GetQuizList(userId);
+            UserQuizList quizList = QuizBc.Instance.GetQuizList(UserBc.Instance.GetCurrntUser().Id);
 
             var result = quizList.MapToSurveysVm();
 

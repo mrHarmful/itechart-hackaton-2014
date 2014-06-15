@@ -52,7 +52,7 @@ namespace Seed.Bcs
 
         #region Public methods
 
-        private static int CurrentpPoints = 0;
+        private static int CurrentpPoints = 23;
 
         public PointsStatus CheckPoints()
         {

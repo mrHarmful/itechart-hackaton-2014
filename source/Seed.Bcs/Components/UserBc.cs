@@ -42,7 +42,7 @@ namespace Seed.Bcs
             user.FirstName = "John";
             user.LastName = "Doe";
             user.UserName = "john.doe";
-            user.Id = 0;
+            user.Id = 1;
             user.ImageUrl = "";
 
             return user;
