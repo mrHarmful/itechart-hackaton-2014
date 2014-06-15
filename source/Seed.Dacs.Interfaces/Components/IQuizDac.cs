@@ -15,8 +15,14 @@ namespace Seed.Dacs.Interfaces
 
         SingleQuestion GetSingleQuestion(long questionId);
 
+        void SaveAnswer(long questionId, long answerId, long userId);
+
         void SaveQuiz(Quiz quiz);
 
         void SaveSingleQuestion(SingleQuestion question);
+
+        void DeactivateQuiz(long quizId);
+
+        void DeactivateQuestion(long questionId);
     }
 }

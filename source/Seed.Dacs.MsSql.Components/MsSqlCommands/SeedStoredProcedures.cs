@@ -34,6 +34,8 @@
 
         public const string SaveQuiz = "sp_InsertSession";
 
+        public const string SaveAnswer = "sp_SaveAnswer";
+
         #endregion
 
         #region Update stored procedures

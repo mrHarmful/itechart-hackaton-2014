@@ -66,6 +66,7 @@
     <Compile Include="MsSqlCommands\Quiz\GetQuestionCommand.cs" />
     <Compile Include="MsSqlCommands\Quiz\GetQuizCommand.cs" />
     <Compile Include="MsSqlCommands\Quiz\GetSingleQuestionCommand.cs" />
+    <Compile Include="MsSqlCommands\Quiz\SaveAnswerCommand.cs" />
     <Compile Include="MsSqlCommands\Quiz\SaveQuestionCommand.cs" />
     <Compile Include="MsSqlCommands\Quiz\SaveQuizCommand.cs" />
     <Compile Include="MsSqlCommands\Quiz\SaveSingleQuestionCommand.cs" />

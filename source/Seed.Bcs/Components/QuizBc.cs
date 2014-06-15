@@ -95,7 +95,7 @@ namespace Seed.Bcs
 
         public void SaveAnswer(long questionId, long answerId, int userId)
         {
-            //throw new NotImplementedException();
+            _quizDac.SaveAnswer(questionId, answerId, userId);
         }
 
         public void SaveQuiz(Quiz quiz)
