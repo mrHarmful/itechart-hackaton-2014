@@ -51,9 +51,9 @@
         </div>
         <div class="row">
             <ul class="list-unstyled alerts">
-                <li>
-                    <i class="icon-remove pull-right"></i>
-                    Sample alert!
+                <li ng-class="alert.css" ng-repeat="alert in alerts">
+                    <i class="icon-remove pull-right" ng-click="removeAlert(alert)"></i>
+                    {{alert.text}}
                 </li>
             </ul>
         </div>

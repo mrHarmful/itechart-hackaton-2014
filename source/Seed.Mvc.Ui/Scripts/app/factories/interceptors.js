@@ -4,7 +4,9 @@ angular.module('seedApp.factories').factory('errorsInterceptor', ['$injector','$
         responseError: function(rejection) {
             var $state = $injector.get('$state');
 
-            $state.go('dashboard.error', { errorCode: rejection.status });
+            if (rejection.status == 404) {
+                $state.go('dashboard.error', { errorCode: rejection.status });
+            }
             
             return rejection;
         }
